@@ -51,7 +51,15 @@ We welcome new templates and improvements to existing ones. Read the [Contributi
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date)](https://star-history.com/#sx4im/awesome-claude-md&Date)
+<a href="https://star-history.com/#sx4im/awesome-claude-md&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date" width="600" />
+  </picture>
+</a>
+
+> **Note:** The star history chart will appear once the repo receives its first stars. [Click here to star the repo ⭐](https://github.com/sx4im/awesome-claude-md)
 
 ---
 
