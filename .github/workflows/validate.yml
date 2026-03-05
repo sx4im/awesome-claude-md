@@ -1,0 +1,63 @@
+name: Validate Templates
+
+on:
+  pull_request:
+    paths:
+      - 'templates/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run template validation
+        id: validate
+        run: |
+          set +e
+          OUTPUT=$(python scripts/validate.py 2>&1)
+          EXIT_CODE=$?
+          echo "$OUTPUT"
+          echo "exit_code=$EXIT_CODE" >> "$GITHUB_OUTPUT"
+          # Write output to file for the comment step
+          echo "$OUTPUT" > /tmp/validation_output.txt
+          exit 0
+
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('/tmp/validation_output.txt', 'utf8');
+            const exitCode = '${{ steps.validate.outputs.exit_code }}';
+            const status = exitCode === '0' ? '✅ All templates passed validation' : '❌ Some templates failed validation';
+
+            const body = `## Template Validation ${exitCode === '0' ? '✅' : '❌'}
+
+            ${status}
+
+            \`\`\`
+            ${output}
+            \`\`\`
+
+            *Run \`python scripts/validate.py\` locally to debug failures.*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      - name: Fail if validation failed
+        if: steps.validate.outputs.exit_code != '0'
+        run: exit 1
