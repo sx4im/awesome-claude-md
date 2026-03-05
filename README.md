@@ -51,8 +51,7 @@ We welcome new templates and improvements to existing ones. Read the [Contributi
 
 ## ⭐ Star History
 
-<!-- Star history chart will be added once the repo is public -->
-[![Star History Chart](https://api.star-history.com/svg?repos=your-username/awesome-CLAUDE.md&type=Date)](https://star-history.com/#your-username/awesome-CLAUDE.md&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date)](https://star-history.com/#sx4im/awesome-claude-md&Date)
 
 ---
 
