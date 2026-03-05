@@ -29,14 +29,26 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 
 | Template | Stack | Best For | Lines |
 |----------|-------|----------|-------|
-| [nextjs](templates/nextjs/CLAUDE.md) | Next.js 14+ App Router, TypeScript, Tailwind, Prisma | Production web apps using the App Router — server components, route handlers, ISR | ~120 |
-| [react-vite](templates/react-vite/CLAUDE.md) | React 18, TypeScript, Vite, TanStack Query, Zustand | SPAs, dashboards, internal tools — strict component architecture, no SSR | ~115 |
-| [python-fastapi](templates/python-fastapi/CLAUDE.md) | Python 3.11+, FastAPI, SQLAlchemy 2.0, Pydantic v2 | REST APIs with async handlers, service-layer architecture, Alembic migrations | ~120 |
-| [flutter](templates/flutter/CLAUDE.md) | Flutter 3.x, Dart, Riverpod, GoRouter, Freezed | Cross-platform mobile apps with clean state management and code generation | ~110 |
-| [saas-fullstack](templates/saas-fullstack/CLAUDE.md) | Next.js 14, Prisma, Stripe, Clerk, Resend | Multi-tenant SaaS with billing, auth, transactional email — the full stack | ~130 |
-| [monorepo](templates/monorepo/CLAUDE.md) | Turborepo, pnpm workspaces, TypeScript, shared packages | Multi-app repos with shared UI libraries, utils, and type packages | ~110 |
-| [ml-python](templates/ml-python/CLAUDE.md) | Python 3.11+, PyTorch, scikit-learn, MLflow, Jupyter | ML projects with experiment tracking, reproducible training, and model serving | ~115 |
-| [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript, Vitest, tsup, Changesets, GitHub Actions | Open-source npm packages — public API design, semver, bundle size discipline | ~110 |
+| [nextjs](templates/nextjs/CLAUDE.md) | Next.js 14+ App Router, TypeScript, Tailwind, Prisma | Production web apps — server components, route handlers, ISR | ~84 |
+| [react-vite](templates/react-vite/CLAUDE.md) | React 18, TypeScript, Vite, TanStack Query, Zustand | SPAs, dashboards, internal tools — strict component architecture | ~82 |
+| [python-fastapi](templates/python-fastapi/CLAUDE.md) | Python 3.11+, FastAPI, SQLAlchemy 2.0, Pydantic v2 | Async REST APIs with service-layer architecture, Alembic migrations | ~88 |
+| [flutter](templates/flutter/CLAUDE.md) | Flutter 3.x, Dart, Riverpod, GoRouter, Freezed | Cross-platform mobile apps with clean state management | ~91 |
+| [saas-fullstack](templates/saas-fullstack/CLAUDE.md) | Next.js 14, Prisma, Stripe, Clerk, Resend | Multi-tenant SaaS with billing, auth, transactional email | ~96 |
+| [monorepo](templates/monorepo/CLAUDE.md) | Turborepo, pnpm workspaces, TypeScript | Multi-app repos with shared packages, turbo pipelines | ~109 |
+| [ml-python](templates/ml-python/CLAUDE.md) | Python 3.11+, PyTorch, scikit-learn, MLflow | ML projects — experiment tracking, reproducibility, model serving | ~113 |
+| [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript, Vitest, tsup, Changesets | npm packages — public API design, semver, bundle size discipline | ~119 |
+| [django](templates/django/CLAUDE.md) | Python 3.11+, Django 5.x, DRF, Celery | REST APIs with fat models, split settings, background tasks | ~98 |
+| [express-typescript](templates/express-typescript/CLAUDE.md) | Node.js 20+, Express, TypeScript, Prisma | API servers — three-layer architecture, Zod validation, JWT auth | ~91 |
+| [go-api](templates/go-api/CLAUDE.md) | Go 1.22+, Chi, PostgreSQL, sqlc | Go backends — compile-time SQL, dependency injection, stdlib-first | ~89 |
+| [react-native-expo](templates/react-native-expo/CLAUDE.md) | React Native 0.73+, Expo SDK 50+, TypeScript | Mobile apps with Expo Router, SecureStore, managed workflow | ~86 |
+| [sveltekit](templates/sveltekit/CLAUDE.md) | SvelteKit 2.x, Svelte 5, TypeScript, Tailwind | Full-stack Svelte — runes, server load, form actions | ~85 |
+| [nuxt](templates/nuxt/CLAUDE.md) | Nuxt 3.x, Vue 3, TypeScript, Pinia | Full-stack Vue — Composition API, auto-imports, Nitro server | ~91 |
+| [chrome-extension](templates/chrome-extension/CLAUDE.md) | Chrome Extension MV3, TypeScript, Vite, CRXJS | Browser extensions — service workers, typed IPC, minimal permissions | ~84 |
+| [cli-node](templates/cli-node/CLAUDE.md) | Node.js 20+, TypeScript, Commander, Chalk | CLI tools — structured output, non-interactive CI mode, exit codes | ~83 |
+| [astro](templates/astro/CLAUDE.md) | Astro 4.x, TypeScript, Content Collections, MDX | Content sites — static-first, island architecture, zero-JS defaults | ~95 |
+| [rust-axum](templates/rust-axum/CLAUDE.md) | Rust, Axum 0.7+, SQLx, Tokio, PostgreSQL | Performant APIs — compile-time SQL, Tower middleware, tracing | ~85 |
+| [electron](templates/electron/CLAUDE.md) | Electron 28+, React, TypeScript, Vite | Desktop apps — context isolation, typed IPC, preload bridge | ~87 |
+| [laravel](templates/laravel/CLAUDE.md) | PHP 8.2+, Laravel 11, Eloquent, Redis queues | PHP web apps — action classes, Form Requests, API Resources | ~94 |
 
 ## 🔍 Why This Exists
 
@@ -51,16 +63,7 @@ We welcome new templates and improvements to existing ones. Read the [Contributi
 
 ## ⭐ Star History
 
-<a href="https://star-history.com/#sx4im/awesome-claude-md&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=Date" width="600" />
-  </picture>
-</a>
-
-> **Note:** The star history chart will appear once the repo receives its first stars. [Click here to star the repo ⭐](https://github.com/sx4im/awesome-claude-md)
-
+[![Star History Chart](https://api.star-history.com/svg?repos=sx4im/awesome-claude-md&type=date&legend=top-left)](https://www.star-history.com/?repos=sx4im%2Fawesome-claude-md&type=date&legend=top-left)
 ---
 
 **Built by developers who got tired of Claude ignoring their coding standards.**
