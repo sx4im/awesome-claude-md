@@ -108,9 +108,8 @@ def main() -> int:
         print("ERROR: No CLAUDE.md files found in templates/")
         return 1
 
-    all_passed = True
-    total = len(template_files)
-    passed = 0
+    failed_templates: list[str] = []
+    total: int = len(template_files)
 
     print(f"Validating {total} template(s)...\n")
 
@@ -123,15 +122,15 @@ def main() -> int:
             print(f"  FAIL  {template_name}/CLAUDE.md ({line_count} lines)")
             for error in errors:
                 print(f"        ↳ {error}")
-            all_passed = False
+            failed_templates.append(template_name)
         else:
             print(f"  PASS  {template_name}/CLAUDE.md ({line_count} lines)")
-            passed += 1
 
+    passed = total - len(failed_templates)
     print(f"\n{'─' * 50}")
     print(f"Results: {passed}/{total} templates passed")
 
-    if all_passed:
+    if not failed_templates:
         print("All templates valid ✓")
         return 0
     else:
