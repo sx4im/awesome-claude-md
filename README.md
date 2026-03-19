@@ -29,26 +29,54 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 
 | Template | Stack | Best For | Lines |
 |----------|-------|----------|-------|
-| [nextjs](templates/nextjs/CLAUDE.md) | Next.js 14+ App Router, TypeScript, Tailwind, Prisma | Production web apps — server components, route handlers, ISR | ~84 |
-| [react-vite](templates/react-vite/CLAUDE.md) | React 18, TypeScript, Vite, TanStack Query, Zustand | SPAs, dashboards, internal tools — strict component architecture | ~82 |
-| [python-fastapi](templates/python-fastapi/CLAUDE.md) | Python 3.11+, FastAPI, SQLAlchemy 2.0, Pydantic v2 | Async REST APIs with service-layer architecture, Alembic migrations | ~88 |
-| [flutter](templates/flutter/CLAUDE.md) | Flutter 3.x, Dart, Riverpod, GoRouter, Freezed | Cross-platform mobile apps with clean state management | ~91 |
-| [saas-fullstack](templates/saas-fullstack/CLAUDE.md) | Next.js 14, Prisma, Stripe, Clerk, Resend | Multi-tenant SaaS with billing, auth, transactional email | ~96 |
-| [monorepo](templates/monorepo/CLAUDE.md) | Turborepo, pnpm workspaces, TypeScript | Multi-app repos with shared packages, turbo pipelines | ~109 |
-| [ml-python](templates/ml-python/CLAUDE.md) | Python 3.11+, PyTorch, scikit-learn, MLflow | ML projects — experiment tracking, reproducibility, model serving | ~113 |
-| [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript, Vitest, tsup, Changesets | npm packages — public API design, semver, bundle size discipline | ~119 |
-| [django](templates/django/CLAUDE.md) | Python 3.11+, Django 5.x, DRF, Celery | REST APIs with fat models, split settings, background tasks | ~98 |
-| [express-typescript](templates/express-typescript/CLAUDE.md) | Node.js 20+, Express, TypeScript, Prisma | API servers — three-layer architecture, Zod validation, JWT auth | ~91 |
-| [go-api](templates/go-api/CLAUDE.md) | Go 1.22+, Chi, PostgreSQL, sqlc | Go backends — compile-time SQL, dependency injection, stdlib-first | ~89 |
-| [react-native-expo](templates/react-native-expo/CLAUDE.md) | React Native 0.73+, Expo SDK 50+, TypeScript | Mobile apps with Expo Router, SecureStore, managed workflow | ~86 |
-| [sveltekit](templates/sveltekit/CLAUDE.md) | SvelteKit 2.x, Svelte 5, TypeScript, Tailwind | Full-stack Svelte — runes, server load, form actions | ~85 |
-| [nuxt](templates/nuxt/CLAUDE.md) | Nuxt 3.x, Vue 3, TypeScript, Pinia | Full-stack Vue — Composition API, auto-imports, Nitro server | ~91 |
-| [chrome-extension](templates/chrome-extension/CLAUDE.md) | Chrome Extension MV3, TypeScript, Vite, CRXJS | Browser extensions — service workers, typed IPC, minimal permissions | ~84 |
-| [cli-node](templates/cli-node/CLAUDE.md) | Node.js 20+, TypeScript, Commander, Chalk | CLI tools — structured output, non-interactive CI mode, exit codes | ~83 |
-| [astro](templates/astro/CLAUDE.md) | Astro 4.x, TypeScript, Content Collections, MDX | Content sites — static-first, island architecture, zero-JS defaults | ~95 |
-| [rust-axum](templates/rust-axum/CLAUDE.md) | Rust, Axum 0.7+, SQLx, Tokio, PostgreSQL | Performant APIs — compile-time SQL, Tower middleware, tracing | ~85 |
-| [electron](templates/electron/CLAUDE.md) | Electron 28+, React, TypeScript, Vite | Desktop apps — context isolation, typed IPC, preload bridge | ~87 |
-| [laravel](templates/laravel/CLAUDE.md) | PHP 8.2+, Laravel 11, Eloquent, Redis queues | PHP web apps — action classes, Form Requests, API Resources | ~94 |
+| **Frontend** ||||
+| [nextjs](templates/nextjs/CLAUDE.md) | Next.js 14+, TypeScript, Tailwind, Prisma | Production web apps — server components, ISR | ~84 |
+| [react-vite](templates/react-vite/CLAUDE.md) | React 18, Vite, TanStack Query, Zustand | SPAs, dashboards, internal tools | ~82 |
+| [sveltekit](templates/sveltekit/CLAUDE.md) | SvelteKit 2.x, Svelte 5, Tailwind | Full-stack Svelte — runes, form actions | ~85 |
+| [nuxt](templates/nuxt/CLAUDE.md) | Nuxt 3.x, Vue 3, Pinia, Nitro | Full-stack Vue — Composition API, auto-imports | ~91 |
+| [remix](templates/remix/CLAUDE.md) | Remix 2.x, React 18, Prisma | Loader/action architecture, progressive enhancement | ~73 |
+| [astro](templates/astro/CLAUDE.md) | Astro 4.x, Content Collections, MDX | Content sites — island architecture, zero-JS defaults | ~95 |
+| [angular](templates/angular/CLAUDE.md) | Angular 17+, Signals, Standalone Components | Enterprise apps — OnPush, lazy routes, inject() | ~78 |
+| [threejs-r3f](templates/threejs-r3f/CLAUDE.md) | React Three Fiber, Drei, Rapier | 3D web apps — declarative scenes, useFrame, instancing | ~80 |
+| **Full-Stack** ||||
+| [t3-stack](templates/t3-stack/CLAUDE.md) | tRPC, Next.js, Prisma, NextAuth | End-to-end type-safe apps — tRPC procedures, Zod | ~82 |
+| [saas-fullstack](templates/saas-fullstack/CLAUDE.md) | Next.js 14, Stripe, Clerk, Resend | Multi-tenant SaaS with billing and auth | ~96 |
+| [supabase-nextjs](templates/supabase-nextjs/CLAUDE.md) | Next.js, Supabase Auth/DB/Storage | BaaS apps — RLS, dual clients, realtime | ~79 |
+| [shopify-hydrogen](templates/shopify-hydrogen/CLAUDE.md) | Hydrogen, Remix, Storefront API | Headless Shopify storefronts | ~70 |
+| [payload-cms](templates/payload-cms/CLAUDE.md) | Payload CMS 3.x, Next.js, Lexical | Headless CMS — collections, blocks, access control | ~83 |
+| **Backend** ||||
+| [python-fastapi](templates/python-fastapi/CLAUDE.md) | Python 3.11+, FastAPI, SQLAlchemy 2.0 | Async REST APIs, service-layer architecture | ~88 |
+| [django](templates/django/CLAUDE.md) | Django 5.x, DRF, Celery, PostgreSQL | REST APIs — fat models, split settings | ~98 |
+| [express-typescript](templates/express-typescript/CLAUDE.md) | Express, TypeScript, Prisma, Zod | Node.js APIs — three-layer, JWT auth | ~91 |
+| [go-api](templates/go-api/CLAUDE.md) | Go 1.22+, Chi, sqlc, PostgreSQL | Go backends — compile-time SQL, stdlib-first | ~89 |
+| [rust-axum](templates/rust-axum/CLAUDE.md) | Rust, Axum, SQLx, Tokio | Performant APIs — Tower middleware, tracing | ~85 |
+| [spring-boot](templates/spring-boot/CLAUDE.md) | Java 21+, Spring Boot 3.2, JPA | Enterprise APIs — MapStruct, Flyway, Testcontainers | ~83 |
+| [dotnet-api](templates/dotnet-api/CLAUDE.md) | .NET 8, C# 12, EF Core, MediatR | Clean Architecture, Minimal APIs, CQRS | ~81 |
+| [laravel](templates/laravel/CLAUDE.md) | PHP 8.2+, Laravel 11, Eloquent | PHP apps — action classes, Form Requests | ~94 |
+| [graphql-api](templates/graphql-api/CLAUDE.md) | Apollo/Yoga, Pothos, Prisma | GraphQL — code-first schema, DataLoader | ~75 |
+| [firebase-functions](templates/firebase-functions/CLAUDE.md) | Cloud Functions 2nd gen, Firestore | Serverless — typed Firestore, idempotent triggers | ~78 |
+| **Mobile** ||||
+| [flutter](templates/flutter/CLAUDE.md) | Flutter 3.x, Riverpod, GoRouter, Freezed | Cross-platform mobile — clean state management | ~91 |
+| [react-native-expo](templates/react-native-expo/CLAUDE.md) | Expo SDK 50+, Expo Router, TypeScript | Mobile apps — SecureStore, managed workflow | ~86 |
+| [swift-ios](templates/swift-ios/CLAUDE.md) | SwiftUI, Swift Concurrency, SwiftData | Native iOS — MVVM with @Observable | ~76 |
+| [kotlin-android](templates/kotlin-android/CLAUDE.md) | Jetpack Compose, Hilt, Room, Retrofit | Native Android — Clean Architecture, StateFlow | ~86 |
+| **Desktop** ||||
+| [electron](templates/electron/CLAUDE.md) | Electron 28+, React, TypeScript, Vite | Desktop apps — context isolation, typed IPC | ~87 |
+| [tauri](templates/tauri/CLAUDE.md) | Tauri 2.x, Rust, React, SQLite | Lightweight desktop — Rust commands, capabilities | ~76 |
+| **CLI & Tools** ||||
+| [cli-node](templates/cli-node/CLAUDE.md) | Node.js, Commander, Chalk, Inquirer | CLI tools — structured output, CI mode | ~83 |
+| [rust-cli](templates/rust-cli/CLAUDE.md) | Rust, clap, thiserror, indicatif | Rust CLIs — derive API, library/binary split | ~77 |
+| [chrome-extension](templates/chrome-extension/CLAUDE.md) | Chrome MV3, TypeScript, CRXJS | Browser extensions — service workers, typed IPC | ~84 |
+| [telegram-bot](templates/telegram-bot/CLAUDE.md) | Python, python-telegram-bot v20+ | Bots — async handlers, ConversationHandler | ~79 |
+| **DevOps & Infra** ||||
+| [docker-compose](templates/docker-compose/CLAUDE.md) | Docker, multi-stage builds, Compose v2 | Multi-service orchestration, health checks | ~96 |
+| [terraform](templates/terraform/CLAUDE.md) | Terraform 1.6+, HCL, AWS/GCP/Azure | IaC — modules, remote state, for_each | ~93 |
+| **Specialized** ||||
+| [monorepo](templates/monorepo/CLAUDE.md) | Turborepo, pnpm workspaces, TypeScript | Multi-app repos, turbo pipelines | ~109 |
+| [ml-python](templates/ml-python/CLAUDE.md) | Python, PyTorch, MLflow, scikit-learn | ML — experiment tracking, reproducibility | ~113 |
+| [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript, Vitest, tsup, Changesets | npm packages — semver, bundle size discipline | ~119 |
+| [unity-csharp](templates/unity-csharp/CLAUDE.md) | Unity 2022+, C#, URP | Game dev — ScriptableObjects, object pooling | ~76 |
+| [deno-fresh](templates/deno-fresh/CLAUDE.md) | Deno, Fresh 2.x, Preact | Edge apps — islands architecture, Deno KV | ~80 |
 
 ## 🔍 Why This Exists
 
