@@ -13,7 +13,10 @@ A quick reference for every CLAUDE.md template in this repo. Pick the one that m
 | [remix](templates/remix/CLAUDE.md) | Remix 2.x, React 18 | Prisma, conform, remix-auth | 73 |
 | [astro](templates/astro/CLAUDE.md) | Astro 4.x, TypeScript | Content Collections, MDX, Pagefind | 95 |
 | [angular](templates/angular/CLAUDE.md) | Angular 17+, Signals | NgRx Signal Store, Angular Material | 78 |
+| [qwik](templates/qwik/CLAUDE.md) | Qwik, Qwik City, TypeScript | Resumable, $ optimizer, routeLoader$ | 69 |
+| [solidjs](templates/solidjs/CLAUDE.md) | SolidJS, SolidStart | Fine-grained signals, createResource | 72 |
 | [threejs-r3f](templates/threejs-r3f/CLAUDE.md) | React Three Fiber, Drei | Rapier physics, Zustand, GSAP | 80 |
+| [htmx-go](templates/htmx-go/CLAUDE.md) | Go, HTMX, Templ | Tailwind, sqlc, Air hot-reload | 78 |
 
 ## Full-Stack
 
@@ -39,6 +42,10 @@ A quick reference for every CLAUDE.md template in this repo. Pick the one that m
 | [laravel](templates/laravel/CLAUDE.md) | PHP 8.2+, Laravel 11 | Eloquent, Sanctum, Filament, Pest | 94 |
 | [graphql-api](templates/graphql-api/CLAUDE.md) | Apollo/Yoga, TypeScript | Pothos, Prisma, DataLoader | 75 |
 | [firebase-functions](templates/firebase-functions/CLAUDE.md) | Cloud Functions v2, TypeScript | Firestore, Firebase Auth, Zod | 78 |
+| [nestjs](templates/nestjs/CLAUDE.md) | NestJS 10+, TypeScript | Prisma, class-validator, Passport | 78 |
+| [elixir-phoenix](templates/elixir-phoenix/CLAUDE.md) | Elixir, Phoenix 1.7+, Ecto | LiveView, PubSub, Oban | 80 |
+| [ruby-on-rails](templates/ruby-on-rails/CLAUDE.md) | Ruby 3.2+, Rails 7.1+ | Hotwire, Sidekiq, RSpec, Pagy | 79 |
+| [grpc-go](templates/grpc-go/CLAUDE.md) | Go, gRPC, Connect RPC | Protobuf, Buf, sqlc, Zap | 74 |
 
 ## Mobile
 
@@ -71,6 +78,7 @@ A quick reference for every CLAUDE.md template in this repo. Pick the one that m
 |----------|-------|---------------|-------|
 | [docker-compose](templates/docker-compose/CLAUDE.md) | Docker, Compose v2 | Multi-stage builds, health checks | 96 |
 | [terraform](templates/terraform/CLAUDE.md) | Terraform 1.6+, HCL | AWS/GCP/Azure providers, tflint | 93 |
+| [aws-cdk](templates/aws-cdk/CLAUDE.md) | AWS CDK v2, TypeScript | CloudFormation, L3 constructs, esbuild | 74 |
 
 ## Specialized
 
@@ -81,6 +89,8 @@ A quick reference for every CLAUDE.md template in this repo. Pick the one that m
 | [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript library | Vitest, tsup, Changesets | 119 |
 | [unity-csharp](templates/unity-csharp/CLAUDE.md) | Unity 2022+, C# | URP, DOTween, Input System | 76 |
 | [deno-fresh](templates/deno-fresh/CLAUDE.md) | Deno, Fresh 2.x, Preact | Deno KV, Tailwind, deno test | 80 |
+| [solidity-hardhat](templates/solidity-hardhat/CLAUDE.md) | Solidity 0.8+, Hardhat | Ethers.js v6, OpenZeppelin, TypeChain | 70 |
+| [wordpress-theme](templates/wordpress-theme/CLAUDE.md) | WordPress 6.x, PHP 8.1+ | Gutenberg, ACF, @wordpress/scripts | 75 |
 
 ---
 

@@ -1,6 +1,6 @@
 # Stop writing CLAUDE.md files from scratch.
 
-**40 production-ready CLAUDE.md templates for every major stack. Copy, paste, ship.**
+**50 production-ready CLAUDE.md templates for every major stack. Copy, paste, ship.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -37,7 +37,10 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 | [remix](templates/remix/CLAUDE.md) | Remix 2.x, React 18, Prisma | Loader/action architecture, progressive enhancement | ~73 |
 | [astro](templates/astro/CLAUDE.md) | Astro 4.x, Content Collections, MDX | Content sites — island architecture, zero-JS defaults | ~95 |
 | [angular](templates/angular/CLAUDE.md) | Angular 17+, Signals, Standalone Components | Enterprise apps — OnPush, lazy routes, inject() | ~78 |
+| [qwik](templates/qwik/CLAUDE.md) | Qwik, Qwik City, TypeScript | Resumable apps — zero hydration, $ optimizer | ~69 |
+| [solidjs](templates/solidjs/CLAUDE.md) | SolidJS, SolidStart, TypeScript | Fine-grained reactivity — no VDOM, signals | ~72 |
 | [threejs-r3f](templates/threejs-r3f/CLAUDE.md) | React Three Fiber, Drei, Rapier | 3D web apps — declarative scenes, useFrame, instancing | ~80 |
+| [htmx-go](templates/htmx-go/CLAUDE.md) | Go, HTMX, Templ, Tailwind | Hypermedia apps — no SPA, HTML fragments | ~78 |
 | **Full-Stack** ||||
 | [t3-stack](templates/t3-stack/CLAUDE.md) | tRPC, Next.js, Prisma, NextAuth | End-to-end type-safe apps — tRPC procedures, Zod | ~82 |
 | [saas-fullstack](templates/saas-fullstack/CLAUDE.md) | Next.js 14, Stripe, Clerk, Resend | Multi-tenant SaaS with billing and auth | ~96 |
@@ -48,11 +51,15 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 | [python-fastapi](templates/python-fastapi/CLAUDE.md) | Python 3.11+, FastAPI, SQLAlchemy 2.0 | Async REST APIs, service-layer architecture | ~88 |
 | [django](templates/django/CLAUDE.md) | Django 5.x, DRF, Celery, PostgreSQL | REST APIs — fat models, split settings | ~98 |
 | [express-typescript](templates/express-typescript/CLAUDE.md) | Express, TypeScript, Prisma, Zod | Node.js APIs — three-layer, JWT auth | ~91 |
+| [nestjs](templates/nestjs/CLAUDE.md) | NestJS 10+, TypeScript, Prisma | Modular APIs — DI, DTOs, Guards, Passport | ~78 |
 | [go-api](templates/go-api/CLAUDE.md) | Go 1.22+, Chi, sqlc, PostgreSQL | Go backends — compile-time SQL, stdlib-first | ~89 |
+| [grpc-go](templates/grpc-go/CLAUDE.md) | Go, gRPC, Connect RPC, Protobuf | gRPC services — Buf, sqlc, interceptors | ~74 |
 | [rust-axum](templates/rust-axum/CLAUDE.md) | Rust, Axum, SQLx, Tokio | Performant APIs — Tower middleware, tracing | ~85 |
 | [spring-boot](templates/spring-boot/CLAUDE.md) | Java 21+, Spring Boot 3.2, JPA | Enterprise APIs — MapStruct, Flyway, Testcontainers | ~83 |
 | [dotnet-api](templates/dotnet-api/CLAUDE.md) | .NET 8, C# 12, EF Core, MediatR | Clean Architecture, Minimal APIs, CQRS | ~81 |
 | [laravel](templates/laravel/CLAUDE.md) | PHP 8.2+, Laravel 11, Eloquent | PHP apps — action classes, Form Requests | ~94 |
+| [elixir-phoenix](templates/elixir-phoenix/CLAUDE.md) | Elixir, Phoenix 1.7+, Ecto | LiveView, Contexts, OTP, PubSub | ~80 |
+| [ruby-on-rails](templates/ruby-on-rails/CLAUDE.md) | Ruby 3.2+, Rails 7.1+, Hotwire | Monolith apps — Turbo, Stimulus, Sidekiq | ~79 |
 | [graphql-api](templates/graphql-api/CLAUDE.md) | Apollo/Yoga, Pothos, Prisma | GraphQL — code-first schema, DataLoader | ~75 |
 | [firebase-functions](templates/firebase-functions/CLAUDE.md) | Cloud Functions 2nd gen, Firestore | Serverless — typed Firestore, idempotent triggers | ~78 |
 | **Mobile** ||||
@@ -71,12 +78,15 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 | **DevOps & Infra** ||||
 | [docker-compose](templates/docker-compose/CLAUDE.md) | Docker, multi-stage builds, Compose v2 | Multi-service orchestration, health checks | ~96 |
 | [terraform](templates/terraform/CLAUDE.md) | Terraform 1.6+, HCL, AWS/GCP/Azure | IaC — modules, remote state, for_each | ~93 |
+| [aws-cdk](templates/aws-cdk/CLAUDE.md) | AWS CDK v2, TypeScript, CloudFormation | IaC — L3 constructs, NodejsFunction, snapshots | ~74 |
 | **Specialized** ||||
 | [monorepo](templates/monorepo/CLAUDE.md) | Turborepo, pnpm workspaces, TypeScript | Multi-app repos, turbo pipelines | ~109 |
 | [ml-python](templates/ml-python/CLAUDE.md) | Python, PyTorch, MLflow, scikit-learn | ML — experiment tracking, reproducibility | ~113 |
 | [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript, Vitest, tsup, Changesets | npm packages — semver, bundle size discipline | ~119 |
 | [unity-csharp](templates/unity-csharp/CLAUDE.md) | Unity 2022+, C#, URP | Game dev — ScriptableObjects, object pooling | ~76 |
 | [deno-fresh](templates/deno-fresh/CLAUDE.md) | Deno, Fresh 2.x, Preact | Edge apps — islands architecture, Deno KV | ~80 |
+| [solidity-hardhat](templates/solidity-hardhat/CLAUDE.md) | Solidity 0.8+, Hardhat, Ethers.js | Smart contracts — OpenZeppelin, TypeChain | ~70 |
+| [wordpress-theme](templates/wordpress-theme/CLAUDE.md) | WordPress 6.x, PHP 8.1+, Gutenberg | WP themes — block themes, escaping, enqueue | ~75 |
 
 ## 🔍 Why This Exists
 
