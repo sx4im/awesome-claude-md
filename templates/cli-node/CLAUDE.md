@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -29,32 +29,32 @@ src/
 │   └── format.ts            # Output formatting helpers
 ├── types/
 │   └── index.ts             # Shared types and interfaces
-└── index.ts                 # CLI entry point — Commander program setup
+└── index.ts                 # CLI entry point: Commander program setup
 ```
 
 ## Architecture Rules
 
 - **One file per command.** `commands/init.ts` exports a function that registers the `init` command on the Commander program. Each command file is self-contained: options, arguments, and handler logic.
-- **Commands call `lib/` — never the other way around.** Commands are the entry points that parse user input and orchestrate library functions. Library code (`lib/`) is reusable and never touches Commander directly.
+- **Commands call `lib/`. never the other way around.** Commands are the entry points that parse user input and orchestrate library functions. Library code (`lib/`) is reusable and never touches Commander directly.
 - **All output goes through `lib/logger.ts`.** Never use `console.log` directly. The logger wraps Chalk for consistent coloring: `logger.info()`, `logger.success()`, `logger.warn()`, `logger.error()`. This makes output testable and redirect-friendly.
-- **Config lives in `~/.mycli/`.** Use a JSON config file loaded via `lib/config.ts`. Provide sensible defaults — the CLI must work without any config file present.
-- **Exit codes are meaningful.** `0` = success. `1` = user error (bad input, missing file). `2` = system error (network, permissions). Never call `process.exit()` inside library code — throw typed errors and handle exits in the command layer.
+- **Config lives in `~/.mycli/`.** Use a JSON config file loaded via `lib/config.ts`. Provide sensible defaults. the CLI must work without any config file present.
+- **Exit codes are meaningful.** `0` = success. `1` = user error (bad input, missing file). `2` = system error (network, permissions). Never call `process.exit()` inside library code. throw typed errors and handle exits in the command layer.
 
 ## Coding Conventions
 
 - **The `bin` field in `package.json` points to the compiled output:** `"bin": { "mycli": "./dist/index.js" }`. The entry file starts with `#!/usr/bin/env node`.
-- **Named exports for everything.** `export function registerInitCommand(program: Command)` — never `export default`.
+- **Named exports for everything.** `export function registerInitCommand(program: Command)`. never `export default`.
 - **Error messages are actionable.** Bad: `"Error: invalid input"`. Good: `"Error: config file not found at ~/.mycli/config.json. Run 'mycli init' to create one."`.
 - **Non-interactive mode for CI.** All prompts have flag-based alternatives: `mycli init --name myproject --template react` should work without any prompts. Check `process.stdout.isTTY` to detect CI environments.
 - **Verbose flag.** Support `--verbose` globally. In verbose mode, log every file operation, every network request, and every config read. In normal mode, show only the final result.
 
 ## Library Preferences
 
-- **Command parsing:** Commander — not `yargs` (Commander has a simpler API and better TypeScript support). Not `meow` (too minimal for multi-command CLIs).
-- **Output coloring:** Chalk 5+ (ESM) — not `colors` (supply-chain compromised) and not `kleur` (Chalk is the standard).
-- **Spinners:** Ora — not `cli-spinners` directly (Ora handles the terminal output management). Use spinners for any operation that takes more than 500ms.
-- **Prompts:** Inquirer — not `prompts` (Inquirer has better TypeScript types). Use `@inquirer/prompts` (the newer modular API), not the legacy `inquirer` package.
-- **Bundling:** tsup — compiles to a single CJS file for maximum compatibility with `node` runtimes. Set `target: 'node20'`.
+- **Command parsing:** Commander. not `yargs` (Commander has a simpler API and better TypeScript support). Not `meow` (too minimal for multi-command CLIs).
+- **Output coloring:** Chalk 5+ (ESM). not `colors` (supply-chain compromised) and not `kleur` (Chalk is the standard).
+- **Spinners:** Ora. not `cli-spinners` directly (Ora handles the terminal output management). Use spinners for any operation that takes more than 500ms.
+- **Prompts:** Inquirer. not `prompts` (Inquirer has better TypeScript types). Use `@inquirer/prompts` (the newer modular API), not the legacy `inquirer` package.
+- **Bundling:** tsup. compiles to a single CJS file for maximum compatibility with `node` runtimes. Set `target: 'node20'`.
 
 ## File Naming
 
@@ -77,7 +77,7 @@ src/
 ## Testing
 
 - Use Vitest. Test commands by invoking their handler functions directly with mock arguments.
-- Test library modules as pure functions — `parseConfig(input)` and assert the output.
+- Test library modules as pure functions. `parseConfig(input)` and assert the output.
 - Test CLI output by capturing logger calls (mock `lib/logger.ts`).
 - Integration test: run the compiled binary with `execa` and assert stdout, stderr, and exit code.
 - Test both interactive (mocked Inquirer) and non-interactive (flag-based) flows.

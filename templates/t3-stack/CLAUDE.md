@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -42,7 +42,7 @@ src/
 
 ## Architecture Rules
 
-- **tRPC replaces REST API routes.** Every data operation goes through tRPC procedures. Never create `app/api/` route handlers for internal data — tRPC gives you type safety from database to component.
+- **tRPC replaces REST API routes.** Every data operation goes through tRPC procedures. Never create `app/api/` route handlers for internal data. tRPC gives you type safety from database to component.
 - **One router per domain.** `server/api/routers/user.ts` handles all user-related procedures. Routers are merged in `_app.ts`. Never put unrelated procedures in the same router.
 - **Server-side tRPC calls in server components.** Use the server-side caller (`lib/trpc/server.ts`) in server components and server actions. Use tRPC hooks (`api.user.getById.useQuery()`) in client components.
 - **Zod for all input validation.** Every tRPC procedure defines its input with a Zod schema: `.input(z.object({ id: z.string() }))`. Never accept unvalidated input.
@@ -51,17 +51,17 @@ src/
 ## Coding Conventions
 
 - **tRPC procedure naming:** `router.{entity}.{action}` → `api.user.getById`, `api.post.create`, `api.post.list`. Verb matches the operation.
-- **Prisma queries live in tRPC procedures.** Not in a separate service layer — tRPC procedures ARE the service layer in T3. Keep them focused: one procedure, one query.
+- **Prisma queries live in tRPC procedures.** Not in a separate service layer. tRPC procedures ARE the service layer in T3. Keep them focused: one procedure, one query.
 - **Type inference, not manual types.** Use `RouterOutputs['user']['getById']` to infer return types. Never manually define types that duplicate what tRPC infers from Prisma.
 - **Error handling:** throw `TRPCError` with specific codes: `NOT_FOUND`, `UNAUTHORIZED`, `BAD_REQUEST`, `FORBIDDEN`. Never return error objects in the success path.
 - **React Query integration:** tRPC wraps TanStack Query. Use `useQuery` for reads, `useMutation` for writes, `utils.user.getById.invalidate()` after mutations.
 
 ## Library Preferences
 
-- **API layer:** tRPC — not REST routes (tRPC gives end-to-end type safety), not GraphQL (overkill for most T3 apps).
-- **Auth:** NextAuth.js (Auth.js) — handles OAuth providers, sessions, and database adapters. Not Clerk (adds a third-party dependency). Not custom JWT (session-based is simpler).
-- **Validation:** Zod — integrated into tRPC's input validation. Also used for env var validation in `env.mjs`.
-- **Database:** Prisma — the T3 default. TypeSafe with tRPC inference. Not Drizzle (Prisma has deeper T3 ecosystem integration).
+- **API layer:** tRPC. not REST routes (tRPC gives end-to-end type safety), not GraphQL (overkill for most T3 apps).
+- **Auth:** NextAuth.js (Auth.js). handles OAuth providers, sessions, and database adapters. Not Clerk (adds a third-party dependency). Not custom JWT (session-based is simpler).
+- **Validation:** Zod. integrated into tRPC's input validation. Also used for env var validation in `env.mjs`.
+- **Database:** Prisma. the T3 default. TypeSafe with tRPC inference. Not Drizzle (Prisma has deeper T3 ecosystem integration).
 - **Environment validation:** `@t3-oss/env-nextjs` with Zod schemas. Type-safe env vars at build time.
 
 ## NEVER DO THIS
@@ -78,5 +78,5 @@ src/
 
 - Test tRPC procedures by calling them directly with a mock context (providing session and database).
 - Use Vitest for unit tests on procedures and utilities.
-- E2E with Playwright — test the full stack from UI to database.
+- E2E with Playwright. test the full stack from UI to database.
 - Test protected procedures with both authenticated and unauthenticated contexts to verify middleware.

@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -48,18 +48,18 @@ src/
 ## Coding Conventions
 
 - **Naming Conventions.** Files use kebab-case (`users.controller.ts`). Classes use PascalCase (`UsersController`). DTOs suffix with `Dto` (`CreateUserDto`).
-- **Interfaces vs Classes for DTOs.** Always use `class` for DTOs — not TypeScript `interface`. TypeScript interfaces disappear at runtime, which breaks NestJS's runtime validation using decorators.
+- **Interfaces vs Classes for DTOs.** Always use `class` for DTOs. not TypeScript `interface`. TypeScript interfaces disappear at runtime, which breaks NestJS's runtime validation using decorators.
 - **Return explicit types.** Always define return types on controller endpoints and service methods. Use generic wrapper types like `Promise<User>` or a custom `ResponseDto`.
 - **Global Pipes and Filters.** Configure `ValidationPipe` globally in `main.ts`. Create an `AllExceptionsFilter` to catch and format unhandled errors consistently across the API.
 - **Environment config.** Use `@nestjs/config` for environment variables. Create a typed configuration schema or validation using Joi/Zod to fail fast on startup if variables are missing.
 
 ## Library Preferences
 
-- **ORM:** Prisma — not TypeORM (unless legacy). Prisma gives superior type inference and schema management.
-- **Validation:** `class-validator` and `class-transformer` — built right into NestJS's ValidationPipe.
-- **Authentication:** `@nestjs/passport` — wraps Passport.js cleanly into NestJS modules.
+- **ORM:** Prisma. not TypeORM (unless legacy). Prisma gives superior type inference and schema management.
+- **Validation:** `class-validator` and `class-transformer`. built right into NestJS's ValidationPipe.
+- **Authentication:** `@nestjs/passport`. wraps Passport.js cleanly into NestJS modules.
 - **Logging:** `@nestjs/common` `Logger` or `nestjs-pino` for structured JSON logging.
-- **API Documentation:** `@nestjs/swagger` — generates OpenAPI specs automatically from decorators on controllers and DTOs.
+- **API Documentation:** `@nestjs/swagger`. generates OpenAPI specs automatically from decorators on controllers and DTOs.
 
 ## NEVER DO THIS
 

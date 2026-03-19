@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -49,7 +49,7 @@ app/src/main/java/com/company/project/
 - **Clean Architecture: UI → Domain → Data.** UI layer calls use cases. Domain defines models and repository interfaces. Data implements repositories with Retrofit and Room. Domain never depends on Data or UI.
 - **One ViewModel per screen.** `HomeViewModel` handles `HomeScreen`'s state. ViewModels expose state via `StateFlow` and handle events via functions. Never share ViewModels across screens.
 - **Use cases are optional but recommended for complex logic.** If a ViewModel just calls one repository method, you can skip the use case. If it orchestrates multiple repositories or has business rules, use a use case class.
-- **Hilt provides all dependencies.** Every ViewModel, repository, and API client is injected. Define modules in `di/`. Never use `object` singletons for dependencies — Hilt handles scoping.
+- **Hilt provides all dependencies.** Every ViewModel, repository, and API client is injected. Define modules in `di/`. Never use `object` singletons for dependencies. Hilt handles scoping.
 - **Compose Navigation handles all navigation.** Define routes as sealed classes or strings in `navigation/`. Never use Fragment transactions or manual Activity starts.
 
 ## Coding Conventions
@@ -62,10 +62,10 @@ app/src/main/java/com/company/project/
 
 ## Library Preferences
 
-- **DI:** Hilt — not Koin (Hilt has compile-time verification, Koin resolves at runtime and crashes on missing deps). Not manual DI (too much boilerplate).
-- **Networking:** Retrofit + OkHttp + Kotlin Serialization — not Ktor client (Retrofit has better Android ecosystem support). Kotlin Serialization over Gson (faster, no reflection).
-- **Local DB:** Room — not SQLDelight (Room has better Compose integration and wider adoption on Android). Not raw SQLite.
-- **Images:** Coil — not Glide (Coil is Kotlin-first, lighter, Compose-native). Use `AsyncImage` composable.
+- **DI:** Hilt. not Koin (Hilt has compile-time verification, Koin resolves at runtime and crashes on missing deps). Not manual DI (too much boilerplate).
+- **Networking:** Retrofit + OkHttp + Kotlin Serialization. not Ktor client (Retrofit has better Android ecosystem support). Kotlin Serialization over Gson (faster, no reflection).
+- **Local DB:** Room. not SQLDelight (Room has better Compose integration and wider adoption on Android). Not raw SQLite.
+- **Images:** Coil. not Glide (Coil is Kotlin-first, lighter, Compose-native). Use `AsyncImage` composable.
 - **Navigation:** Compose Navigation with type-safe routes (Kotlin Serialization integration in recent versions).
 
 ## NEVER DO THIS
@@ -76,7 +76,7 @@ app/src/main/java/com/company/project/
 4. **Never use `remember` for heavy objects.** `remember` survives recomposition but not configuration changes. Use ViewModel for state that must survive rotation. `remember` is for derived UI values only.
 5. **Never hardcode strings in composables.** Use `stringResource(R.string.key)` for all user-facing text. Hardcoded strings can't be translated and don't appear in Android string resources analysis.
 6. **Never use `@Inject` on constructor parameters without `@HiltViewModel`.** ViewModels need `@HiltViewModel` annotation. Without it, Hilt can't provide the ViewModel through `hiltViewModel()`.
-7. **Never use `LiveData` in new code.** Use `StateFlow` and `collectAsStateWithLifecycle()`. LiveData is the old pattern — Flow integrates better with Compose and Kotlin coroutines.
+7. **Never use `LiveData` in new code.** Use `StateFlow` and `collectAsStateWithLifecycle()`. LiveData is the old pattern. Flow integrates better with Compose and Kotlin coroutines.
 
 ## Testing
 

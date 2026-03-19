@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -44,24 +44,24 @@ src/
 
 - **Three-layer split: routes → controllers → services.** Routes define endpoints and attach middleware. Controllers extract request data and call services. Services contain business logic and database queries. Nothing else.
 - **Routes never contain logic.** A route file is a list of `router.get()` / `router.post()` calls that wire paths to controllers with middleware in between.
-- **Controllers never call Prisma directly.** They call service functions and return the result. Controller functions handle `req` and `res` — services never see Express types.
+- **Controllers never call Prisma directly.** They call service functions and return the result. Controller functions handle `req` and `res`. services never see Express types.
 - **Every request body is validated with Zod.** Use the `validate` middleware with a Zod schema before the controller runs. Controllers can trust that `req.body` matches the schema.
 - **App factory pattern.** `server.ts` exports a `createApp()` function that builds the Express app. This makes testing possible without starting a real HTTP server.
 
 ## Coding Conventions
 
-- **Named exports everywhere.** `export function createUser()` — never `export default`. This applies to controllers, services, middleware, and schemas.
+- **Named exports everywhere.** `export function createUser()`. never `export default`. This applies to controllers, services, middleware, and schemas.
 - **Async error handling:** wrap all async route handlers with a `catchAsync` wrapper that forwards errors to the global error handler. Never use try/catch in every controller.
-- **Environment variables:** validate with Zod in `lib/config.ts` at startup. Import `config` throughout the app — never use `process.env` directly after the config module.
-- **HTTP status codes:** use named constants from a status code enum or object. `return res.status(HTTP_STATUS.CREATED).json(data)` — not magic numbers.
+- **Environment variables:** validate with Zod in `lib/config.ts` at startup. Import `config` throughout the app. never use `process.env` directly after the config module.
+- **HTTP status codes:** use named constants from a status code enum or object. `return res.status(HTTP_STATUS.CREATED).json(data)`. not magic numbers.
 - **Response envelope:** all API responses follow `{ success: boolean, data?: T, error?: { message: string, code: string } }`. Never return raw data or inconsistent shapes.
 
 ## Library Preferences
 
-- **ORM:** Prisma — not TypeORM (decorator-based, less type-safe) and not Knex (too low-level for most CRUD apps). Prisma's generated client gives you exact types per query.
-- **Validation:** Zod — not Joi (no TypeScript inference) and not express-validator (chainable API is harder to compose). Zod schemas double as TypeScript types with `.infer<>`.
-- **Logging:** Pino — not Winston (Pino is faster, JSON-native, and has better structured logging). Use `pino-http` middleware for automatic request logging.
-- **Auth:** JWT with `jose` library — not `jsonwebtoken` (jose is maintained, supports ESM, handles JWK sets). Use short-lived access tokens (15min) + long-lived refresh tokens (7d).
+- **ORM:** Prisma. not TypeORM (decorator-based, less type-safe) and not Knex (too low-level for most CRUD apps). Prisma's generated client gives you exact types per query.
+- **Validation:** Zod. not Joi (no TypeScript inference) and not express-validator (chainable API is harder to compose). Zod schemas double as TypeScript types with `.infer<>`.
+- **Logging:** Pino. not Winston (Pino is faster, JSON-native, and has better structured logging). Use `pino-http` middleware for automatic request logging.
+- **Auth:** JWT with `jose` library. not `jsonwebtoken` (jose is maintained, supports ESM, handles JWK sets). Use short-lived access tokens (15min) + long-lived refresh tokens (7d).
 - **Rate limiting:** `express-rate-limit` for basic limits. For production, use Redis-backed rate limiting with `rate-limit-redis`.
 
 ## File Naming

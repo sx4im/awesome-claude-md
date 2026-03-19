@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -53,10 +53,10 @@ src/
 
 ## Library Preferences
 
-- **Arg parsing:** clap v4 derive API — not structopt (merged into clap), not argh (fewer features). Derive API gives compile-time validation and auto-generated `--help`.
-- **Errors:** thiserror for library errors, anyhow for application errors — not `Box<dyn Error>` (loses type info), not `panic!` (not recoverable).
+- **Arg parsing:** clap v4 derive API. not structopt (merged into clap), not argh (fewer features). Derive API gives compile-time validation and auto-generated `--help`.
+- **Errors:** thiserror for library errors, anyhow for application errors. not `Box<dyn Error>` (loses type info), not `panic!` (not recoverable).
 - **Serialization:** serde + toml for config files, serde_json for JSON output. Not hand-parsed strings.
-- **Progress:** indicatif — not raw `\r` printing. Indicatif handles multi-line progress bars, spinners, and terminal width detection.
+- **Progress:** indicatif. not raw `\r` printing. Indicatif handles multi-line progress bars, spinners, and terminal width detection.
 - **File system:** `std::fs` + `walkdir` for directory traversal. Not `glob` (walkdir is faster for large trees).
 
 ## NEVER DO THIS

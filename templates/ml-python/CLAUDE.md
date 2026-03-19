@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -60,16 +60,16 @@
 - **Notebook naming:** `YYYY-MM-DD-description.ipynb` → `2024-01-15-eda-user-churn.ipynb`. Date-prefix ensures chronological ordering. Description uses kebab-case.
 - **Experiment tracking:** Log every run to MLflow. At minimum log: all hyperparameters, training/validation metrics per epoch, final test metrics, and the model artifact. No exceptions, even for "quick tests."
 - **Config files:** Use YAML with typed validation via Pydantic. Each config has `model`, `training`, and `data` sections with explicit types.
-- **Imports:** `pathlib.Path` for all file paths — never string concatenation or `os.path.join()`. Define path constants in `src/utils/config.py`.
+- **Imports:** `pathlib.Path` for all file paths. never string concatenation or `os.path.join()`. Define path constants in `src/utils/config.py`.
 - **Type hints on all function signatures.** Use `torch.Tensor` not `Any` for tensor arguments. Use `np.ndarray` not `Any` for array arguments.
 
 ## Library Preferences
 
-- **Experiment tracking:** MLflow — not Weights & Biases (MLflow is self-hosted, no vendor lock-in) and not TensorBoard (MLflow tracks artifacts, params, and metrics in one place).
-- **Data manipulation:** `polars` for dataframes — not `pandas` (polars is 10-50x faster for large datasets) unless a downstream library requires pandas.
-- **Config management:** Pydantic with YAML loading — not Hydra (too much magic) and not argparse (not composable, not typed).
-- **Serving:** FastAPI — async, auto-generates OpenAPI docs, works with the Pydantic models you already have.
-- **Logging:** Python's `logging` module with `structlog` for structured output — not `print()`.
+- **Experiment tracking:** MLflow. not Weights & Biases (MLflow is self-hosted, no vendor lock-in) and not TensorBoard (MLflow tracks artifacts, params, and metrics in one place).
+- **Data manipulation:** `polars` for dataframes. not `pandas` (polars is 10-50x faster for large datasets) unless a downstream library requires pandas.
+- **Config management:** Pydantic with YAML loading. not Hydra (too much magic) and not argparse (not composable, not typed).
+- **Serving:** FastAPI. async, auto-generates OpenAPI docs, works with the Pydantic models you already have.
+- **Logging:** Python's `logging` module with `structlog` for structured output. not `print()`.
 
 ## Reproducibility Rules
 
@@ -110,4 +110,4 @@ Pin `seed` in the experiment config. Log it to MLflow. Never run an experiment w
 - Use `pytest` for all tests. Test data preprocessing pipelines with small fixture datasets.
 - Test model forward passes with fixed seeds and known inputs → assert expected output shapes.
 - Test serving endpoints with `httpx.AsyncClient` against the FastAPI app.
-- Never test against real model weights in CI — use randomly initialized models with fixed seeds.
+- Never test against real model weights in CI. use randomly initialized models with fixed seeds.

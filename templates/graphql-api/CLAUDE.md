@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -35,25 +35,25 @@ src/
 
 ## Architecture Rules
 
-- **Code-first schema with Pothos.** Define types, queries, and mutations in TypeScript using the Pothos builder. Never write `.graphql` schema files manually — the code IS the schema, and Pothos generates the SDL.
+- **Code-first schema with Pothos.** Define types, queries, and mutations in TypeScript using the Pothos builder. Never write `.graphql` schema files manually. the code IS the schema, and Pothos generates the SDL.
 - **Resolvers are thin.** They extract arguments and context, call a service function, and return the result. Business logic lives in `services/`. Never do database queries in resolvers directly.
 - **DataLoader for every relationship.** Every field that resolves related data uses a DataLoader. Without it, a query for 50 users with their orders makes 51 database queries. DataLoader batches them into 2.
-- **Context is per-request.** The context is built fresh for every request in `lib/context.ts`. It contains: authenticated user, DataLoader instances, and the Prisma client. DataLoaders must be per-request — they cache results for the duration of one query.
+- **Context is per-request.** The context is built fresh for every request in `lib/context.ts`. It contains: authenticated user, DataLoader instances, and the Prisma client. DataLoaders must be per-request. they cache results for the duration of one query.
 - **One file per domain type.** `schema/user.ts` defines the User GraphQL type, its queries, mutations, and field resolvers. Don't scatter User-related definitions across multiple files.
 
 ## Coding Conventions
 
 - GraphQL type naming: `User`, `Order`, `CreateUserInput`, `UpdateOrderInput`, `UserConnection` (for pagination). No suffixes on output types, `Input` suffix on input types, `Connection` suffix on paginated types.
-- Mutations return the affected entity: `createUser` returns `User`, `deleteOrder` returns `Order`. Never return `Boolean` — the client needs the updated data.
-- Cursor-based pagination for lists. Use Relay-style `Connection` types with `edges`, `nodes`, and `pageInfo`. Not offset-based — offset pagination breaks with concurrent inserts.
+- Mutations return the affected entity: `createUser` returns `User`, `deleteOrder` returns `Order`. Never return `Boolean`. the client needs the updated data.
+- Cursor-based pagination for lists. Use Relay-style `Connection` types with `edges`, `nodes`, and `pageInfo`. Not offset-based. offset pagination breaks with concurrent inserts.
 - Error handling: throw `GraphQLError` with specific `extensions.code` values: `UNAUTHENTICATED`, `FORBIDDEN`, `NOT_FOUND`, `VALIDATION_ERROR`. Never return errors in the data payload.
 - Naming: queries are nouns (`user`, `users`, `order`). Mutations are verb + noun (`createUser`, `updateOrder`, `deleteUser`).
 
 ## Library Preferences
 
-- **Schema:** Pothos — not TypeGraphQL (Pothos is more flexible with Prisma plugin), not Nexus (less maintained). Not schema-first with `.graphql` files (inferior DX for TypeScript projects).
+- **Schema:** Pothos. not TypeGraphQL (Pothos is more flexible with Prisma plugin), not Nexus (less maintained). Not schema-first with `.graphql` files (inferior DX for TypeScript projects).
 - **Server:** Yoga (lighter, HTTP framework agnostic) or Apollo Server (more middleware, better observability). Pick based on infrastructure needs.
-- **N+1 prevention:** DataLoader — non-negotiable. No alternatives. Every GraphQL API needs it.
+- **N+1 prevention:** DataLoader. non-negotiable. No alternatives. Every GraphQL API needs it.
 - **Client codegen:** GraphQL Codegen for typed hooks (React) or SDK generation. Run after schema changes.
 - **Auth:** JWT in Authorization header, verified in context builder. Not session cookies (GraphQL clients aren't browsers).
 
@@ -71,5 +71,5 @@ src/
 
 - Test resolvers by executing GraphQL operations against the schema with a test context.
 - Test services with mocked Prisma client.
-- Test DataLoaders with known batched IDs — assert they batch multiple calls into one query.
+- Test DataLoaders with known batched IDs. assert they batch multiple calls into one query.
 - Use `graphql` library's `execute()` function for unit tests. No HTTP server needed.

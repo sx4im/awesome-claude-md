@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -17,7 +17,7 @@ src/main/java/com/company/project/
 ├── config/                  # Security, CORS, OpenAPI, bean definitions
 │   ├── SecurityConfig.java
 │   └── OpenApiConfig.java
-├── controller/              # REST controllers (thin — delegates to service)
+├── controller/              # REST controllers (thin: delegates to service)
 │   ├── UserController.java
 │   └── OrderController.java
 ├── service/                 # Business logic layer
@@ -43,7 +43,7 @@ src/main/java/com/company/project/
 ## Architecture Rules
 
 - **Controller → Service → Repository.** Controllers handle HTTP and validation. Services contain business logic. Repositories do data access. Nothing bypasses this chain.
-- **DTOs at the boundary, entities inside.** Controllers accept and return DTOs. Services can work with entities internally. Never return JPA entities from REST endpoints — they leak database structure and cause lazy loading exceptions.
+- **DTOs at the boundary, entities inside.** Controllers accept and return DTOs. Services can work with entities internally. Never return JPA entities from REST endpoints. they leak database structure and cause lazy loading exceptions.
 - **MapStruct for entity ↔ DTO mapping.** Generate mappers at compile time. Never write manual mapping code with 20 getter/setter lines. Define a `@Mapper(componentModel = "spring")` interface and let MapStruct implement it.
 - **Records for DTOs.** Use Java `record` types for request and response DTOs. They're immutable, auto-generate `equals`/`hashCode`/`toString`, and work natively with Jackson.
 - **Constructor injection only.** Never use `@Autowired` on fields. Use `@RequiredArgsConstructor` (Lombok) or explicit constructors. Field injection hides dependencies and breaks testability.
@@ -58,16 +58,16 @@ src/main/java/com/company/project/
 
 ## Library Preferences
 
-- **Mapping:** MapStruct — not ModelMapper (MapStruct generates code at compile time, ModelMapper uses reflection at runtime — slower, harder to debug).
-- **Boilerplate reduction:** Lombok (`@Data`, `@Builder`, `@Slf4j`, `@RequiredArgsConstructor`) — use sparingly on entities, freely on DTOs.
-- **Migrations:** Flyway — not Liquibase (Flyway uses plain SQL migrations, easier to review). Name migrations `V1__create_users_table.sql`.
-- **API docs:** SpringDoc OpenAPI — not Swagger 2 / SpringFox (SpringFox is abandoned).
+- **Mapping:** MapStruct. Not ModelMapper (MapStruct generates code at compile time, ModelMapper uses reflection at runtime. slower, harder to debug).
+- **Boilerplate reduction:** Lombok (`@Data`, `@Builder`, `@Slf4j`, `@RequiredArgsConstructor`). use sparingly on entities, freely on DTOs.
+- **Migrations:** Flyway. not Liquibase (Flyway uses plain SQL migrations, easier to review). Name migrations `V1__create_users_table.sql`.
+- **API docs:** SpringDoc OpenAPI. not Swagger 2 / SpringFox (SpringFox is abandoned).
 - **Testing:** JUnit 5 + Mockito + Testcontainers. Not JUnit 4.
 
 ## NEVER DO THIS
 
 1. **Never return JPA entities from controllers.** Entities have bidirectional relationships, lazy proxies, and internal fields. One accidental serialization and you get infinite recursion or `LazyInitializationException`. Map to DTOs.
-2. **Never use `@Autowired` field injection.** It's untestable without Spring context. Use constructor injection — the compiler ensures all dependencies are provided.
+2. **Never use `@Autowired` field injection.** It's untestable without Spring context. Use constructor injection. the compiler ensures all dependencies are provided.
 3. **Never catch generic `Exception` in controllers.** Use a `@RestControllerAdvice` global exception handler that maps specific exceptions to proper HTTP status codes and error response DTOs.
 4. **Never use `CrudRepository` when `JpaRepository` exists.** `JpaRepository` extends `CrudRepository` with flush, batch operations, and pagination. There's no reason to use the limited interface.
 5. **Never put business logic in controllers.** A controller method should be 5-10 lines: validate, call service, return response. If you're writing `if` chains in a controller, extract to service.

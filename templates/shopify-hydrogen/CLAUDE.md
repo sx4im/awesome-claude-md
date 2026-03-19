@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -38,7 +38,7 @@ app/
 
 ## Architecture Rules
 
-- **Storefront API for all data.** Every product, collection, and customer query goes through Shopify's Storefront API via GraphQL. Never use the Admin API from the frontend — it has different auth and rate limits.
+- **Storefront API for all data.** Every product, collection, and customer query goes through Shopify's Storefront API via GraphQL. Never use the Admin API from the frontend. it has different auth and rate limits.
 - **Hydrogen provides commerce primitives.** Use `<Money>`, `<Image>`, `<CartForm>`, `<VariantSelector>` from `@shopify/hydrogen`. They handle currency formatting, responsive images, and cart mutations correctly. Never reimplement these.
 - **GraphQL fragments for reusable selections.** Define fragments once: `PRODUCT_CARD_FRAGMENT`, `PRODUCT_VARIANT_FRAGMENT`. Import them in queries. Never duplicate field selections across queries.
 - **This is Remix under the hood.** All Remix architecture rules apply: `loader` for reads, `action` for writes (cart mutations), nested routes for layouts, progressive enhancement.
@@ -59,12 +59,12 @@ app/
 3. **Never build a custom cart.** Hydrogen's `<CartForm>` and cart utilities handle cart cookies, Storefront API cart mutations, buyer identity, and discount codes. Custom carts miss edge cases.
 4. **Never skip SEO meta.** Every product and collection page must return `seo` data from the `loader`. Hydrogen's `<Seo>` component renders proper meta tags. Missing meta = invisible to search engines.
 5. **Never duplicate GraphQL fragment fields.** If you're selecting `title`, `handle`, `images` in multiple queries, extract it to a fragment. Duplicate selections drift apart and cause inconsistent data across pages.
-6. **Never ignore Shopify's rate limits.** The Storefront API has a calculated cost-based rate limit. Use `storefront.query()` (Hydrogen's client) — it handles retries. Raw `fetch` to the API doesn't.
+6. **Never ignore Shopify's rate limits.** The Storefront API has a calculated cost-based rate limit. Use `storefront.query()` (Hydrogen's client). it handles retries. Raw `fetch` to the API doesn't.
 7. **Never use `getProductById` when `getProductByHandle` works.** Handles are human-readable URL slugs. IDs are opaque GIDs. Routes use handles (`/products/cool-shirt`). Use handle-based queries in loaders.
 
 ## Testing
 
 - Use Vitest for unit tests on utilities, price formatting, and helper functions.
-- Use Playwright for E2E tests against a dev store — test add to cart, checkout flow, collection browsing.
+- Use Playwright for E2E tests against a dev store. test add to cart, checkout flow, collection browsing.
 - Test with multiple locales to verify currency and language switching.
 - Test against Shopify's API with the Hydrogen dev server (`shopify hydrogen dev`).

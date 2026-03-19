@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -43,7 +43,7 @@ infra/
 
 ## Coding Conventions
 
-- **Resource naming:** `resource "aws_instance" "api_server"` — descriptive, snake_case. The resource name describes what it IS, not what module it's in. Never use `main`, `this`, or `default` as resource names.
+- **Resource naming:** `resource "aws_instance" "api_server"`. descriptive, snake_case. The resource name describes what it IS, not what module it's in. Never use `main`, `this`, or `default` as resource names.
 - **Tag everything.** Every resource has at minimum: `Name`, `Environment`, `Project`, `ManagedBy = "terraform"`. Define common tags as a local and merge with resource-specific tags.
 - **Use `locals` for computed values.** `locals { api_name = "${var.project}-${var.environment}-api" }`. Never concatenate strings inline in resource arguments repeatedly.
 - **Data sources for external references.** Looking up an existing VPC? Use `data "aws_vpc"`. Never hardcode IDs like `vpc-0abc123`. Data sources are self-documenting and environment-agnostic.
@@ -51,10 +51,10 @@ infra/
 
 ## Library Preferences
 
-- **State backend:** S3 + DynamoDB (AWS), GCS (GCP) — not local state (team members overwrite each other). Not Terraform Cloud unless the team is already paying for it.
+- **State backend:** S3 + DynamoDB (AWS), GCS (GCP). not local state (team members overwrite each other). Not Terraform Cloud unless the team is already paying for it.
 - **Module source:** internal modules via relative paths (`source = "../../modules/networking"`). Public registry modules for battle-tested infra (vpc, eks). Pin module versions.
-- **Secrets:** AWS Secrets Manager or GCP Secret Manager — not Terraform variables for secrets (they end up in state files). Reference secrets at runtime, not at plan time.
-- **Linting:** `tflint` — catches deprecated syntax, invalid resource types, and provider-specific issues. Not just `terraform validate` (it only checks syntax).
+- **Secrets:** AWS Secrets Manager or GCP Secret Manager. not Terraform variables for secrets (they end up in state files). Reference secrets at runtime, not at plan time.
+- **Linting:** `tflint`. catches deprecated syntax, invalid resource types, and provider-specific issues. Not just `terraform validate` (it only checks syntax).
 
 ## NEVER DO THIS
 
@@ -62,7 +62,7 @@ infra/
 2. **Never hardcode resource IDs.** `subnet_id = "subnet-0abc123"` breaks in every other environment. Use variables, data sources, or module outputs.
 3. **Never use `terraform destroy` in production without a plan review.** Always run `terraform plan -destroy` first and review every resource being destroyed. Automation should require approval gates.
 4. **Never commit `.tfvars` files with secrets.** Use environment variables (`TF_VAR_db_password`) or a secrets manager. `.tfvars` files in git mean secrets in git history forever.
-5. **Never use `count` for resources that need stable identifiers.** Use `for_each` with a map. `count` breaks when you remove an item from the middle of a list — Terraform renumbers everything and recreates all subsequent resources.
+5. **Never use `count` for resources that need stable identifiers.** Use `for_each` with a map. `count` breaks when you remove an item from the middle of a list. Terraform renumbers everything and recreates all subsequent resources.
 6. **Never modify state manually with `terraform state mv` unless you understand the consequences.** State surgery is dangerous. Document what you're doing, create a backup, and have a rollback plan.
 7. **Never skip `terraform fmt`.** Run it before every commit. Inconsistent formatting in HCL creates noisy diffs and hides real changes.
 
@@ -87,7 +87,7 @@ terraform validate
 
 ## Testing
 
-- Use `terraform plan` in CI for every PR — verify the plan shows expected changes and no unexpected destroys.
+- Use `terraform plan` in CI for every PR. verify the plan shows expected changes and no unexpected destroys.
 - Use `terraform validate` and `tflint` in CI to catch syntax and provider issues.
 - Use Terratest (Go) for integration tests that create real infrastructure, verify it, and destroy it.
 - Every module has an `examples/` directory with a minimal working configuration for testing.

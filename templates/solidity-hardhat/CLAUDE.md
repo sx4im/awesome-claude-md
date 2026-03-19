@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -42,7 +42,7 @@
 - **Solidity Version.** Always pin the exact compiler version in production contracts (`pragma solidity 0.8.24;` instead of `^0.8.24`).
 - **Custom Errors.** Use custom errors (e.g., `error Unauthorized();` followed by `revert Unauthorized();`) instead of `require(condition, "Long string error");`. Custom errors save massive amounts of deployment and runtime gas.
 - **Visibility explicitly stated.** Mark every function and state variable visibility explicitly (`public`, `private`, `external`, `internal`). Prefer `external` over `public` if a function is never called internally (saves gas).
-- **TypeScript Deployment.** Write deployment and task scripts strictly in TypeScript, utilizing `TypeChain` to inject static typing for all Contract instances.
+- **TypeScript Deployment.** Write deployment and task scripts strictly in TypeScript, using `TypeChain` to inject static typing for all Contract instances.
 - **Natspec.** Use Natspec comments (`/// @notice`, `/// @dev`, `/// @param`) for all public and external functions. This allows automated doc generation and assists Etherscan verifications.
 
 ## Library Preferences

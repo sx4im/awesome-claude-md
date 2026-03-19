@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -43,23 +43,23 @@ src/
 
 ## Architecture Rules
 
-- **Collections define content types.** Each collection (`Posts.ts`, `Pages.ts`) defines fields, hooks, access control, and admin UI config. The collection config IS the schema — Payload generates the database schema, API, and admin UI from it.
+- **Collections define content types.** Each collection (`Posts.ts`, `Pages.ts`) defines fields, hooks, access control, and admin UI config. The collection config IS the schema. Payload generates the database schema, API, and admin UI from it.
 - **Blocks for flexible page layouts.** Pages use a `layout` field with block types (Hero, ContentGrid, CTA). Content editors compose pages by stacking blocks. Frontend renders each block type with a corresponding React component.
-- **Globals for singleton content.** Site-wide settings (header nav, footer links, SEO defaults) are Globals, not Collections. Globals have exactly one document — no list, no IDs.
-- **Access control is per-collection, per-operation.** Define `access: { read, create, update, delete }` on every collection. Use access control functions from `access/`. Never leave access wide open — the default is deny.
+- **Globals for singleton content.** Site-wide settings (header nav, footer links, SEO defaults) are Globals, not Collections. Globals have exactly one document. no list, no IDs.
+- **Access control is per-collection, per-operation.** Define `access: { read, create, update, delete }` on every collection. Use access control functions from `access/`. Never leave access wide open. the default is deny.
 - **Hooks for side effects.** `beforeChange` hooks for slug generation, data validation, and computed fields. `afterChange` hooks for revalidation, webhook firing, and cache busting. Never put side effect logic in access control functions.
 
 ## Coding Conventions
 
 - **Field reuse via factory functions.** Common fields (slug, meta description, published date) are defined once in `fields/` and imported into collections. Never copy field configs across collections.
 - **Collection naming:** singular PascalCase for the file, plural for the `slug` property. `Posts.ts` → `slug: 'posts'`. API endpoints are: `GET /api/posts`, `GET /api/posts/:id`.
-- **Typed access to Payload:** use generated types. Run `payload generate:types` after schema changes. Import `Post`, `Page`, `Media` types — never use `any` for document shapes.
+- **Typed access to Payload:** use generated types. Run `payload generate:types` after schema changes. Import `Post`, `Page`, `Media` types. never use `any` for document shapes.
 - **Rich text with Lexical.** Payload 3 uses Lexical (not Slate). Configure custom nodes and features in the rich text field config. Render on the frontend with `@payloadcms/richtext-lexical/react`.
-- **Hooks are thin.** A `beforeChange` hook validates or transforms data. Complex business logic lives in utility functions. Hooks call utilities — utilities don't know about Payload.
+- **Hooks are thin.** A `beforeChange` hook validates or transforms data. Complex business logic lives in utility functions. Hooks call utilities. utilities don't know about Payload.
 
 ## Library Preferences
 
-- **CMS:** Payload 3 — runs in-process with Next.js. Not Strapi (separate process, REST-centric). Not Contentful (third-party, expensive).
+- **CMS:** Payload 3. runs in-process with Next.js. Not Strapi (separate process, REST-centric). Not Contentful (third-party, expensive).
 - **Database:** PostgreSQL with Payload's Drizzle adapter (recommended for Payload 3). MongoDB if you need flexible schemas. Not SQLite (doesn't support Payload's concurrent query patterns).
 - **Rich text:** Lexical (Payload 3 default, built by Meta). Not Slate (Payload 2 legacy).
 - **Uploads:** S3-compatible storage via `@payloadcms/plugin-cloud-storage`. Not local disk in production.
@@ -77,7 +77,7 @@ src/
 
 ## Testing
 
-- Test access control functions directly — provide mock `req` objects and assert `true`/`false`.
+- Test access control functions directly. provide mock `req` objects and assert `true`/`false`.
 - Test hooks by calling them with mock document data and verifying transformations.
 - Integration test the Local API: seed data with `payload.create()`, query with `payload.find()`, assert results.
-- E2E with Playwright for the admin panel — test content creation, editing, and publishing workflows.
+- E2E with Playwright for the admin panel. test content creation, editing, and publishing workflows.

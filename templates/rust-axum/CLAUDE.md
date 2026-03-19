@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -20,7 +20,7 @@ src/
 │   ├── mod.rs               # Router composition (merges all routers)
 │   ├── users.rs             # /api/users handlers
 │   └── health.rs            # /health endpoint
-├── handlers/                # Request handlers (thin — extract, call service, respond)
+├── handlers/                # Request handlers (thin: extract, call service, respond)
 ├── services/                # Business logic (pure functions + database calls)
 │   ├── user_service.rs
 │   └── auth_service.rs
@@ -40,7 +40,7 @@ src/
 
 - **Handlers are thin.** They extract data from the request (path params, query, body, extensions), call a service function, and return a response. No business logic in handlers.
 - **Services own business logic.** They take typed arguments and a `PgPool` reference, perform validation and database operations, and return `Result<T, AppError>`. Services never see Axum types.
-- **`AppError` implements `IntoResponse`.** Define an error enum in `models/error.rs` that maps to HTTP status codes. Handlers return `Result<Json<T>, AppError>` — Axum converts errors to responses automatically.
+- **`AppError` implements `IntoResponse`.** Define an error enum in `models/error.rs` that maps to HTTP status codes. Handlers return `Result<Json<T>, AppError>`. Axum converts errors to responses automatically.
 - **State is shared via Axum's `State` extractor.** Create an `AppState` struct containing `PgPool`, config, and shared clients. Pass it when building the router. Never use `lazy_static` or global mutable state.
 - **Compile-time SQL verification.** Use `sqlx::query!` or `sqlx::query_as!` macros. They verify SQL against the database at compile time. Never use runtime string-built queries.
 
@@ -54,11 +54,11 @@ src/
 
 ## Library Preferences
 
-- **Web framework:** Axum — not Actix-web (Axum is Tower-native, better composability). Not Rocket (Axum has more momentum and Tower ecosystem access).
-- **Database:** SQLx — not Diesel (SQLx uses compile-time checked raw SQL, Diesel's DSL is another language to learn). Not SeaORM (adds abstraction overhead without enough benefit over SQLx).
-- **Serialization:** Serde — this isn't optional. Everything uses Serde.
+- **Web framework:** Axum. not Actix-web (Axum is Tower-native, better composability). Not Rocket (Axum has more momentum and Tower ecosystem access).
+- **Database:** SQLx. not Diesel (SQLx uses compile-time checked raw SQL, Diesel's DSL is another language to learn). Not SeaORM (adds abstraction overhead without enough benefit over SQLx).
+- **Serialization:** Serde. this isn't optional. Everything uses Serde.
 - **Error types:** `thiserror` for library-style enum errors. `anyhow` only in `main.rs` or scripts where you don't need typed errors. Never use `anyhow` in library or service code.
-- **Logging:** `tracing` — not `log` (tracing has spans, structured data, and async support).
+- **Logging:** `tracing`. not `log` (tracing has spans, structured data, and async support).
 
 ## File Naming
 
@@ -72,7 +72,7 @@ src/
 1. **Never use `.unwrap()` in handler or service code.** It panics and kills the request (or the entire server in single-threaded contexts). Return `Result<T, AppError>` and let the error middleware handle it. `.unwrap()` is acceptable only in tests and `main()`.
 2. **Never use `lazy_static` or global mutable state for app dependencies.** Use Axum's `State` extractor with an `AppState` struct. Global state is untestable and creates hidden coupling.
 3. **Never build SQL strings at runtime.** Use `sqlx::query!` for compile-time verified queries. String concatenation is an SQL injection vulnerability. Parameterize everything.
-4. **Never block the Tokio runtime.** CPU-heavy work goes on `tokio::task::spawn_blocking()`. Synchronous file I/O uses `tokio::fs`. Never call `std::thread::sleep()` — use `tokio::time::sleep()`.
+4. **Never block the Tokio runtime.** CPU-heavy work goes on `tokio::task::spawn_blocking()`. Synchronous file I/O uses `tokio::fs`. Never call `std::thread::sleep()`. use `tokio::time::sleep()`.
 5. **Never ignore the borrow checker by cloning everything.** If you're adding `.clone()` to make the compiler happy, you're papering over a design issue. Restructure ownership or use `Arc` deliberately with a comment explaining why.
 6. **Never return raw database column types in API responses.** Map database row types to response types with explicit field selection. Internal IDs, timestamps, and audit fields should not leak to the API consumer.
 7. **Never skip `cargo clippy`.** Run `cargo clippy -- -D warnings` in CI. Clippy catches real bugs: unused Results, redundant clones, and logic errors that compile but are wrong.
@@ -81,5 +81,5 @@ src/
 
 - Unit tests: `#[cfg(test)] mod tests` in each module. Test service functions with a test database pool.
 - Integration tests: `tests/` directory. Build the Axum app with `lib::create_app()`, use `axum::test::TestClient` or `reqwest` against a spawned server.
-- Use `sqlx::test` macro for database tests — it creates a test database per test and rolls back transactions.
+- Use `sqlx::test` macro for database tests. it creates a test database per test and rolls back transactions.
 - Run `cargo test`, `cargo clippy`, and `cargo fmt --check` in CI. All three must pass.

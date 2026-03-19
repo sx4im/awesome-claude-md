@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -14,7 +14,7 @@
 ```
 .
 ├── src/
-│   ├── index.ts           # Public API entry point — re-exports only
+│   ├── index.ts           # Public API entry point: re-exports only
 │   ├── core/              # Core logic modules
 │   ├── utils/             # Internal utility functions
 │   ├── errors.ts          # Custom error classes
@@ -40,11 +40,11 @@
 
 ## Public API Design Rules
 
-- **Named exports only.** `export function createParser()` — never `export default`. Default exports cause naming conflicts and make auto-imports unreliable for consumers.
+- **Named exports only.** `export function createParser()`. never `export default`. Default exports cause naming conflicts and make auto-imports unreliable for consumers.
 - **Every public function has JSDoc.** Include a description, `@param` for each parameter, `@returns`, `@throws` for possible errors, and `@example` with a runnable code snippet. No exceptions.
-- **Semantic versioning is law.** Breaking change → major. New feature → minor. Bug fix → patch. Use Changesets to enforce this — every PR that changes behavior must include a changeset file.
+- **Semantic versioning is law.** Breaking change → major. New feature → minor. Bug fix → patch. Use Changesets to enforce this. every PR that changes behavior must include a changeset file.
 - **Public type signatures never use `any`.** Use `unknown` for truly unknown types, generics for flexible types. `any` in a public API leaks into consumer codebases.
-- **Function options use an options object, not positional arguments.** After 2 parameters, use `function createParser(input: string, options: ParserOptions)` — not `function createParser(input: string, strict: boolean, maxDepth: number, encoding: string)`.
+- **Function options use an options object, not positional arguments.** After 2 parameters, use `function createParser(input: string, options: ParserOptions)`. Not `function createParser(input: string, strict: boolean, maxDepth: number, encoding: string)`.
 
 ## Bundle Size Discipline
 
@@ -57,14 +57,14 @@
 
 - One module per file. `parser.ts` exports the parser, `validator.ts` exports the validator. Co-locate related types at the top of the module.
 - Internal helpers: prefix with `_` or keep in a `utils/` directory not exported from `index.ts`.
-- Error handling: throw typed errors (your custom classes) and document them with `@throws`. Never silently swallow errors. Never return `null` to signal failure — throw or use a `Result` type.
+- Error handling: throw typed errors (your custom classes) and document them with `@throws`. Never silently swallow errors. Never return `null` to signal failure. throw or use a `Result` type.
 - All functions are pure unless documented otherwise. If a function has side effects, name it accordingly: `writeConfig()`, `sendEvent()`.
 
 ## Library Preferences
 
-- **Testing:** Vitest — not Jest (Vitest is faster, native ESM, same API). Not a hard migration if already on Jest, but new libraries should start with Vitest.
-- **Bundling:** tsup — not Rollup directly (tsup has sensible defaults), not esbuild alone (tsup handles DTS generation). Not webpack (too heavy for libraries).
-- **Versioning:** Changesets — not `standard-version` (Changesets handles monorepos and has better GitHub integration). Not manual `npm version`.
+- **Testing:** Vitest. not Jest (Vitest is faster, native ESM, same API). Not a hard migration if already on Jest, but new libraries should start with Vitest.
+- **Bundling:** tsup. not Rollup directly (tsup has sensible defaults), not esbuild alone (tsup handles DTS generation). Not webpack (too heavy for libraries).
+- **Versioning:** Changesets. not `standard-version` (Changesets handles monorepos and has better GitHub integration). Not manual `npm version`.
 - **Linting:** ESLint flat config + `@typescript-eslint`. Not Biome yet (still maturing for library code quality rules).
 
 ## File Naming
@@ -72,7 +72,7 @@
 - Source modules: `camelCase.ts` → `parser.ts`, `validator.ts`, `configLoader.ts`
 - Test files: `camelCase.test.ts` → `parser.test.ts`, `validator.test.ts`
 - Type files: `types.ts` for public types, `internal-types.ts` for internal types
-- Error files: `errors.ts` — one file, all custom error classes
+- Error files: `errors.ts`. one file, all custom error classes
 - Config files: standard names → `tsconfig.json`, `vitest.config.ts`, `tsup.config.ts`
 
 ## NEVER DO THIS
@@ -81,7 +81,7 @@
 2. **Never use `process.env` in library code.** Libraries don't own the environment. If you need configuration, accept it as a function argument or options object. Environment variables are the application's concern.
 3. **Never bundle devDependencies.** Your test framework, linters, and build tools must never end up in the published npm package. Check with `npm pack --dry-run` before publishing.
 4. **Never ship source maps to npm without opt-in.** Source maps are useful for debugging but inflate the install size. Default to no source maps, offer a `--sourcemap` build option.
-5. **Never use `any` in public type signatures.** It infects the consumer's type safety. Use `unknown`, generics, or specific union types. If a type is hard to express, that's a design problem — simplify the API.
+5. **Never use `any` in public type signatures.** It infects the consumer's type safety. Use `unknown`, generics, or specific union types. If a type is hard to express, that's a design problem. simplify the API.
 6. **Never break the public API without a major version bump.** Renaming a function, changing a parameter type, or removing an export all require a major release. Changesets enforce this if configured correctly.
 7. **Never publish without running the full test suite.** CI must run lint, type-check, test, and build before publishing. No "I'll test it locally" shortcuts.
 
@@ -114,6 +114,6 @@ export function parseConfig(input: string, options?: ParseOptions): Config {
 
 - Use Vitest. Test files live in `tests/unit/` mirroring the `src/` structure.
 - Every public function must have tests covering: normal input, edge cases, error cases.
-- Test the public API from the consumer's perspective — import from `src/index.ts`, not internal modules.
+- Test the public API from the consumer's perspective. import from `src/index.ts`, not internal modules.
 - Integration tests verify the built output (`dist/`) works correctly in both ESM and CJS.
 - Run `vitest --coverage` and enforce a minimum coverage threshold (aim for 90%+ on public API).

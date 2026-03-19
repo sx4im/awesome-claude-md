@@ -1,6 +1,6 @@
 # Stop writing CLAUDE.md files from scratch.
 
-**50 production-ready CLAUDE.md templates for every major stack. Copy, paste, ship.**
+**50 opinionated CLAUDE.md templates. Grab one for your stack and actually get useful output.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -8,9 +8,9 @@
 
 ---
 
-Every developer using Claude Code needs a `CLAUDE.md`. Most write a bad one in 20 minutes and spend the next week wondering why Claude keeps generating barrel files, using default exports, or ignoring their project's conventions entirely. This repo gives you a production-quality starting point for your exact stack — copy, paste, customize, and actually get useful output from day one.
+Every developer using Claude Code needs a `CLAUDE.md`. Most throw one together in 20 minutes and then spend the next week confused about why Claude keeps generating barrel files or ignoring their project's conventions. Pick a template for your stack, edit the placeholders, done.
 
-## ⚡ Quick Start
+## Quick start
 
 ```bash
 # 1. Browse the templates
@@ -25,7 +25,7 @@ cp templates/nextjs/CLAUDE.md ~/your-project/CLAUDE.md
 
 That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifics, and Claude Code immediately starts following your conventions.
 
-## 📋 Templates
+## Templates
 
 | Template | Stack | Best For | Lines |
 |----------|-------|----------|-------|
@@ -88,16 +88,19 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 | [solidity-hardhat](templates/solidity-hardhat/CLAUDE.md) | Solidity 0.8+, Hardhat, Ethers.js | Smart contracts — OpenZeppelin, TypeChain | ~70 |
 | [wordpress-theme](templates/wordpress-theme/CLAUDE.md) | WordPress 6.x, PHP 8.1+, Gutenberg | WP themes — block themes, escaping, enqueue | ~75 |
 
-## 🔍 Why This Exists
+## Why this exists
 
-- **Claude ignores your conventions without explicit instructions.** It won't magically know you use named exports, `date-fns` instead of `moment`, or that your team has a strict no-`any` policy. A generic `CLAUDE.md` that says "write clean code" teaches it nothing.
-- **Writing a good CLAUDE.md from scratch is surprisingly hard.** You need to think about file naming, import ordering, anti-patterns, library preferences, and architectural decisions — all while being specific enough that an AI can actually follow the rules. Most developers skip this and get mediocre output.
-- **Every stack has different sharp edges.** The things Claude gets wrong in a Next.js App Router project are completely different from what it gets wrong in a FastAPI project. You need stack-specific rules, not generic "best practices."
-- **These templates encode real engineering opinions.** Every rule in every template exists because someone shipped code where Claude did the wrong thing without that rule. These aren't theoretical — they're battle-tested.
+Claude won't magically know you use named exports, prefer `date-fns` over `moment`, or have a strict no-`any` policy. A `CLAUDE.md` that says "write clean code" teaches it nothing. You need specific rules.
 
-## 🤝 Contributing
+Writing those rules from scratch is tedious. You have to think about file naming, import ordering, anti-patterns, library choices, architecture. Most people skip it and get mediocre output.
 
-We welcome new templates and improvements to existing ones. Read the [Contributing Guide](CONTRIBUTING.md) before opening a PR.
+The sharp edges are also different per stack. What Claude gets wrong in a Next.js App Router project has nothing to do with what it gets wrong in FastAPI. Generic "best practices" don't cut it.
+
+Every rule in these templates exists because someone shipped code where Claude did the wrong thing without it.
+
+## Contributing
+
+New templates and fixes to existing ones are welcome. Read the [Contributing Guide](CONTRIBUTING.md) before opening a PR.
 
 ## Star History
 
@@ -111,6 +114,6 @@ We welcome new templates and improvements to existing ones. Read the [Contributi
 
 ---
 
-**Built by developers who got tired of Claude ignoring their coding standards.**
+Made by people who got tired of Claude ignoring their coding standards.
 
 <!-- GitHub Topics (for maintainers): claude-code, gemini-cli, codex-cli, antigravity, cursor, github-copilot, opencode, agentic-skills, ai-coding, llm-tools, ai-agents, autonomous-coding, mcp, ai-developer-tools, ai-pair-programming, vibe-coding, skill, skills, SKILL.md, rules.md, CLAUDE.md, GEMINI.md, CURSOR.md -->

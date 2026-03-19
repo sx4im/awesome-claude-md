@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -40,25 +40,25 @@ functions/
 
 - **One function per file, all exported from `index.ts`.** Each function file exports a single Cloud Function. `index.ts` re-exports them all: `export { onUserCreate } from './triggers/onUserCreate'`. Firebase deploys functions based on these exports.
 - **Functions are thin.** A trigger function extracts the event data, calls a service function, and handles errors. Business logic lives in `services/`. Never put Firestore queries or complex logic in trigger handlers.
-- **Typed Firestore collections.** Create typed helper functions: `const usersCollection = () => db.collection('users') as CollectionReference<User>`. Never use untyped `db.collection('users').doc(id).get()` — the `data()` return type is `DocumentData` (useless).
-- **Idempotent triggers.** Firestore `onWrite` and `onChange` triggers can fire multiple times. Every trigger must be idempotent — running it twice with the same data produces the same result. Use document fields to track processed state.
+- **Typed Firestore collections.** Create typed helper functions: `const usersCollection = () => db.collection('users') as CollectionReference<User>`. Never use untyped `db.collection('users').doc(id).get()`. the `data()` return type is `DocumentData` (useless).
+- **Idempotent triggers.** Firestore `onWrite` and `onChange` triggers can fire multiple times. Every trigger must be idempotent. running it twice with the same data produces the same result. Use document fields to track processed state.
 - **2nd gen functions for everything new.** Use `onRequest`, `onDocumentCreated`, `onCall` from `firebase-functions/v2`. 1st gen functions are legacy. 2nd gen gives you concurrency control, higher memory, and min instances.
 
 ## Coding Conventions
 
 - **Function naming:** descriptive verb + noun: `onUserCreate`, `onOrderStatusChange`, `sendDailyReport`. Functions are named exports matching the file name.
-- **Firestore document paths:** `users/{userId}`, `users/{userId}/orders/{orderId}`. Always reference paths as template strings. Never hardcode collection names in service code — define them as constants.
+- **Firestore document paths:** `users/{userId}`, `users/{userId}/orders/{orderId}`. Always reference paths as template strings. Never hardcode collection names in service code. define them as constants.
 - **Transaction for multi-document writes.** If you update user balance AND create a transaction record, use `runTransaction()`. Never do sequential writes that could leave data inconsistent if one fails.
-- **Error handling:** Cloud Functions that handle HTTP requests must always return a response. Trigger functions must catch errors — an unhandled exception causes the function to retry indefinitely.
+- **Error handling:** Cloud Functions that handle HTTP requests must always return a response. Trigger functions must catch errors. an unhandled exception causes the function to retry indefinitely.
 - **Environment config:** use `defineSecret()` and `defineString()` from Functions v2 config. Not `functions.config()` (legacy). Not hardcoded values.
 
 ## Library Preferences
 
 - **HTTP framework:** Express inside `onRequest` for REST APIs with multiple routes. Not Hono or Fastify (Express has the best Firebase Functions integration).
-- **Validation:** Zod — validate request bodies and Firestore document shapes. Not Joi.
+- **Validation:** Zod. validate request bodies and Firestore document shapes. Not Joi.
 - **Email:** Firebase Extensions (Trigger Email) for simple cases. Resend or SendGrid for custom templates.
 - **Scheduling:** `onSchedule` from Functions v2 with cron syntax. Not external cron services.
-- **Local dev:** Firebase Emulator Suite — non-negotiable. Never test against production Firestore during development.
+- **Local dev:** Firebase Emulator Suite. non-negotiable. Never test against production Firestore during development.
 
 ## NEVER DO THIS
 

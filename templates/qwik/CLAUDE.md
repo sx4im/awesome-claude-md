@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -38,7 +38,7 @@ src/
 
 ## Coding Conventions
 
-- **Component declaration.** Always wrap components in `component$`. `export const MyComponent = component$(() => { ... })`.
+- **Component declaration.** Always wrap components in `component$`. `export const MyComponent = component$(() => { .. })`.
 - **Event handlers.** Must end in `$`. `<button onClick$={() => ...}>`. Never write `<button onClick={() => ...}>`.
 - **Inline components.** Helper components within the same file shouldn't use `component$` if they are purely presentational and only called as functions `{MyInlineComponent()}` instead of standard JSX `<MyInlineComponent />`.
 - **Props are serializable.** Props passed to `component$` must be serializable (no class instances, no un-serializable maps).

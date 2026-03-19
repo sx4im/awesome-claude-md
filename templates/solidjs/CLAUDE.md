@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -60,7 +60,7 @@ src/
 1. **Never destructure component props.** `function UserCard({ name, age })` immediately breaks reactivity. The values are static. Use `function UserCard(props)` and reference `props.name`.
 2. **Never spread props onto DOM elements arbitrarily.** Using `<div {...props}>` can override essential attributes or create unexpected DOM updates. Use `splitProps` to separate known attributes from generic attributes.
 3. **Never use standard array map for rendering.** `items.map(Item)` will re-render the entire list every time the array updates. Use `<For each={items}>{(item) => <Item data={item} />}</For>` to only render added/removed nodes.
-4. **Never treat `createEffect` like React's `useEffect`.** Solid's effects automatically track dependencies—no dependency array `. `createEffect` runs synchronously. If you update a signal inside `createEffect`, it may cause an infinite loop. Better to compute state via functions (`() => ...`) than explicitly setting signals inside an effect.
+4. **Never treat `createEffect` like React's `useEffect`.** Solid's effects automatically track dependencies, no dependency array `. `createEffect` runs synchronously. If you update a signal inside `createEffect`, it may cause an infinite loop. Better to compute state via functions (`() => ...`) than explicitly setting signals inside an effect.
 5. **Never mutate an array/object inside `createSignal` directly.** Reactivity triggers on identity tracking. If you use `items().push(newItem)`, the reference doesn't change and the UI won't update. Standard rule: `setItems([...items(), newItem])` or use `createStore`.
 6. **Never use `memo` by default.** Solid's tracking is fine-grained. Wrapping components in some imaginary `React.memo` equivalent is unnecessary and actively harmful as components only run once anyway.
 7. **Never call an API directly on mount if data is required for rendering.** Use `createResource()`. It integrates with Suspense, handles loading states properly, and supports SSR hydration without double-fetching.

@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -49,17 +49,17 @@ app/
 
 - Pydantic schema naming: `{Entity}Create`, `{Entity}Update`, `{Entity}Response`, `{Entity}InDB`. Example: `UserCreate`, `UserUpdate`, `UserResponse`.
 - Route function naming: `create_user`, `get_user`, `list_users`, `update_user`, `delete_user`. Verb first, noun second.
-- Use `Annotated[type, Depends(...)]` for dependency injection — not raw `Depends()` as a default parameter. This enables proper type inference.
+- Use `Annotated[type, Depends(...)]` for dependency injection. not raw `Depends()` as a default parameter. This enables proper type inference.
 - Error responses: raise `HTTPException` with specific status codes and detail messages. Never return raw dicts with error info.
 - Environment config: use `pydantic-settings` with a `Settings` class in `core/config.py`. Access via `get_settings()` dependency. Never use `os.getenv()` directly.
 
 ## Library Preferences
 
-- **ORM:** SQLAlchemy 2.0 with `MappedAsDeclarativeBase` — not SQLAlchemy 1.x legacy patterns. Use `Mapped[type]` for column annotations, not `Column(Integer)`.
+- **ORM:** SQLAlchemy 2.0 with `MappedAsDeclarativeBase`. not SQLAlchemy 1.x legacy patterns. Use `Mapped[type]` for column annotations, not `Column(Integer)`.
 - **Migrations:** Alembic with `--autogenerate`. Name migrations descriptively: `add_user_email_verification_fields`, not `update_001`.
-- **Validation:** Pydantic v2 — not v1. v2 is faster and uses `model_validator`/`field_validator` decorators, not the old `@validator`.
+- **Validation:** Pydantic v2. not v1. v2 is faster and uses `model_validator`/`field_validator` decorators, not the old `@validator`.
 - **Password hashing:** `passlib[bcrypt]` with `CryptContext`. Not custom hashing logic.
-- **Testing:** `pytest` + `httpx.AsyncClient`. Not `requests` — it doesn't support async.
+- **Testing:** `pytest` + `httpx.AsyncClient`. Not `requests`. it doesn't support async.
 - **Dates:** `datetime` from stdlib with UTC-aware timestamps. Store as `timestamp with time zone` in PostgreSQL.
 
 ## File Naming
@@ -71,7 +71,7 @@ app/
 
 ## NEVER DO THIS
 
-1. **Never use mutable default arguments.** `def create_user(tags: list = [])` is a classic Python bug — the list is shared across all calls. Use `tags: list | None = None` and initialize inside the function body.
+1. **Never use mutable default arguments.** `def create_user(tags: list = [])` is a classic Python bug. the list is shared across all calls. Use `tags: list | None = None` and initialize inside the function body.
 2. **Never do ORM queries in routers.** Routers call services, services call the ORM. This separation makes testing possible without spinning up a full API server.
 3. **Never return SQLAlchemy models from endpoints.** Always map to a Pydantic `Response` schema. SQLAlchemy models expose internal IDs, relationships, and columns that API consumers shouldn't see.
 4. **Never use global mutable state.** No module-level variables that get mutated at runtime. Use dependency injection for shared state like database connections.

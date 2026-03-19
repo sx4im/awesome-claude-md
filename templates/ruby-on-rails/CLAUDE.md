@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -56,10 +56,10 @@ spec/                        # RSpec tests (or test/ for Minitest)
 ## Library Preferences
 
 - **Testing:** RSpec with FactoryBot (instead of Minitest and Fixtures).
-- **Frontend reactivity:** Hotwire (Turbo + Stimulus) — not Vue, React, or custom JS, unless building a strict API for a mobile app.
+- **Frontend reactivity:** Hotwire (Turbo + Stimulus). not Vue, React, or custom JS, unless building a strict API for a mobile app.
 - **CSS:** Tailwind CSS via `tailwindcss-rails`.
-- **Background Jobs:** Sidekiq (requires Redis) — faster and more robust than DelayedJob or Solid Queue for high volume.
-- **Pagination:** Pagy — significantly faster and uses less memory than Kaminari or WillPaginate.
+- **Background Jobs:** Sidekiq (requires Redis). faster and more robust than DelayedJob or Solid Queue for high volume.
+- **Pagination:** Pagy. significantly faster and uses less memory than Kaminari or WillPaginate.
 
 ## NEVER DO THIS
 

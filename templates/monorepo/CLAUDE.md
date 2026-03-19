@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -17,11 +17,11 @@
 │   ├── api/               # Express/Fastify API server
 │   └── docs/              # Documentation site (Nextra, Astro, etc.)
 ├── packages/
-│   ├── ui/                # @repo/ui — shared React component library
-│   ├── utils/             # @repo/utils — shared utility functions
-│   ├── types/             # @repo/types — shared TypeScript types
-│   ├── config/            # @repo/config — shared ESLint, Prettier, TS configs
-│   └── db/                # @repo/db — Prisma client and schema (if shared)
+│   ├── ui/                # @repo/ui: shared React component library
+│   ├── utils/             # @repo/utils: shared utility functions
+│   ├── types/             # @repo/types: shared TypeScript types
+│   ├── config/            # @repo/config: shared ESLint, Prettier, TS configs
+│   └── db/                # @repo/db: Prisma client and schema (if shared)
 ├── turbo.json             # Pipeline configuration
 ├── pnpm-workspace.yaml    # Workspace definition
 ├── package.json           # Root package.json (scripts, devDeps only)
@@ -34,7 +34,7 @@
 - **Every shared package uses the `@repo/` scope.** Name packages `@repo/ui`, `@repo/utils`, `@repo/types`. Never use unscoped names or a different scope.
 - **One concern per package.** `@repo/ui` contains React components. `@repo/utils` contains framework-agnostic utilities. Don't dump everything into a single `@repo/shared` package.
 - **TypeScript configs inherit from root.** The root `tsconfig.json` defines base `compilerOptions`. Each package's `tsconfig.json` uses `"extends": "../../tsconfig.json"` and only overrides what's specific to that package.
-- **Turborepo manages all builds.** Never run `tsc` or `next build` directly in an app — always use `turbo run build`. This ensures the dependency graph is respected and caching works.
+- **Turborepo manages all builds.** Never run `tsc` or `next build` directly in an app. always use `turbo run build`. This ensures the dependency graph is respected and caching works.
 
 ## Package Decision Tree
 
@@ -52,7 +52,7 @@ When adding new code, follow this logic:
 
 - **Root `package.json` has no runtime dependencies.** Only `devDependencies` (Turborepo, TypeScript, linters). Runtime deps live in the specific app or package that needs them.
 - **Unified TypeScript version.** All packages use the same TypeScript version, installed at the root. Individual packages do not pin their own version.
-- **Import from package names, not relative paths.** Inside `apps/web`, import `{ Button } from '@repo/ui'` — never `from '../../packages/ui/src/Button'`.
+- **Import from package names, not relative paths.** Inside `apps/web`, import `{ Button } from '@repo/ui'`. never `from '../../packages/ui/src/Button'`.
 - **Every package has its own `package.json`.** Define `name`, `main`, `types`, `scripts`, and `dependencies`. Use `"main": "./src/index.ts"` for internal packages that don't need a separate build step.
 - **Use `internal` flag for packages that shouldn't be published.** Set `"private": true` in `package.json` for all packages that are only used within the monorepo.
 
@@ -98,7 +98,7 @@ When adding new code, follow this logic:
 3. **Never duplicate types across packages.** If `apps/web` and `apps/api` both need a `User` type, it goes in `@repo/types`. Type duplication causes drift and bugs.
 4. **Never run builds without Turborepo.** Direct `npm run build` inside an app skips dependency building and cache. Always use `turbo run build --filter=apps/web` if you want to target a specific app.
 5. **Never install the same dependency at different versions.** Use `pnpm dedupe` to check. Two versions of React in a monorepo causes "hooks called in wrong order" errors. Pin exact versions in the root `pnpm-workspace.yaml` catalog or use `pnpm.overrides`.
-6. **Never create circular dependencies between packages.** If `@repo/ui` imports from `@repo/utils` AND `@repo/utils` imports from `@repo/ui`, extract the shared code into a third package. Run `turbo run build` to catch cycles — it will error.
+6. **Never create circular dependencies between packages.** If `@repo/ui` imports from `@repo/utils` AND `@repo/utils` imports from `@repo/ui`, extract the shared code into a third package. Run `turbo run build` to catch cycles. it will error.
 7. **Never skip `turbo.json` output declarations.** Every `build` task must declare its `outputs`. Without them, Turborepo's cache replays don't restore build artifacts, and CI will have mysterious failures.
 
 ## Testing
@@ -106,4 +106,4 @@ When adding new code, follow this logic:
 - Each package has its own test setup. Run all tests via `turbo run test`.
 - Use Vitest for all TypeScript packages. Configure in each package's `vitest.config.ts`.
 - Shared test utilities go in a `@repo/test-utils` package if needed.
-- CI runs `turbo run lint test build` in that order — lint catches issues fast, tests verify logic, build confirms production output.
+- CI runs `turbo run lint test build` in that order. lint catches issues fast, tests verify logic, build confirms production output.

@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -40,34 +40,34 @@ project/
 
 ## Architecture Rules
 
-- **One app per business domain.** `apps/users/`, `apps/orders/`, `apps/billing/`. Never create an app called `utils` or `helpers` — those go in `common/`.
+- **One app per business domain.** `apps/users/`, `apps/orders/`, `apps/billing/`. Never create an app called `utils` or `helpers`. those go in `common/`.
 - **Fat models, thin views.** Business logic lives on model methods and managers, not in views or serializers. Views are glue code: validate input, call model/service, return response.
 - **Custom User model from day one.** Always subclass `AbstractUser` in `apps/users/models.py`. Migrating away from Django's default User later is painful enough to justify this even for toy projects.
 - **Settings are split by environment.** `base.py` has everything shared. `local.py` imports from base and sets `DEBUG=True`. `production.py` imports from base and enforces `SECURE_SSL_REDIRECT`, `HSTS`, etc. Never use a single `settings.py` with `if DEBUG:` conditionals.
-- **Celery for anything that takes more than 500ms.** Email sending, PDF generation, external API calls, image processing — all go in Celery tasks. Never block a request/response cycle with slow I/O.
+- **Celery for anything that takes more than 500ms.** Email sending, PDF generation, external API calls, image processing. all go in Celery tasks. Never block a request/response cycle with slow I/O.
 
 ## Coding Conventions
 
 - **Model field ordering:** primary key → foreign keys → required fields → optional fields → timestamps. Every model inherits from `TimestampedModel` in `common/models.py` which adds `created_at` and `updated_at`.
-- **Serializer naming:** `{Model}ListSerializer`, `{Model}DetailSerializer`, `{Model}CreateSerializer`. Never use one serializer for both list and detail — list serializers should be lean.
+- **Serializer naming:** `{Model}ListSerializer`, `{Model}DetailSerializer`, `{Model}CreateSerializer`. Never use one serializer for both list and detail. list serializers should be lean.
 - **URL naming:** `{app}:{action}-{resource}` → `users:detail-user`, `orders:list-orders`, `orders:create-order`.
 - **Manager methods over QuerySet filters in views.** `Order.objects.pending()` is better than `Order.objects.filter(status='pending')` scattered across views.
 - **Use `select_related` and `prefetch_related` in every queryset that touches foreign keys.** N+1 queries are the #1 performance killer. Add `django-debug-toolbar` in development and check the SQL panel.
 
 ## DRF Conventions
 
-- Viewsets for CRUD resources: `ModelViewSet` or `ReadOnlyModelViewSet`. For custom endpoints, use `@action` decorators — never create standalone API views for resource sub-actions.
+- Viewsets for CRUD resources: `ModelViewSet` or `ReadOnlyModelViewSet`. For custom endpoints, use `@action` decorators. never create standalone API views for resource sub-actions.
 - Permissions live in `common/permissions.py` and are composed per view: `permission_classes = [IsAuthenticated, IsOwnerOrAdmin]`.
 - Pagination is standardized in `common/pagination.py`. Use `PageNumberPagination` with `page_size=25`. Never return unbounded querysets.
-- Filters use `django-filter` with explicit `FilterSet` classes. Never use `SearchFilter` alone — it's too loose for production.
+- Filters use `django-filter` with explicit `FilterSet` classes. Never use `SearchFilter` alone. it's too loose for production.
 
 ## Library Preferences
 
-- **Auth:** `django-allauth` — handles email verification, social login, and account management. Not `djoser` (less polished) and not `django-rest-auth` (abandoned).
-- **Tasks:** Celery + Redis — not Django-Q (smaller community, fewer production deployments). Not `huey` (fine for small projects but lacks Celery's monitoring).
+- **Auth:** `django-allauth`. handles email verification, social login, and account management. Not `djoser` (less polished) and not `django-rest-auth` (abandoned).
+- **Tasks:** Celery + Redis. not Django-Q (smaller community, fewer production deployments). Not `huey` (fine for small projects but lacks Celery's monitoring).
 - **Admin:** Django's built-in admin with `django-unfold` for a modern UI. Not Jet (abandoned). Not building a custom admin from scratch.
 - **Environment config:** `django-environ` to load `.env` files. Not `python-decouple` (django-environ integrates with Django settings patterns better).
-- **Testing:** `pytest-django` — not Django's built-in `TestCase` (pytest is more composable, fixtures are better than setUp/tearDown).
+- **Testing:** `pytest-django`. not Django's built-in `TestCase` (pytest is more composable, fixtures are better than setUp/tearDown).
 
 ## File Naming
 
@@ -91,8 +91,8 @@ project/
 
 ## Testing
 
-- Use `pytest-django` with `pytest-factoryboy` for model factories. Never construct test data with `Model.objects.create()` inline — use factories.
+- Use `pytest-django` with `pytest-factoryboy` for model factories. Never construct test data with `Model.objects.create()` inline. use factories.
 - Test views via DRF's `APIClient`. Assert status codes and response structure, not implementation details.
-- Test model methods and managers directly — these contain business logic.
+- Test model methods and managers directly. these contain business logic.
 - Use `@pytest.mark.django_db` on tests that hit the database. Tests without this marker run faster.
 - Celery tasks: test the task function directly (it's just a function). Test the `.delay()` path separately with `CELERY_ALWAYS_EAGER=True` in test settings.

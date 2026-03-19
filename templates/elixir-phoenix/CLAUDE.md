@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -56,11 +56,11 @@
 
 ## Library Preferences
 
-- **Database:** Ecto — Standard for all Phoenix apps.
-- **Realtime:** Phoenix PubSub and Phoenix Channels — Built-in, extremely scalable.
-- **Background Jobs:** Oban — PostgreSQL-backed job queues, robust and transactional.
-- **Auth:** `mix phx.gen.auth` — Built-in generators for battle-tested authentication. Not a third-party dependency.
-- **Email:** Swoosh — Built-in local mailer and production adapters.
+- **Database:** Ecto. Standard for all Phoenix apps.
+- **Realtime:** Phoenix PubSub and Phoenix Channels. Built-in, extremely scalable.
+- **Background Jobs:** Oban. PostgreSQL-backed job queues, robust and transactional.
+- **Auth:** `mix phx.gen.auth`. Built-in generators for battle-tested authentication. Not a third-party dependency.
+- **Email:** Swoosh. Built-in local mailer and production adapters.
 
 ## NEVER DO THIS
 

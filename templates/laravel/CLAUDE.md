@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -14,7 +14,7 @@
 ```
 app/
 ├── Http/
-│   ├── Controllers/         # Thin controllers — calls actions, returns responses
+│   ├── Controllers/         # Thin controllers: calls actions, returns responses
 │   │   ├── UserController.php
 │   │   └── OrderController.php
 │   ├── Requests/            # Form request validation classes
@@ -42,7 +42,7 @@ app/
 
 ## Architecture Rules
 
-- **Thin controllers, action classes for logic.** Controllers validate the request (via Form Request), call an Action or Service, and return a response. No business logic in controllers — they're routing glue.
+- **Thin controllers, action classes for logic.** Controllers validate the request (via Form Request), call an Action or Service, and return a response. No business logic in controllers. they're routing glue.
 - **Action classes are single-operation.** `CreateUserAction` handles one thing: creating a user. It takes typed parameters (not Request objects) so it's callable from controllers, commands, and other actions. One class, one `__invoke()` method.
 - **Form Requests for all validation.** Never use `$request->validate()` inline in controllers. Create a dedicated `StoreUserRequest` class with `rules()` and `authorize()` methods. This keeps validation testable and reusable.
 - **API Resources for all JSON output.** Never return Eloquent models directly from API endpoints: `return UserResource::make($user)`. Resources control exactly which fields and relationships are serialized.
@@ -53,16 +53,16 @@ app/
 - **Strict types everywhere.** Every PHP file starts with `declare(strict_types=1)`. All method parameters and return types are explicitly typed. No `mixed` unless genuinely needed.
 - **Model conventions:** use `$casts` for date/enum casting, `$fillable` (never `$guarded = []`), and scopes for reusable query logic: `Order::query()->pending()->forUser($userId)->get()`.
 - **Route naming:** `{resource}.{action}` → `users.store`, `orders.index`, `orders.show`. Use resource routes: `Route::apiResource('users', UserController::class)`.
-- **Config over env in code.** Access `config('services.stripe.key')` — never `env('STRIPE_KEY')` outside of `config/` files. `env()` only works reliably in config files. In any other context it returns `null` when config is cached.
+- **Config over env in code.** Access `config('services.stripe.key')`. never `env('STRIPE_KEY')` outside of `config/` files. `env()` only works reliably in config files. In any other context it returns `null` when config is cached.
 - **Eager load relationships.** Use `->with(['orders', 'profile'])` on every query that uses relationships. Check queries with `DB::enableQueryLog()` or Laravel Debugbar. N+1 queries are the #1 performance issue.
 
 ## Library Preferences
 
-- **Auth:** Laravel's built-in auth with Sanctum for API tokens, or Laravel Breeze/Jetstream for full auth scaffolding. Not Passport (Sanctum is simpler for most apps — Passport is for full OAuth2 servers).
+- **Auth:** Laravel's built-in auth with Sanctum for API tokens, or Laravel Breeze/Jetstream for full auth scaffolding. Not Passport (Sanctum is simpler for most apps. Passport is for full OAuth2 servers).
 - **Queues:** Redis-backed queues via Laravel Horizon for monitoring. Not database driver in production (too slow). Not SQS unless you're on AWS and need it.
-- **Admin:** Filament — not Nova (Filament is free, open-source, and more actively developed). Not building admin CRUD by hand.
-- **Testing:** Pest — not PHPUnit directly (Pest wraps PHPUnit with a cleaner syntax). Use `RefreshDatabase` trait for DB tests.
-- **IDE support:** Laravel IDE Helper (`barryvdh/laravel-ide-helper`) — generates model stubs for autocompletion. Run `php artisan ide-helper:models` after every migration.
+- **Admin:** Filament. not Nova (Filament is free, open-source, and more actively developed). Not building admin CRUD by hand.
+- **Testing:** Pest. not PHPUnit directly (Pest wraps PHPUnit with a cleaner syntax). Use `RefreshDatabase` trait for DB tests.
+- **IDE support:** Laravel IDE Helper (`barryvdh/laravel-ide-helper`). generates model stubs for autocompletion. Run `php artisan ide-helper:models` after every migration.
 
 ## File Naming
 
@@ -77,7 +77,7 @@ app/
 
 ## NEVER DO THIS
 
-1. **Never use `env()` outside of config files.** When you run `php artisan config:cache`, `env()` returns `null` everywhere except `config/` files. Always use `config()` helper in application code — it reads from the cached config.
+1. **Never use `env()` outside of config files.** When you run `php artisan config:cache`, `env()` returns `null` everywhere except `config/` files. Always use `config()` helper in application code. it reads from the cached config.
 2. **Never use `$guarded = []` on Eloquent models.** It disables mass assignment protection entirely. Use `$fillable` to explicitly list which fields can be mass-assigned. One malicious request payload away from overwriting `is_admin`.
 3. **Never return Eloquent models from API endpoints.** Use API Resources. Models expose database column names, hidden fields, and relationship structure that consumers shouldn't see or depend on.
 4. **Never write business logic in controllers.** Controllers call Actions. A controller method that exceeds 15 lines is doing too much. Extract logic into an Action class with typed parameters.
@@ -88,7 +88,7 @@ app/
 ## Testing
 
 - Use Pest with `RefreshDatabase` trait. Each test gets a clean database.
-- Test Actions by calling `(new CreateUserAction)->execute($params)` directly — no HTTP request needed.
+- Test Actions by calling `(new CreateUserAction)->execute($params)` directly. no HTTP request needed.
 - Test API endpoints with `$this->postJson('/api/users', $data)->assertStatus(201)`.
 - Factory classes for every model: `User::factory()->create()`. Never construct test data with raw `Model::create()` calls.
 - Test notifications and jobs with `Notification::fake()` and `Queue::fake()`. Assert they were dispatched without actually sending.

@@ -1,4 +1,4 @@
-# [PROJECT NAME] — [ONE LINE DESCRIPTION]
+# [PROJECT NAME] - [ONE LINE DESCRIPTION]
 
 ## Tech Stack
 
@@ -41,7 +41,7 @@ src/
 
 - **Handlers are thin.** They parse the update, call a service function, and send a response. Business logic lives in `services/`. Never do database queries or API calls directly in handlers.
 - **`ConversationHandler` for multi-step flows.** Sign-up, onboarding, and form submission use `ConversationHandler` with explicit state constants. Never manage conversation state with global variables.
-- **Keyboards are built in `keyboards/`.** Every inline keyboard and reply keyboard is a function in `keyboards/inline.py` or `keyboards/reply.py`. Never construct `InlineKeyboardMarkup` inline in handlers — it clutters the code.
+- **Keyboards are built in `keyboards/`.** Every inline keyboard and reply keyboard is a function in `keyboards/inline.py` or `keyboards/reply.py`. Never construct `InlineKeyboardMarkup` inline in handlers. it clutters the code.
 - **All bot messages are constants.** Define every user-facing string in `utils/constants.py`. Never hardcode messages in handlers. This makes the bot translatable and message changes don't require handler edits.
 - **Error handler catches everything.** Register a global error handler that logs the error with context (user ID, update type, traceback) and sends a user-friendly apology message. Unhandled errors should never crash the bot.
 
@@ -55,21 +55,21 @@ src/
 
 ## Library Preferences
 
-- **Bot framework:** `python-telegram-bot` v20+ — not `aiogram` (smaller English community), not `telethon` (more for userbot/scraping). PTB has the best documentation and async support.
+- **Bot framework:** `python-telegram-bot` v20+. not `aiogram` (smaller English community), not `telethon` (more for userbot/scraping). PTB has the best documentation and async support.
 - **Database:** SQLAlchemy 2.0 async with `asyncpg` for PostgreSQL. SQLite with `aiosqlite` for simple bots. Not raw SQL queries.
-- **HTTP client:** `httpx` (async) — for external API calls. Not `requests` (synchronous, will block the event loop).
-- **Scheduling:** `APScheduler` (comes with PTB's `JobQueue`) — for scheduled messages, reminders, and periodic tasks.
+- **HTTP client:** `httpx` (async). for external API calls. Not `requests` (synchronous, will block the event loop).
+- **Scheduling:** `APScheduler` (comes with PTB's `JobQueue`). for scheduled messages, reminders, and periodic tasks.
 - **Config:** `pydantic-settings` for typed environment variable loading with validation.
 
 ## NEVER DO THIS
 
-1. **Never use synchronous libraries in async handlers.** `requests.get()` blocks the entire event loop — all users wait while one request completes. Use `httpx.AsyncClient()` or `aiohttp`.
-2. **Never store bot tokens in code.** Load from environment variables via `config.py`. Never commit tokens — a leaked bot token gives full control of the bot.
+1. **Never use synchronous libraries in async handlers.** `requests.get()` blocks the entire event loop. all users wait while one request completes. Use `httpx.AsyncClient()` or `aiohttp`.
+2. **Never store bot tokens in code.** Load from environment variables via `config.py`. Never commit tokens. a leaked bot token gives full control of the bot.
 3. **Never hardcode chat/user IDs.** Admin IDs, group IDs, and channel IDs come from config. Hardcoded IDs break when moving between test and production bots.
 4. **Never handle errors silently.** If a handler fails, the user should get a meaningful response ("Something went wrong, please try again"). Silent failures make users think the bot is broken.
 5. **Never use `time.sleep()`.** It blocks the async loop. Use `await asyncio.sleep()`. `time.sleep(5)` in a handler freezes the entire bot for 5 seconds.
 6. **Never send unbounded messages.** Telegram has rate limits (30 messages/second to different chats, 1 message/second to same chat). Batch broadcasts and add delays. Hitting rate limits gets the bot temporarily banned.
-7. **Never skip input sanitization.** User messages can contain anything — HTML injection, extremely long strings, special characters. Sanitize before storing or displaying. Use Telegram's HTML parse mode with proper escaping.
+7. **Never skip input sanitization.** User messages can contain anything. HTML injection, extremely long strings, special characters. Sanitize before storing or displaying. Use Telegram's HTML parse mode with proper escaping.
 
 ## Testing
 
