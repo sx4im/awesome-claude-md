@@ -1,6 +1,6 @@
 # Stop writing CLAUDE.md files from scratch.
 
-**Production-ready CLAUDE.md templates for every major stack. Copy, paste, ship.**
+**40 production-ready CLAUDE.md templates for every major stack. Copy, paste, ship.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
