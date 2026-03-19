@@ -27,66 +27,79 @@ That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifi
 
 ## Templates
 
-| Template | Stack | Best For | Lines |
-|----------|-------|----------|-------|
-| **Frontend** ||||
-| [nextjs](templates/nextjs/CLAUDE.md) | Next.js 14+, TypeScript, Tailwind, Prisma | Production web apps — server components, ISR | ~84 |
-| [react-vite](templates/react-vite/CLAUDE.md) | React 18, Vite, TanStack Query, Zustand | SPAs, dashboards, internal tools | ~82 |
-| [sveltekit](templates/sveltekit/CLAUDE.md) | SvelteKit 2.x, Svelte 5, Tailwind | Full-stack Svelte — runes, form actions | ~85 |
-| [nuxt](templates/nuxt/CLAUDE.md) | Nuxt 3.x, Vue 3, Pinia, Nitro | Full-stack Vue — Composition API, auto-imports | ~91 |
-| [remix](templates/remix/CLAUDE.md) | Remix 2.x, React 18, Prisma | Loader/action architecture, progressive enhancement | ~73 |
-| [astro](templates/astro/CLAUDE.md) | Astro 4.x, Content Collections, MDX | Content sites — island architecture, zero-JS defaults | ~95 |
-| [angular](templates/angular/CLAUDE.md) | Angular 17+, Signals, Standalone Components | Enterprise apps — OnPush, lazy routes, inject() | ~78 |
-| [qwik](templates/qwik/CLAUDE.md) | Qwik, Qwik City, TypeScript | Resumable apps — zero hydration, $ optimizer | ~69 |
-| [solidjs](templates/solidjs/CLAUDE.md) | SolidJS, SolidStart, TypeScript | Fine-grained reactivity — no VDOM, signals | ~72 |
-| [threejs-r3f](templates/threejs-r3f/CLAUDE.md) | React Three Fiber, Drei, Rapier | 3D web apps — declarative scenes, useFrame, instancing | ~80 |
-| [htmx-go](templates/htmx-go/CLAUDE.md) | Go, HTMX, Templ, Tailwind | Hypermedia apps — no SPA, HTML fragments | ~78 |
-| **Full-Stack** ||||
-| [t3-stack](templates/t3-stack/CLAUDE.md) | tRPC, Next.js, Prisma, NextAuth | End-to-end type-safe apps — tRPC procedures, Zod | ~82 |
-| [saas-fullstack](templates/saas-fullstack/CLAUDE.md) | Next.js 14, Stripe, Clerk, Resend | Multi-tenant SaaS with billing and auth | ~96 |
-| [supabase-nextjs](templates/supabase-nextjs/CLAUDE.md) | Next.js, Supabase Auth/DB/Storage | BaaS apps — RLS, dual clients, realtime | ~79 |
-| [shopify-hydrogen](templates/shopify-hydrogen/CLAUDE.md) | Hydrogen, Remix, Storefront API | Headless Shopify storefronts | ~70 |
-| [payload-cms](templates/payload-cms/CLAUDE.md) | Payload CMS 3.x, Next.js, Lexical | Headless CMS — collections, blocks, access control | ~83 |
-| **Backend** ||||
-| [python-fastapi](templates/python-fastapi/CLAUDE.md) | Python 3.11+, FastAPI, SQLAlchemy 2.0 | Async REST APIs, service-layer architecture | ~88 |
-| [django](templates/django/CLAUDE.md) | Django 5.x, DRF, Celery, PostgreSQL | REST APIs — fat models, split settings | ~98 |
-| [express-typescript](templates/express-typescript/CLAUDE.md) | Express, TypeScript, Prisma, Zod | Node.js APIs — three-layer, JWT auth | ~91 |
-| [nestjs](templates/nestjs/CLAUDE.md) | NestJS 10+, TypeScript, Prisma | Modular APIs — DI, DTOs, Guards, Passport | ~78 |
-| [go-api](templates/go-api/CLAUDE.md) | Go 1.22+, Chi, sqlc, PostgreSQL | Go backends — compile-time SQL, stdlib-first | ~89 |
-| [grpc-go](templates/grpc-go/CLAUDE.md) | Go, gRPC, Connect RPC, Protobuf | gRPC services — Buf, sqlc, interceptors | ~74 |
-| [rust-axum](templates/rust-axum/CLAUDE.md) | Rust, Axum, SQLx, Tokio | Performant APIs — Tower middleware, tracing | ~85 |
-| [spring-boot](templates/spring-boot/CLAUDE.md) | Java 21+, Spring Boot 3.2, JPA | Enterprise APIs — MapStruct, Flyway, Testcontainers | ~83 |
-| [dotnet-api](templates/dotnet-api/CLAUDE.md) | .NET 8, C# 12, EF Core, MediatR | Clean Architecture, Minimal APIs, CQRS | ~81 |
-| [laravel](templates/laravel/CLAUDE.md) | PHP 8.2+, Laravel 11, Eloquent | PHP apps — action classes, Form Requests | ~94 |
-| [elixir-phoenix](templates/elixir-phoenix/CLAUDE.md) | Elixir, Phoenix 1.7+, Ecto | LiveView, Contexts, OTP, PubSub | ~80 |
-| [ruby-on-rails](templates/ruby-on-rails/CLAUDE.md) | Ruby 3.2+, Rails 7.1+, Hotwire | Monolith apps — Turbo, Stimulus, Sidekiq | ~79 |
-| [graphql-api](templates/graphql-api/CLAUDE.md) | Apollo/Yoga, Pothos, Prisma | GraphQL — code-first schema, DataLoader | ~75 |
-| [firebase-functions](templates/firebase-functions/CLAUDE.md) | Cloud Functions 2nd gen, Firestore | Serverless — typed Firestore, idempotent triggers | ~78 |
-| **Mobile** ||||
-| [flutter](templates/flutter/CLAUDE.md) | Flutter 3.x, Riverpod, GoRouter, Freezed | Cross-platform mobile — clean state management | ~91 |
-| [react-native-expo](templates/react-native-expo/CLAUDE.md) | Expo SDK 50+, Expo Router, TypeScript | Mobile apps — SecureStore, managed workflow | ~86 |
-| [swift-ios](templates/swift-ios/CLAUDE.md) | SwiftUI, Swift Concurrency, SwiftData | Native iOS — MVVM with @Observable | ~76 |
-| [kotlin-android](templates/kotlin-android/CLAUDE.md) | Jetpack Compose, Hilt, Room, Retrofit | Native Android — Clean Architecture, StateFlow | ~86 |
-| **Desktop** ||||
-| [electron](templates/electron/CLAUDE.md) | Electron 28+, React, TypeScript, Vite | Desktop apps — context isolation, typed IPC | ~87 |
-| [tauri](templates/tauri/CLAUDE.md) | Tauri 2.x, Rust, React, SQLite | Lightweight desktop — Rust commands, capabilities | ~76 |
-| **CLI & Tools** ||||
-| [cli-node](templates/cli-node/CLAUDE.md) | Node.js, Commander, Chalk, Inquirer | CLI tools — structured output, CI mode | ~83 |
-| [rust-cli](templates/rust-cli/CLAUDE.md) | Rust, clap, thiserror, indicatif | Rust CLIs — derive API, library/binary split | ~77 |
-| [chrome-extension](templates/chrome-extension/CLAUDE.md) | Chrome MV3, TypeScript, CRXJS | Browser extensions — service workers, typed IPC | ~84 |
-| [telegram-bot](templates/telegram-bot/CLAUDE.md) | Python, python-telegram-bot v20+ | Bots — async handlers, ConversationHandler | ~79 |
-| **DevOps & Infra** ||||
-| [docker-compose](templates/docker-compose/CLAUDE.md) | Docker, multi-stage builds, Compose v2 | Multi-service orchestration, health checks | ~96 |
-| [terraform](templates/terraform/CLAUDE.md) | Terraform 1.6+, HCL, AWS/GCP/Azure | IaC — modules, remote state, for_each | ~93 |
-| [aws-cdk](templates/aws-cdk/CLAUDE.md) | AWS CDK v2, TypeScript, CloudFormation | IaC — L3 constructs, NodejsFunction, snapshots | ~74 |
-| **Specialized** ||||
-| [monorepo](templates/monorepo/CLAUDE.md) | Turborepo, pnpm workspaces, TypeScript | Multi-app repos, turbo pipelines | ~109 |
-| [ml-python](templates/ml-python/CLAUDE.md) | Python, PyTorch, MLflow, scikit-learn | ML — experiment tracking, reproducibility | ~113 |
-| [open-source-lib](templates/open-source-lib/CLAUDE.md) | TypeScript, Vitest, tsup, Changesets | npm packages — semver, bundle size discipline | ~119 |
-| [unity-csharp](templates/unity-csharp/CLAUDE.md) | Unity 2022+, C#, URP | Game dev — ScriptableObjects, object pooling | ~76 |
-| [deno-fresh](templates/deno-fresh/CLAUDE.md) | Deno, Fresh 2.x, Preact | Edge apps — islands architecture, Deno KV | ~80 |
-| [solidity-hardhat](templates/solidity-hardhat/CLAUDE.md) | Solidity 0.8+, Hardhat, Ethers.js | Smart contracts — OpenZeppelin, TypeChain | ~70 |
-| [wordpress-theme](templates/wordpress-theme/CLAUDE.md) | WordPress 6.x, PHP 8.1+, Gutenberg | WP themes — block themes, escaping, enqueue | ~75 |
+### Frontend
+
+- **[nextjs](templates/nextjs/CLAUDE.md)** — Next.js 14+, TypeScript, Tailwind, Prisma
+- **[react-vite](templates/react-vite/CLAUDE.md)** — React 18, Vite, TanStack Query, Zustand
+- **[sveltekit](templates/sveltekit/CLAUDE.md)** — SvelteKit 2.x, Svelte 5 runes, Tailwind
+- **[nuxt](templates/nuxt/CLAUDE.md)** — Nuxt 3.x, Vue 3 Composition API, Pinia
+- **[remix](templates/remix/CLAUDE.md)** — Remix 2.x, loader/action pattern, Prisma
+- **[astro](templates/astro/CLAUDE.md)** — Astro 4.x, Content Collections, island architecture
+- **[angular](templates/angular/CLAUDE.md)** — Angular 17+, Signals, standalone components
+- **[qwik](templates/qwik/CLAUDE.md)** — Qwik City, resumable apps, $ optimizer
+- **[solidjs](templates/solidjs/CLAUDE.md)** — SolidJS/SolidStart, fine-grained signals
+- **[threejs-r3f](templates/threejs-r3f/CLAUDE.md)** — React Three Fiber, Drei, Rapier physics
+- **[htmx-go](templates/htmx-go/CLAUDE.md)** — Go + HTMX + Templ, no SPA, HTML fragments
+
+### Full-stack
+
+- **[t3-stack](templates/t3-stack/CLAUDE.md)** — tRPC, Next.js, Prisma, NextAuth, Zod
+- **[saas-fullstack](templates/saas-fullstack/CLAUDE.md)** — Next.js 14, Stripe, Clerk, Resend
+- **[supabase-nextjs](templates/supabase-nextjs/CLAUDE.md)** — Next.js + Supabase, RLS, realtime
+- **[shopify-hydrogen](templates/shopify-hydrogen/CLAUDE.md)** — Hydrogen, Remix, Storefront API
+- **[payload-cms](templates/payload-cms/CLAUDE.md)** — Payload CMS 3.x, Next.js, Lexical
+
+### Backend
+
+- **[python-fastapi](templates/python-fastapi/CLAUDE.md)** — FastAPI, SQLAlchemy 2.0, Pydantic v2
+- **[django](templates/django/CLAUDE.md)** — Django 5.x, DRF, Celery, PostgreSQL
+- **[express-typescript](templates/express-typescript/CLAUDE.md)** — Express, TypeScript, Prisma, Zod
+- **[nestjs](templates/nestjs/CLAUDE.md)** — NestJS 10+, DI, DTOs, Guards, Passport
+- **[go-api](templates/go-api/CLAUDE.md)** — Go 1.22+, Chi, sqlc, PostgreSQL
+- **[grpc-go](templates/grpc-go/CLAUDE.md)** — Go, gRPC, Connect RPC, Protobuf, Buf
+- **[rust-axum](templates/rust-axum/CLAUDE.md)** — Rust, Axum 0.7+, SQLx, Tower, Tokio
+- **[spring-boot](templates/spring-boot/CLAUDE.md)** — Java 21+, Spring Boot 3.2, JPA, Flyway
+- **[dotnet-api](templates/dotnet-api/CLAUDE.md)** — .NET 8, C# 12, EF Core, MediatR CQRS
+- **[laravel](templates/laravel/CLAUDE.md)** — PHP 8.2+, Laravel 11, Eloquent, Sanctum
+- **[elixir-phoenix](templates/elixir-phoenix/CLAUDE.md)** — Elixir, Phoenix 1.7+, LiveView, Ecto
+- **[ruby-on-rails](templates/ruby-on-rails/CLAUDE.md)** — Rails 7.1+, Hotwire, Turbo, Sidekiq
+- **[graphql-api](templates/graphql-api/CLAUDE.md)** — Apollo/Yoga, Pothos, Prisma, DataLoader
+- **[firebase-functions](templates/firebase-functions/CLAUDE.md)** — Cloud Functions v2, Firestore
+
+### Mobile
+
+- **[flutter](templates/flutter/CLAUDE.md)** — Flutter 3.x, Riverpod, GoRouter, Freezed
+- **[react-native-expo](templates/react-native-expo/CLAUDE.md)** — Expo SDK 50+, Expo Router
+- **[swift-ios](templates/swift-ios/CLAUDE.md)** — SwiftUI, Swift Concurrency, SwiftData
+- **[kotlin-android](templates/kotlin-android/CLAUDE.md)** — Jetpack Compose, Hilt, Room, Retrofit
+
+### Desktop
+
+- **[electron](templates/electron/CLAUDE.md)** — Electron 28+, React, Vite, typed IPC
+- **[tauri](templates/tauri/CLAUDE.md)** — Tauri 2.x, Rust commands, React frontend
+
+### CLI and tools
+
+- **[cli-node](templates/cli-node/CLAUDE.md)** — Node.js, Commander, Chalk, Inquirer
+- **[rust-cli](templates/rust-cli/CLAUDE.md)** — Rust, clap derive, thiserror, indicatif
+- **[chrome-extension](templates/chrome-extension/CLAUDE.md)** — Chrome MV3, TypeScript, CRXJS
+- **[telegram-bot](templates/telegram-bot/CLAUDE.md)** — Python, python-telegram-bot v20+
+
+### DevOps and infra
+
+- **[docker-compose](templates/docker-compose/CLAUDE.md)** — Docker, multi-stage builds, Compose v2
+- **[terraform](templates/terraform/CLAUDE.md)** — Terraform 1.6+, HCL, AWS/GCP/Azure
+- **[aws-cdk](templates/aws-cdk/CLAUDE.md)** — AWS CDK v2, TypeScript, L3 constructs
+
+### Specialized
+
+- **[monorepo](templates/monorepo/CLAUDE.md)** — Turborepo, pnpm workspaces, TypeScript
+- **[ml-python](templates/ml-python/CLAUDE.md)** — PyTorch, MLflow, scikit-learn, polars
+- **[open-source-lib](templates/open-source-lib/CLAUDE.md)** — TypeScript, Vitest, tsup, Changesets
+- **[unity-csharp](templates/unity-csharp/CLAUDE.md)** — Unity 2022+, C#, URP, DOTween
+- **[deno-fresh](templates/deno-fresh/CLAUDE.md)** — Deno, Fresh 2.x, Preact, Deno KV
+- **[solidity-hardhat](templates/solidity-hardhat/CLAUDE.md)** — Solidity 0.8+, Hardhat, Ethers.js v6
+- **[wordpress-theme](templates/wordpress-theme/CLAUDE.md)** — WordPress 6.x, PHP 8.1+, Gutenberg
 
 ## Why this exists
 
