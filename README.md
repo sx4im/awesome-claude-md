@@ -1,6 +1,6 @@
 # Stop writing CLAUDE.md files from scratch.
 
-**50 opinionated CLAUDE.md templates. Grab one for your stack and actually get useful output.**
+50 opinionated CLAUDE.md templates. Grab one for your stack, edit the placeholders, get useful output.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -8,112 +8,100 @@
 
 ---
 
-Every developer using Claude Code needs a `CLAUDE.md`. Most throw one together in 20 minutes and then spend the next week confused about why Claude keeps generating barrel files or ignoring their project's conventions. Pick a template for your stack, edit the placeholders, done.
+Every developer using Claude Code needs a `CLAUDE.md`. Most throw one together in 20 minutes, then spend the rest of the week confused about why Claude keeps generating barrel files or ignoring their project's conventions.
 
-## Quick start
+These templates fix that. Pick your stack, copy the file, fill in the blanks.
 
 ```bash
-# 1. Browse the templates
-ls templates/
-
-# 2. Pick your stack
-cat templates/nextjs/CLAUDE.md
-
-# 3. Copy it to your project root and edit the [PLACEHOLDERS]
+# browse, pick, copy
 cp templates/nextjs/CLAUDE.md ~/your-project/CLAUDE.md
 ```
 
-That's it. Open the file, replace the `[PLACEHOLDERS]` with your project specifics, and Claude Code immediately starts following your conventions.
+Replace the `[PLACEHOLDERS]` and you're done.
 
 ## Templates
 
+[Frontend](#frontend) · [Full-stack](#full-stack) · [Backend](#backend) · [Mobile](#mobile) · [Desktop](#desktop) · [CLI and tools](#cli-and-tools) · [DevOps and infra](#devops-and-infra) · [Specialized](#specialized)
+
+---
+
 ### Frontend
 
-- **[nextjs](templates/nextjs/CLAUDE.md)** — Next.js 14+, TypeScript, Tailwind, Prisma
-- **[react-vite](templates/react-vite/CLAUDE.md)** — React 18, Vite, TanStack Query, Zustand
-- **[sveltekit](templates/sveltekit/CLAUDE.md)** — SvelteKit 2.x, Svelte 5 runes, Tailwind
-- **[nuxt](templates/nuxt/CLAUDE.md)** — Nuxt 3.x, Vue 3 Composition API, Pinia
-- **[remix](templates/remix/CLAUDE.md)** — Remix 2.x, loader/action pattern, Prisma
-- **[astro](templates/astro/CLAUDE.md)** — Astro 4.x, Content Collections, island architecture
-- **[angular](templates/angular/CLAUDE.md)** — Angular 17+, Signals, standalone components
-- **[qwik](templates/qwik/CLAUDE.md)** — Qwik City, resumable apps, $ optimizer
-- **[solidjs](templates/solidjs/CLAUDE.md)** — SolidJS/SolidStart, fine-grained signals
-- **[threejs-r3f](templates/threejs-r3f/CLAUDE.md)** — React Three Fiber, Drei, Rapier physics
-- **[htmx-go](templates/htmx-go/CLAUDE.md)** — Go + HTMX + Templ, no SPA, HTML fragments
+[nextjs](templates/nextjs/CLAUDE.md) · [react-vite](templates/react-vite/CLAUDE.md) · [sveltekit](templates/sveltekit/CLAUDE.md) · [nuxt](templates/nuxt/CLAUDE.md) · [remix](templates/remix/CLAUDE.md) · [astro](templates/astro/CLAUDE.md) · [angular](templates/angular/CLAUDE.md) · [qwik](templates/qwik/CLAUDE.md) · [solidjs](templates/solidjs/CLAUDE.md) · [threejs-r3f](templates/threejs-r3f/CLAUDE.md) · [htmx-go](templates/htmx-go/CLAUDE.md)
+
+Next.js 14+ with App Router. React 18 SPAs on Vite. SvelteKit with runes. Nuxt 3 with Composition API. Remix loaders and actions. Astro content sites with zero JS by default. Angular 17+ with signals and standalone components. Qwik's resumable architecture. SolidJS fine-grained reactivity. Three.js via React Three Fiber. HTMX + Go for people who don't want an SPA.
+
+---
 
 ### Full-stack
 
-- **[t3-stack](templates/t3-stack/CLAUDE.md)** — tRPC, Next.js, Prisma, NextAuth, Zod
-- **[saas-fullstack](templates/saas-fullstack/CLAUDE.md)** — Next.js 14, Stripe, Clerk, Resend
-- **[supabase-nextjs](templates/supabase-nextjs/CLAUDE.md)** — Next.js + Supabase, RLS, realtime
-- **[shopify-hydrogen](templates/shopify-hydrogen/CLAUDE.md)** — Hydrogen, Remix, Storefront API
-- **[payload-cms](templates/payload-cms/CLAUDE.md)** — Payload CMS 3.x, Next.js, Lexical
+[t3-stack](templates/t3-stack/CLAUDE.md) · [saas-fullstack](templates/saas-fullstack/CLAUDE.md) · [supabase-nextjs](templates/supabase-nextjs/CLAUDE.md) · [shopify-hydrogen](templates/shopify-hydrogen/CLAUDE.md) · [payload-cms](templates/payload-cms/CLAUDE.md)
+
+T3 stack with end-to-end type safety through tRPC. SaaS boilerplate with Stripe billing, Clerk auth, Resend emails. Supabase + Next.js with RLS and realtime. Shopify Hydrogen storefronts. Payload CMS 3 with block-based layouts.
+
+---
 
 ### Backend
 
-- **[python-fastapi](templates/python-fastapi/CLAUDE.md)** — FastAPI, SQLAlchemy 2.0, Pydantic v2
-- **[django](templates/django/CLAUDE.md)** — Django 5.x, DRF, Celery, PostgreSQL
-- **[express-typescript](templates/express-typescript/CLAUDE.md)** — Express, TypeScript, Prisma, Zod
-- **[nestjs](templates/nestjs/CLAUDE.md)** — NestJS 10+, DI, DTOs, Guards, Passport
-- **[go-api](templates/go-api/CLAUDE.md)** — Go 1.22+, Chi, sqlc, PostgreSQL
-- **[grpc-go](templates/grpc-go/CLAUDE.md)** — Go, gRPC, Connect RPC, Protobuf, Buf
-- **[rust-axum](templates/rust-axum/CLAUDE.md)** — Rust, Axum 0.7+, SQLx, Tower, Tokio
-- **[spring-boot](templates/spring-boot/CLAUDE.md)** — Java 21+, Spring Boot 3.2, JPA, Flyway
-- **[dotnet-api](templates/dotnet-api/CLAUDE.md)** — .NET 8, C# 12, EF Core, MediatR CQRS
-- **[laravel](templates/laravel/CLAUDE.md)** — PHP 8.2+, Laravel 11, Eloquent, Sanctum
-- **[elixir-phoenix](templates/elixir-phoenix/CLAUDE.md)** — Elixir, Phoenix 1.7+, LiveView, Ecto
-- **[ruby-on-rails](templates/ruby-on-rails/CLAUDE.md)** — Rails 7.1+, Hotwire, Turbo, Sidekiq
-- **[graphql-api](templates/graphql-api/CLAUDE.md)** — Apollo/Yoga, Pothos, Prisma, DataLoader
-- **[firebase-functions](templates/firebase-functions/CLAUDE.md)** — Cloud Functions v2, Firestore
+[python-fastapi](templates/python-fastapi/CLAUDE.md) · [django](templates/django/CLAUDE.md) · [express-typescript](templates/express-typescript/CLAUDE.md) · [nestjs](templates/nestjs/CLAUDE.md) · [go-api](templates/go-api/CLAUDE.md) · [grpc-go](templates/grpc-go/CLAUDE.md) · [rust-axum](templates/rust-axum/CLAUDE.md) · [spring-boot](templates/spring-boot/CLAUDE.md) · [dotnet-api](templates/dotnet-api/CLAUDE.md) · [laravel](templates/laravel/CLAUDE.md) · [elixir-phoenix](templates/elixir-phoenix/CLAUDE.md) · [ruby-on-rails](templates/ruby-on-rails/CLAUDE.md) · [graphql-api](templates/graphql-api/CLAUDE.md) · [firebase-functions](templates/firebase-functions/CLAUDE.md)
+
+FastAPI with SQLAlchemy 2.0. Django with DRF and Celery. Express + TypeScript three-layer architecture. NestJS modules with DI and Guards. Go with Chi and sqlc. gRPC services with Connect RPC and Buf. Rust with Axum and SQLx. Spring Boot 3.2 with JPA and Flyway. .NET 8 Minimal APIs with MediatR CQRS. Laravel 11 with Eloquent. Elixir Phoenix LiveView. Rails 7 with Hotwire. GraphQL with Pothos and DataLoader. Firebase Cloud Functions v2.
+
+---
 
 ### Mobile
 
-- **[flutter](templates/flutter/CLAUDE.md)** — Flutter 3.x, Riverpod, GoRouter, Freezed
-- **[react-native-expo](templates/react-native-expo/CLAUDE.md)** — Expo SDK 50+, Expo Router
-- **[swift-ios](templates/swift-ios/CLAUDE.md)** — SwiftUI, Swift Concurrency, SwiftData
-- **[kotlin-android](templates/kotlin-android/CLAUDE.md)** — Jetpack Compose, Hilt, Room, Retrofit
+[flutter](templates/flutter/CLAUDE.md) · [react-native-expo](templates/react-native-expo/CLAUDE.md) · [swift-ios](templates/swift-ios/CLAUDE.md) · [kotlin-android](templates/kotlin-android/CLAUDE.md)
+
+Flutter with Riverpod and GoRouter. React Native on Expo SDK 50+ with Expo Router. Native iOS with SwiftUI and Swift Concurrency. Native Android with Jetpack Compose and Hilt.
+
+---
 
 ### Desktop
 
-- **[electron](templates/electron/CLAUDE.md)** — Electron 28+, React, Vite, typed IPC
-- **[tauri](templates/tauri/CLAUDE.md)** — Tauri 2.x, Rust commands, React frontend
+[electron](templates/electron/CLAUDE.md) · [tauri](templates/tauri/CLAUDE.md)
+
+Electron 28+ with context isolation and typed IPC. Tauri 2 with Rust commands and capability-based permissions.
+
+---
 
 ### CLI and tools
 
-- **[cli-node](templates/cli-node/CLAUDE.md)** — Node.js, Commander, Chalk, Inquirer
-- **[rust-cli](templates/rust-cli/CLAUDE.md)** — Rust, clap derive, thiserror, indicatif
-- **[chrome-extension](templates/chrome-extension/CLAUDE.md)** — Chrome MV3, TypeScript, CRXJS
-- **[telegram-bot](templates/telegram-bot/CLAUDE.md)** — Python, python-telegram-bot v20+
+[cli-node](templates/cli-node/CLAUDE.md) · [rust-cli](templates/rust-cli/CLAUDE.md) · [chrome-extension](templates/chrome-extension/CLAUDE.md) · [telegram-bot](templates/telegram-bot/CLAUDE.md)
+
+Node.js CLIs with Commander and Chalk. Rust CLIs with clap derive. Chrome extensions on Manifest V3 with CRXJS. Telegram bots with python-telegram-bot v20.
+
+---
 
 ### DevOps and infra
 
-- **[docker-compose](templates/docker-compose/CLAUDE.md)** — Docker, multi-stage builds, Compose v2
-- **[terraform](templates/terraform/CLAUDE.md)** — Terraform 1.6+, HCL, AWS/GCP/Azure
-- **[aws-cdk](templates/aws-cdk/CLAUDE.md)** — AWS CDK v2, TypeScript, L3 constructs
+[docker-compose](templates/docker-compose/CLAUDE.md) · [terraform](templates/terraform/CLAUDE.md) · [aws-cdk](templates/aws-cdk/CLAUDE.md)
+
+Docker multi-stage builds with Compose v2. Terraform modules with remote state. AWS CDK v2 with L3 constructs and snapshot testing.
+
+---
 
 ### Specialized
 
-- **[monorepo](templates/monorepo/CLAUDE.md)** — Turborepo, pnpm workspaces, TypeScript
-- **[ml-python](templates/ml-python/CLAUDE.md)** — PyTorch, MLflow, scikit-learn, polars
-- **[open-source-lib](templates/open-source-lib/CLAUDE.md)** — TypeScript, Vitest, tsup, Changesets
-- **[unity-csharp](templates/unity-csharp/CLAUDE.md)** — Unity 2022+, C#, URP, DOTween
-- **[deno-fresh](templates/deno-fresh/CLAUDE.md)** — Deno, Fresh 2.x, Preact, Deno KV
-- **[solidity-hardhat](templates/solidity-hardhat/CLAUDE.md)** — Solidity 0.8+, Hardhat, Ethers.js v6
-- **[wordpress-theme](templates/wordpress-theme/CLAUDE.md)** — WordPress 6.x, PHP 8.1+, Gutenberg
+[monorepo](templates/monorepo/CLAUDE.md) · [ml-python](templates/ml-python/CLAUDE.md) · [open-source-lib](templates/open-source-lib/CLAUDE.md) · [unity-csharp](templates/unity-csharp/CLAUDE.md) · [deno-fresh](templates/deno-fresh/CLAUDE.md) · [solidity-hardhat](templates/solidity-hardhat/CLAUDE.md) · [wordpress-theme](templates/wordpress-theme/CLAUDE.md)
+
+Turborepo monorepos with pnpm workspaces. ML projects with PyTorch and MLflow. Open source npm packages with Changesets and tsup. Unity game dev with ScriptableObjects. Deno Fresh with islands architecture. Solidity smart contracts on Hardhat. WordPress block themes.
+
+---
 
 ## Why this exists
 
-Claude won't magically know you use named exports, prefer `date-fns` over `moment`, or have a strict no-`any` policy. A `CLAUDE.md` that says "write clean code" teaches it nothing. You need specific rules.
+Claude won't know you use named exports, prefer `date-fns` over `moment`, or have a no-`any` policy unless you tell it. A `CLAUDE.md` that says "write clean code" teaches it nothing.
 
-Writing those rules from scratch is tedious. You have to think about file naming, import ordering, anti-patterns, library choices, architecture. Most people skip it and get mediocre output.
+Writing good rules from scratch is tedious. File naming, import ordering, anti-patterns, library choices. Most people skip it.
 
-The sharp edges are also different per stack. What Claude gets wrong in a Next.js App Router project has nothing to do with what it gets wrong in FastAPI. Generic "best practices" don't cut it.
+The sharp edges differ per stack too. What Claude gets wrong in Next.js has nothing to do with what it gets wrong in FastAPI.
 
-Every rule in these templates exists because someone shipped code where Claude did the wrong thing without it.
+Every rule here exists because someone shipped code where Claude did the wrong thing without it.
 
 ## Contributing
 
-New templates and fixes to existing ones are welcome. Read the [Contributing Guide](CONTRIBUTING.md) before opening a PR.
+New templates and fixes welcome. Read the [Contributing Guide](CONTRIBUTING.md) before opening a PR.
 
 ## Star History
 
