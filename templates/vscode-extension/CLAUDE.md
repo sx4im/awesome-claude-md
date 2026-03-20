@@ -1,0 +1,97 @@
+# [PROJECT NAME] - VS Code Extension
+
+## Tech Stack
+
+- VS Code Extension API (vscode module)
+- TypeScript (strict mode)
+- esbuild for bundling (not webpack)
+- Webview API for custom UI panels
+- Language Server Protocol (LSP) via `vscode-languageserver` (if applicable)
+- `@vscode/test-electron` for integration testing
+- `vsce` for packaging and publishing
+
+## Project Structure
+
+```
+src/
+├── extension.ts               # activate() and deactivate() entry points
+├── commands/                  # Command implementations (one file per command)
+│   ├── formatDocument.ts
+│   ├── generateSnippet.ts
+│   └── openPreview.ts
+├── providers/                 # VS Code API providers
+│   ├── completionProvider.ts  # IntelliSense completions
+│   ├── hoverProvider.ts       # Hover information
+│   ├── codeActionProvider.ts  # Quick fixes and refactoring
+│   └── treeDataProvider.ts    # Sidebar tree view
+├── webview/                   # Webview panel code
+│   ├── panels/                # Panel class implementations
+│   │   └── PreviewPanel.ts    # Webview lifecycle management
+│   └── ui/                    # Frontend HTML/CSS/JS for webviews
+│       ├── main.ts            # Webview client script
+│       └── styles.css
+├── language-server/           # LSP server (runs in separate process)
+│   ├── server.ts              # Language server entry point
+│   └── analysis.ts            # Document analysis logic
+├── config/                    # Extension configuration helpers
+│   └── settings.ts            # Typed access to workspace settings
+├── utils/
+│   ├── disposables.ts         # Disposable management helpers
+│   └── telemetry.ts           # Telemetry event tracking
+└── test/
+    ├── suite/                 # Integration tests
+    │   └── extension.test.ts
+    └── runTest.ts             # Test runner bootstrap
+package.json                   # Extension manifest: contributes, activationEvents
+```
+
+## Architecture Rules
+
+- **`activate()` is the entry point, keep it thin.** Register commands, providers, and event listeners. Never put logic in `activate()` beyond registration. Each registration delegates to a function in `commands/` or `providers/`.
+- **Everything is a Disposable.** Every command registration, event listener, file watcher, and webview panel returns a `Disposable`. Push all disposables into `context.subscriptions` so they're cleaned up on deactivation. Leaked disposables cause memory leaks and zombie listeners.
+- **Webview panels are isolated.** Webview content runs in a sandboxed iframe. Communication with the extension is via `postMessage` / `onDidReceiveMessage`. Never try to access the VS Code API from webview code -- it doesn't exist there. Always validate messages received from webviews.
+- **Language Server runs in a separate process.** If you need document analysis, diagnostics, or completions for a custom language, use `vscode-languageserver` and `vscode-languageclient`. The server runs in its own Node process. Never do heavy computation in the extension host process -- it blocks the entire editor.
+- **Configuration is reactive.** Read settings with `vscode.workspace.getConfiguration('[EXTENSION_NAME]')`. Listen for changes with `vscode.workspace.onDidChangeConfiguration`. Never cache configuration without a change listener -- users expect settings to take effect immediately.
+
+## Coding Conventions
+
+- Commands are registered in `package.json` under `contributes.commands` with a `command` ID: `[EXTENSION_NAME].formatDocument`. The same ID is used in `vscode.commands.registerCommand()` in `extension.ts`.
+- Activation events in `package.json`: use the narrowest trigger. `onLanguage:python` is better than `*`. `onCommand:` is better than `onStartupFinished`. Never use `*` unless the extension truly needs to run on every workspace.
+- Use `vscode.window.showInformationMessage()` for success, `showWarningMessage()` for warnings, `showErrorMessage()` for errors. Never use `console.log()` for user-facing messages -- users don't see the debug console.
+- Output channel for logs: `const log = vscode.window.createOutputChannel('[EXTENSION_NAME]')`. Use `log.appendLine()` for debug info visible in the Output panel. This is where diagnostic logs go.
+- Status bar items: create with `vscode.window.createStatusBarItem()`, set `text`, `tooltip`, and `command`. Always dispose them. Don't create multiple status bar items that show the same information.
+
+## Library Preferences
+
+- **Bundler:** esbuild. Not webpack (slower, more complex config). The `@vscode/vsce` tool works with esbuild output. Configure in `esbuild.config.mjs` with `external: ['vscode']`.
+- **Testing:** `@vscode/test-electron` for integration tests that need the full VS Code API. Mocha as the test framework (VS Code convention). Not Jest -- it conflicts with the VS Code test runner.
+- **Webview UI:** `@vscode/webview-ui-toolkit` for VS Code-styled components (buttons, text fields, data grids). Not custom CSS that won't match the user's theme.
+- **LSP:** `vscode-languageserver` + `vscode-languageclient`. Not a custom protocol -- LSP is the standard and enables compatibility with other editors.
+- **Packaging:** `@vscode/vsce` for `.vsix` packaging and Marketplace publishing. Not manual zip files.
+
+## File Naming
+
+- Commands: `camelCase.ts` -> `formatDocument.ts`, `openPreview.ts`
+- Providers: `camelCase.ts` -> `completionProvider.ts`, `hoverProvider.ts`
+- Webview panels: `PascalCase.ts` -> `PreviewPanel.ts`, `SettingsPanel.ts`
+- Tests: `kebab-case.test.ts` -> `extension.test.ts`, `commands.test.ts`
+- Config: `package.json` is the extension manifest (not `extension.json`)
+
+## NEVER DO THIS
+
+1. **Never do synchronous I/O in the extension host.** `fs.readFileSync()`, `child_process.execSync()`, and synchronous network calls block the entire VS Code UI. Use `vscode.workspace.fs` (async) or `fs.promises`. Every blocking call freezes the editor for all users.
+2. **Never use `*` activation event in production.** It loads your extension on every VS Code startup regardless of context. Use `onLanguage:`, `onCommand:`, `workspaceContains:`, or `onView:` to activate only when relevant.
+3. **Never access `vscode` module from webview code.** Webviews are sandboxed. They communicate with the extension via `acquireVsCodeApi().postMessage()`. If you need VS Code data in the webview, send it as a message from the extension side.
+4. **Never forget to dispose resources.** File watchers, event listeners, terminals, webview panels -- everything that implements `Disposable` must be pushed to `context.subscriptions` or manually disposed. Resource leaks cause the extension host to consume increasing memory.
+5. **Never hardcode file system paths.** Use `vscode.Uri` and `vscode.workspace.fs` for file operations. The workspace might be remote (SSH, WSL, Codespaces). Hardcoded paths break on non-local filesystems.
+6. **Never store secrets in settings.** Use `context.secrets` (SecretStorage API) for tokens and credentials. Settings are stored in plain JSON files visible to any process. Secrets use the OS keychain.
+7. **Never bundle `node_modules` without tree-shaking.** Use esbuild to bundle only imported code. A full `node_modules` copy bloats the `.vsix` and slows install. Set `external: ['vscode']` since the `vscode` module is provided by the host.
+
+## Testing
+
+- Integration tests run in a real VS Code instance via `@vscode/test-electron`. The test runner launches VS Code, loads the extension, and executes Mocha tests with full API access.
+- Test commands by executing them: `await vscode.commands.executeCommand('[EXTENSION_NAME].formatDocument')` and asserting on the editor state.
+- Test providers by triggering them: call `vscode.commands.executeCommand('vscode.executeCompletionItemProvider', uri, position)` and assert on the returned items.
+- Test webview panels by verifying they create and dispose correctly. Message passing can be tested by mocking the webview's `postMessage` and `onDidReceiveMessage`.
+- Run `vsce package` in CI to verify the extension packages without errors. A packaging failure means a missing file or bad dependency.
+- Test with both the minimum VS Code version (declared in `engines.vscode`) and the latest version to catch compatibility issues.
