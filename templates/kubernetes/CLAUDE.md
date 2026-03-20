@@ -11,7 +11,7 @@
 ## Project Structure
 
 ```
-[PROJECT_ROOT]/
+{project-root}/
 ├── base/                             # Shared base manifests
 │   ├── kustomization.yaml
 │   ├── namespace.yaml
@@ -47,7 +47,7 @@
 ## Architecture Rules
 
 - **Base + overlays, always.** All resource definitions live in `base/`. Environment differences are expressed as Kustomize patches in `overlays/`. Never duplicate a full Deployment manifest across environments. If environments differ by 3 fields, patch those 3 fields.
-- **One namespace per service per environment.** `[SERVICE]-[ENV]` naming (e.g., `api-prod`, `api-dev`). Never deploy dev and prod workloads in the same namespace. Namespace-scoped RBAC and NetworkPolicies depend on this boundary.
+- **One namespace per service per environment.** `{service}-{env}` naming (e.g., `api-prod`, `api-dev`). Never deploy dev and prod workloads in the same namespace. Namespace-scoped RBAC and NetworkPolicies depend on this boundary.
 - **Resource requests and limits on every container.** No exceptions. A container without resource limits can consume an entire node's memory and OOMKill neighboring pods. Set requests to typical usage, limits to 2x requests for burst headroom.
 - **Health checks are non-negotiable.** Every Deployment has `readinessProbe`, `livenessProbe`, and `startupProbe` (for slow-starting apps). Readiness gates traffic. Liveness restarts. Startup prevents liveness from killing pods that are still initializing. Never use the same endpoint for all three unless you understand the consequences.
 - **PodDisruptionBudgets on everything in production.** `minAvailable: 1` at minimum. Without a PDB, a node drain during cluster upgrade can take down all replicas simultaneously.

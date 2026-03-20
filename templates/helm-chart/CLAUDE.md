@@ -11,7 +11,7 @@
 ## Project Structure
 
 ```
-[CHART_NAME]/
+{chart-name}/
 ├── Chart.yaml                        # Chart metadata, version, dependencies
 ├── values.yaml                       # Default configuration values
 ├── values.schema.json                # JSON Schema for values validation

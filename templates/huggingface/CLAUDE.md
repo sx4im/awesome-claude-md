@@ -21,7 +21,7 @@
 │   │   ├── lora.yaml            # LoRA-specific: rank, alpha, target_modules
 │   │   └── qlora.yaml           # QLoRA: quantization + LoRA config
 │   └── model/
-│       └── [MODEL_NAME].yaml    # Model-specific settings (max_length, tokenizer)
+│       └── {model-name}.yaml    # Model-specific settings (max_length, tokenizer)
 ├── src/
 │   ├── data/
 │   │   ├── dataset.py           # Dataset loading, splits, preprocessing
@@ -63,7 +63,7 @@
 - **Tokenizer padding side matters.** For causal LM (GPT-style): `tokenizer.padding_side = "left"`. For seq2seq (T5-style): `tokenizer.padding_side = "right"`. Getting this wrong silently produces garbage during batched generation.
 - **Always set `pad_token`.** Many models (LLaMA, Mistral) don't have a pad token. Set `tokenizer.pad_token = tokenizer.eos_token` and `model.config.pad_token_id = tokenizer.pad_token_id`. Missing pad token causes crashes during batched training.
 - **Use `bf16` when available, `fp16` as fallback.** Check with `torch.cuda.is_bf16_supported()`. bf16 has better numerical stability than fp16 for training. fp32 is wasteful for fine-tuning. Set in config, not hardcoded.
-- **Chat templates for instruction tuning.** Use the model's built-in chat template: `tokenizer.apply_chat_template(messages, tokenize=True)`. Never manually format `<s>[INST]` or `<|im_start|>` tokens—each model family has different special tokens.
+- **Chat templates for instruction tuning.** Use the model's built-in chat template: `tokenizer.apply_chat_template(messages, tokenize=True)`. Never manually format `<s>` instruction markers or `<|im_start|>` tokens—each model family has different special tokens.
 - **Gradient checkpointing for memory efficiency.** Enable with `model.gradient_checkpointing_enable()` when fine-tuning models > 7B. Trades compute for memory. Reduces VRAM usage by ~40% with ~20% speed penalty.
 
 ## Library Preferences
@@ -86,7 +86,7 @@
 1. **Never fine-tune without setting `pad_token`.** LLaMA, Mistral, and many models have `pad_token = None`. Training crashes or produces NaN losses. Always set it: `tokenizer.pad_token = tokenizer.eos_token` before any training.
 2. **Never use `fp16` on Ampere+ GPUs when `bf16` is available.** fp16 underflows during loss computation for large models, causing NaN losses that waste hours of training. bf16 has the same speed with better numerical range.
 3. **Never hardcode `target_modules` across model families.** LLaMA uses `q_proj, v_proj`. Falcon uses `query_key_value`. Phi uses `q_proj, k_proj`. Always check the model's named modules: `[name for name, _ in model.named_modules() if isinstance(_, torch.nn.Linear)]`.
-4. **Never manually format chat tokens.** `<s>[INST]` is LLaMA 2 format. `<|im_start|>` is ChatML. `<|user|>` is Phi. Use `tokenizer.apply_chat_template()` which reads the model's `tokenizer_config.json`. Manual formatting breaks silently when you switch models.
+4. **Never manually format chat tokens.** `<s>` with instruction tags is LLaMA 2 format. `<|im_start|>` is ChatML. `<|user|>` is Phi. Use `tokenizer.apply_chat_template()` which reads the model's `tokenizer_config.json`. Manual formatting breaks silently when you switch models.
 5. **Never load a full-precision model for LoRA training.** Use 4-bit quantization (`load_in_4bit=True` with `BitsAndBytesConfig`) for QLoRA. Loading a 70B model in fp16 requires 140GB VRAM. QLoRA fits it in ~40GB.
 6. **Never ignore the loss curve.** If training loss plateaus after 1 epoch on a small dataset, you're overfitting. If loss is NaN, check dtype, learning rate, and pad_token. If loss doesn't decrease, check learning rate (typical: 1e-4 to 2e-5 for LoRA).
 7. **Never push a model to HuggingFace Hub without a model card.** Include: base model, training data description, intended use, limitations, training hyperparameters, and evaluation results. A model without a card is unusable by anyone else.

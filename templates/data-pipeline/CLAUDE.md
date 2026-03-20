@@ -12,26 +12,26 @@
 
 ```
 dags/                             # Airflow DAGs (or Dagster definitions/)
-├── [PIPELINE_NAME]_dag.py        # DAG definition: schedule, dependencies, task graph
+├── {pipeline-name}_dag.py        # DAG definition: schedule, dependencies, task graph
 ├── ingestion/
-│   ├── [SOURCE]_ingest.py        # Source-specific extraction logic
+│   ├── {source}_ingest.py        # Source-specific extraction logic
 │   └── file_sensors.py           # File arrival sensors / triggers
 ├── transforms/
-│   └── [DOMAIN]_transform.py     # Python-based transformations (pre-dbt)
+│   └── {domain}_transform.py     # Python-based transformations (pre-dbt)
 └── exports/
-    └── [DESTINATION]_export.py   # Reverse ETL / data delivery tasks
+    └── {destination}_export.py   # Reverse ETL / data delivery tasks
 dbt/
 ├── dbt_project.yml               # dbt project config, vars, model paths
 ├── profiles.yml                  # Connection profiles (NOT committed, use env vars)
 ├── models/
 │   ├── staging/                  # 1:1 source mirrors: stg_[source]__[entity].sql
-│   │   └── [SOURCE]/
+│   │   └── {source}/
 │   │       ├── _[source]__models.yml   # Schema tests, descriptions
 │   │       └── stg_[source]__[entity].sql
 │   ├── intermediate/             # Business logic joins and aggregations
 │   │   └── int_[entity]_[verb].sql
 │   └── marts/                    # Final consumption models for analytics
-│       └── [DOMAIN]/
+│       └── {domain}/
 │           ├── _[domain]__models.yml
 │           └── fct_[entity].sql / dim_[entity].sql
 ├── macros/                       # Reusable SQL macros (Jinja)
@@ -40,7 +40,7 @@ dbt/
 └── tests/                        # Custom data tests (singular tests)
 src/
 ├── extractors/
-│   └── [SOURCE]_client.py        # API clients for data sources
+│   └── {source}_client.py        # API clients for data sources
 ├── loaders/
 │   └── warehouse.py              # Warehouse load utilities (COPY INTO, bulk insert)
 ├── validators/

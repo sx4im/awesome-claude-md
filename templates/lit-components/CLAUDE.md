@@ -48,7 +48,7 @@ stories/                       # Storybook stories for each component
 
 ## Coding Conventions
 
-- Component classes extend `LitElement`. Class name is PascalCase, tag name is `kebab-case` with a project prefix: `[PREFIX]-button`, `[PREFIX]-card`. Always register with `@customElement('prefix-name')` decorator.
+- Component classes extend `LitElement`. Class name is PascalCase, tag name is `kebab-case` with a project prefix: `{prefix}-button`, `{prefix}-card`. Always register with `@customElement('prefix-name')` decorator.
 - Properties: `@property({ type: String })` for public attributes. Use `reflect: true` only when the attribute value needs to be visible in the DOM for CSS selectors or accessibility. Reflecting objects or arrays is a performance mistake.
 - Internal state: `@state()` for private reactive state that should not be exposed as an attribute. Name with a leading underscore convention: `@state() private _isOpen = false`.
 - Render method returns `html` tagged template: `render() { return html\`<div>${this.name}</div>\`; }`. Never use `document.createElement` or `innerHTML` inside `render()`.

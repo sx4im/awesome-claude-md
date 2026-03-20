@@ -13,15 +13,15 @@
 ## Project Structure
 
 ```
-[PACKAGE_NAME]/
+{package-name}/
 ├── __init__.py                # Package version: __version__ = "0.1.0"
-├── __main__.py                # Entry point: `python -m [PACKAGE_NAME]`
+├── __main__.py                # Entry point: `python -m {package-name}`
 ├── cli.py                     # Typer app definition, top-level commands
 ├── commands/                  # Subcommand groups
 │   ├── __init__.py
-│   ├── init.py                # `[TOOL] init` command
-│   ├── run.py                 # `[TOOL] run` command
-│   └── config.py              # `[TOOL] config` command group
+│   ├── init.py                # `<your-tool> init` command
+│   ├── run.py                 # `<your-tool> run` command
+│   └── config.py              # `<your-tool> config` command group
 ├── core/                      # Business logic (framework-agnostic)
 │   ├── __init__.py
 │   ├── engine.py              # Main processing logic
@@ -50,7 +50,7 @@ pyproject.toml                 # Project metadata, dependencies, entry points
 - **CLI layer is thin.** Commands in `cli.py` and `commands/` parse arguments, call business logic in `core/`, and format output using `output/`. No business logic in command functions. If a command function is longer than 20 lines, the logic belongs in `core/`.
 - **Rich console is a singleton.** Create one `Console()` instance in `output/console.py` and import it everywhere. Never instantiate `Console()` in multiple files -- it breaks stderr/stdout separation and test capture.
 - **Exit codes are explicit.** Use `raise typer.Exit(code=1)` for errors. Map exit codes in a constant: `EXIT_OK = 0`, `EXIT_INPUT_ERROR = 1`, `EXIT_RUNTIME_ERROR = 2`. Never call `sys.exit()` directly -- Typer won't run cleanup callbacks.
-- **Configuration is layered.** Default values in Pydantic model -> config file (`~/.config/[TOOL]/config.toml`) -> environment variables (`[TOOL_PREFIX]_*`) -> CLI flags. Later layers override earlier ones. Typer's `Option(envvar=...)` handles env vars.
+- **Configuration is layered.** Default values in Pydantic model -> config file (`~/.config/<your-tool>/config.toml`) -> environment variables (`<tool-prefix>_*`) -> CLI flags. Later layers override earlier ones. Typer's `Option(envvar=...)` handles env vars.
 - **All user-facing output goes through Rich.** Use `console.print()` for normal output, `console.print(..., style="red")` for errors, `rich.table.Table` for structured data. Never use bare `print()` -- it doesn't support colors, Unicode, or terminal width detection.
 
 ## Coding Conventions
@@ -84,7 +84,7 @@ pyproject.toml                 # Project metadata, dependencies, entry points
 4. **Never use `os.path` when `pathlib` exists.** `Path.home() / ".config" / TOOL_NAME / "config.toml"` is readable and cross-platform. `os.path.join(os.path.expanduser("~"), ".config", ...)` is not.
 5. **Never put interactive prompts in library code.** `typer.confirm("Are you sure?")` belongs in the CLI command function, not in `core/`. Core logic must be callable without a terminal (in tests, scripts, or CI).
 6. **Never print JSON with `json.dumps()` for machine output.** Use `rich.print_json()` for pretty terminal display. For piped output, write raw JSON to stdout and all human messages to stderr.
-7. **Never skip the `--help` text.** Every command, argument, and option must have a `help=` string. Users will run `[TOOL] --help` before reading any documentation.
+7. **Never skip the `--help` text.** Every command, argument, and option must have a `help=` string. Users will run `<your-tool> --help` before reading any documentation.
 
 ## Testing
 

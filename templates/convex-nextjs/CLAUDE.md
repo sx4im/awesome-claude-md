@@ -28,7 +28,7 @@ src/
 ├── app/
 │   ├── layout.tsx             # Root layout with ConvexProvider
 │   ├── page.tsx
-│   └── [FEATURE]/
+│   └── {feature}/
 │       └── page.tsx
 ├── components/
 │   ├── providers/

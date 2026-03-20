@@ -15,9 +15,9 @@
 ```
 cmd/
 ├── root.go                    # Root command: app name, global flags, PersistentPreRun
-├── init.go                    # `[TOOL] init` subcommand
-├── run.go                     # `[TOOL] run` subcommand
-└── config.go                  # `[TOOL] config get/set` subcommand group
+├── init.go                    # `<your-tool> init` subcommand
+├── run.go                     # `<your-tool> run` subcommand
+└── config.go                  # `<your-tool> config get/set` subcommand group
 internal/
 ├── core/                      # Business logic (no Cobra/Viper imports)
 │   ├── engine.go
@@ -41,7 +41,7 @@ main.go                        # Entry point: calls cmd.Execute()
 
 - **`cmd/` is the CLI boundary.** Files in `cmd/` define Cobra commands, bind flags to Viper, and call functions in `internal/`. No business logic in `cmd/`. A `RunE` function should be 10-15 lines: parse flags, call core, format output, handle errors.
 - **`internal/` is framework-agnostic.** Code in `internal/core/` never imports `cobra` or `viper`. It receives typed Go values (structs, strings, ints) and returns results or errors. This makes core logic testable without simulating CLI invocations.
-- **Viper binds config sources in order:** defaults (code) -> config file (`~/.config/[TOOL]/config.yaml`) -> environment variables (`[TOOL_PREFIX]_*`) -> CLI flags. Bind flags to Viper in `init()` functions: `viper.BindPFlag("output", cmd.Flags().Lookup("output"))`.
+- **Viper binds config sources in order:** defaults (code) -> config file (`~/.config/<your-tool>/config.yaml`) -> environment variables (`<tool-prefix>_*`) -> CLI flags. Bind flags to Viper in `init()` functions: `viper.BindPFlag("output", cmd.Flags().Lookup("output"))`.
 - **Bubble Tea models are self-contained.** A TUI model implements `Init()`, `Update()`, and `View()`. It receives messages and returns commands. Never call `fmt.Println` inside a Bubble Tea program -- all output goes through the `View()` method. Cobra launches the TUI; the TUI does not call Cobra.
 - **Errors flow up, formatting happens at the top.** Functions in `internal/` return `error`. The `RunE` function in `cmd/` decides how to display it (stderr message, exit code, JSON error object). Never call `os.Exit()` or `log.Fatal()` inside `internal/`.
 

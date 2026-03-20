@@ -19,10 +19,10 @@ src/
 │   ├── (auth)/
 │   │   ├── login/page.tsx
 │   │   └── signup/page.tsx
-│   └── [FEATURE]/
+│   └── {feature}/
 │       ├── page.tsx
 │       └── [id]/page.tsx
-├── [FEATURE]/
+├── {feature}/
 │   ├── mutations/             # Server mutations (create, update, delete)
 │   │   ├── create[Feature].ts
 │   │   └── update[Feature].ts

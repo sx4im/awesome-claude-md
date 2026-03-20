@@ -45,7 +45,7 @@ manifest.json                 # Plugin manifest: id, name, api, editorType
 - **Colors use Figma's 0-1 RGBA format.** Figma represents colors as `{ r: 0-1, g: 0-1, b: 0-1 }`. Never pass hex strings or 0-255 integers to Figma paint properties. Write explicit conversion functions: `hexToFigmaRGB('#FF0000')` → `{ r: 1, g: 0, b: 0 }`.
 - **Node types are narrowed before access.** After `figma.currentPage.selection`, always check `node.type === 'FRAME'` before accessing frame-specific properties. The selection array contains `SceneNode`, which is a union of all node types.
 - **Fonts are loaded before text operations.** Call `await figma.loadFontAsync({ family, style })` before setting `textNode.characters`. Forgetting this throws at runtime with an unhelpful error. Load fonts once at plugin start for known fonts.
-- **UI dimensions are set in `figma.showUI()`.** Pass `{ width: [WIDTH], height: [HEIGHT] }` to `showUI`. Resize dynamically with `figma.ui.resize()`. Never rely on CSS to set the iframe size; Figma controls the frame dimensions.
+- **UI dimensions are set in `figma.showUI()`.** Pass `{ width: <width>, height: <height> }` to `showUI`. Resize dynamically with `figma.ui.resize()`. Never rely on CSS to set the iframe size; Figma controls the frame dimensions.
 - **Avoid sync property reads on large documents.** `figma.currentPage.findAll()` traverses the entire page. For large files, use `findAllWithCriteria()` with type filters or limit scope to the current selection.
 
 ## Library Preferences

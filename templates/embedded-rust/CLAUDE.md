@@ -21,7 +21,7 @@ src/
 │   └── control.rs            # Control loop tasks (PID, state machines)
 ├── drivers/
 │   ├── mod.rs                # Custom peripheral driver definitions
-│   └── [DEVICE].rs           # Device-specific drivers (LCD, sensor ICs, motor controllers)
+│   └── {device}.rs           # Device-specific drivers (LCD, sensor ICs, motor controllers)
 ├── config/
 │   ├── mod.rs                # Hardware configuration, pin assignments
 │   └── constants.rs          # System constants (frequencies, thresholds, buffer sizes)

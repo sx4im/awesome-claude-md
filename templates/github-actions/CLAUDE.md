@@ -11,7 +11,7 @@
 ## Project Structure
 
 ```
-[PROJECT_ROOT]/
+{project-root}/
 ├── .github/
 │   ├── workflows/
 │   │   ├── ci.yml                    # PR validation (lint, test, build)

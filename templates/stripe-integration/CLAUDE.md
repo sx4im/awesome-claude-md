@@ -7,8 +7,8 @@
 - Stripe Webhooks with signature verification
 - Stripe Checkout Sessions for payment flows
 - Stripe Billing for subscriptions (if applicable)
-- [DATABASE] for syncing Stripe state locally
-- [FRAMEWORK] for HTTP endpoints
+- {database} for syncing Stripe state locally
+- {framework} for HTTP endpoints
 
 ## Project Structure
 

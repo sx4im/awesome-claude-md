@@ -6,8 +6,8 @@
 - Component Testing for isolated UI components
 - E2E Testing for full user flows
 - Custom commands for reusable interactions
-- Cypress Cloud / [CI_PROVIDER] for parallelization and recordings
-- [APPLICATION_FRAMEWORK] as the system under test
+- Cypress Cloud / your CI provider for parallelization and recordings
+- Your application framework as the system under test
 
 ## Project Structure
 

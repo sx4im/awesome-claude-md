@@ -12,9 +12,9 @@
 ## Project Structure
 
 ```
-[SOLUTION_NAME].sln
+{solution-name}.sln
 ├── src/
-│   ├── [PROJECT_NAME]/                     # Main MAUI project
+│   ├── {project-name}/                     # Main MAUI project
 │   │   ├── App.xaml(.cs)                   # App shell, DI bootstrap
 │   │   ├── AppShell.xaml(.cs)              # Navigation structure
 │   │   ├── MauiProgram.cs                  # Host builder and service registration
@@ -41,10 +41,10 @@
 │   │       ├── iOS/
 │   │       ├── MacCatalyst/
 │   │       └── Windows/
-│   └── [PROJECT_NAME].Core/               # Shared logic (optional class library)
+│   └── {project-name}.Core/               # Shared logic (optional class library)
 ├── tests/
-│   ├── [PROJECT_NAME].UnitTests/
-│   └── [PROJECT_NAME].UITests/            # Appium-based UI tests
+│   ├── {project-name}.UnitTests/
+│   └── {project-name}.UITests/            # Appium-based UI tests
 ```
 
 ## Architecture Rules

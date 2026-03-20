@@ -12,7 +12,7 @@
 ## Project Structure
 
 ```
-[PROJECT_ROOT]/
+{project-root}/
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb    # EDA and profiling
 │   ├── 02_feature_engineering.ipynb # Feature creation and selection

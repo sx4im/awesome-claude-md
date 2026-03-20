@@ -51,14 +51,14 @@ package.json                   # Extension manifest: contributes, activationEven
 - **Everything is a Disposable.** Every command registration, event listener, file watcher, and webview panel returns a `Disposable`. Push all disposables into `context.subscriptions` so they're cleaned up on deactivation. Leaked disposables cause memory leaks and zombie listeners.
 - **Webview panels are isolated.** Webview content runs in a sandboxed iframe. Communication with the extension is via `postMessage` / `onDidReceiveMessage`. Never try to access the VS Code API from webview code -- it doesn't exist there. Always validate messages received from webviews.
 - **Language Server runs in a separate process.** If you need document analysis, diagnostics, or completions for a custom language, use `vscode-languageserver` and `vscode-languageclient`. The server runs in its own Node process. Never do heavy computation in the extension host process -- it blocks the entire editor.
-- **Configuration is reactive.** Read settings with `vscode.workspace.getConfiguration('[EXTENSION_NAME]')`. Listen for changes with `vscode.workspace.onDidChangeConfiguration`. Never cache configuration without a change listener -- users expect settings to take effect immediately.
+- **Configuration is reactive.** Read settings with `vscode.workspace.getConfiguration('{extension-name}')`. Listen for changes with `vscode.workspace.onDidChangeConfiguration`. Never cache configuration without a change listener -- users expect settings to take effect immediately.
 
 ## Coding Conventions
 
-- Commands are registered in `package.json` under `contributes.commands` with a `command` ID: `[EXTENSION_NAME].formatDocument`. The same ID is used in `vscode.commands.registerCommand()` in `extension.ts`.
+- Commands are registered in `package.json` under `contributes.commands` with a `command` ID: `{extension-name}.formatDocument`. The same ID is used in `vscode.commands.registerCommand()` in `extension.ts`.
 - Activation events in `package.json`: use the narrowest trigger. `onLanguage:python` is better than `*`. `onCommand:` is better than `onStartupFinished`. Never use `*` unless the extension truly needs to run on every workspace.
 - Use `vscode.window.showInformationMessage()` for success, `showWarningMessage()` for warnings, `showErrorMessage()` for errors. Never use `console.log()` for user-facing messages -- users don't see the debug console.
-- Output channel for logs: `const log = vscode.window.createOutputChannel('[EXTENSION_NAME]')`. Use `log.appendLine()` for debug info visible in the Output panel. This is where diagnostic logs go.
+- Output channel for logs: `const log = vscode.window.createOutputChannel('{extension-name}')`. Use `log.appendLine()` for debug info visible in the Output panel. This is where diagnostic logs go.
 - Status bar items: create with `vscode.window.createStatusBarItem()`, set `text`, `tooltip`, and `command`. Always dispose them. Don't create multiple status bar items that show the same information.
 
 ## Library Preferences
@@ -90,7 +90,7 @@ package.json                   # Extension manifest: contributes, activationEven
 ## Testing
 
 - Integration tests run in a real VS Code instance via `@vscode/test-electron`. The test runner launches VS Code, loads the extension, and executes Mocha tests with full API access.
-- Test commands by executing them: `await vscode.commands.executeCommand('[EXTENSION_NAME].formatDocument')` and asserting on the editor state.
+- Test commands by executing them: `await vscode.commands.executeCommand('{extension-name}.formatDocument')` and asserting on the editor state.
 - Test providers by triggering them: call `vscode.commands.executeCommand('vscode.executeCompletionItemProvider', uri, position)` and assert on the returned items.
 - Test webview panels by verifying they create and dispose correctly. Message passing can be tested by mocking the webview's `postMessage` and `onDidReceiveMessage`.
 - Run `vsce package` in CI to verify the extension packages without errors. A packaging failure means a missing file or bad dependency.

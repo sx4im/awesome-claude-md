@@ -5,8 +5,8 @@
 - Python 3.11+
 - LangChain 0.3+ (core, community, and partner packages)
 - LangSmith for tracing and evaluation
-- [VECTOR_STORE] (Chroma / Pinecone / Qdrant / pgvector)
-- [LLM_PROVIDER] (OpenAI / Anthropic / local via Ollama)
+- a vector store (Chroma / Pinecone / Qdrant / pgvector)
+- an LLM provider (OpenAI / Anthropic / local via Ollama)
 - FastAPI for serving chains as API endpoints
 - Pydantic v2 for structured output and data validation
 

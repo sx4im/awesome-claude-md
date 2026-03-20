@@ -65,7 +65,7 @@ web/
 - **Forms:** `@redwoodjs/forms` with `useForm`. Integrates with Cells and provides server-side error handling.
 - **Styling:** [Tailwind CSS/CSS Modules]. Configured via `web/config/tailwind.config.js`.
 - **Testing:** Jest + `@redwoodjs/testing/web` for Cells, `@redwoodjs/testing/api` for services.
-- **Deployment:** [Vercel/Netlify/AWS Lambda] via `yarn rw deploy [TARGET]`.
+- **Deployment:** [Vercel/Netlify/AWS Lambda] via `yarn rw deploy {target}`.
 
 ## File Naming
 

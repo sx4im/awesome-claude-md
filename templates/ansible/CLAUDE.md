@@ -12,7 +12,7 @@
 ## Project Structure
 
 ```
-[PROJECT_ROOT]/
+{project-root}/
 ├── inventories/
 │   ├── dev/
 │   │   ├── hosts.yml                 # Dev inventory (static or plugin)

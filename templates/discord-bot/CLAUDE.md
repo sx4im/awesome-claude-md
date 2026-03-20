@@ -6,7 +6,7 @@
 - Node.js 20+ runtime
 - Slash commands (application commands) exclusively
 - [PRISMA/DRIZZLE] for persistent data storage
-- [REDIS] for caching and rate limiting (if applicable)
+- Redis for caching and rate limiting (if applicable)
 - `discord-api-types` for raw API types
 - `tsup` or `esbuild` for building
 

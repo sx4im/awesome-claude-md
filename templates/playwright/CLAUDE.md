@@ -6,8 +6,8 @@
 - Node.js 20+ runtime
 - Page Object Model for test structure
 - Custom fixtures for authentication and data seeding
-- GitHub Actions / [CI_PROVIDER] for pipeline execution
-- [APPLICATION_FRAMEWORK] as the system under test
+- GitHub Actions / {ci-provider} for pipeline execution
+- {application-framework} as the system under test
 
 ## Project Structure
 

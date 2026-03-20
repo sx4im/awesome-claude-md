@@ -8,7 +8,7 @@
 - Redis adapter for horizontal scaling (`@socket.io/redis-adapter`)
 - Zod for message payload validation
 - JWT for connection authentication
-- [DATABASE] for persistent state
+- {database} for persistent state
 
 ## Project Structure
 
@@ -82,4 +82,4 @@ src/
 - Integration test with `socket.io-client`: spin up the server, connect a test client, emit events, and assert on received messages. Use `done()` callbacks or promisified `once()` for async assertions.
 - Test authentication by connecting with invalid/expired/missing JWT and asserting the connection is rejected with a `connect_error` event.
 - Test reconnection by forcibly disconnecting a client and verifying it re-authenticates and rejoins its rooms automatically.
-- Load test with `artillery` or `k6` WebSocket support to verify the server handles [EXPECTED_CONCURRENT_CONNECTIONS] connections without degradation.
+- Load test with `artillery` or `k6` WebSocket support to verify the server handles the expected number of concurrent connections without degradation.

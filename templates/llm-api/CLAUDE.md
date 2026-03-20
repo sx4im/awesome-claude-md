@@ -12,7 +12,7 @@
 ## Project Structure
 
 ```
-[PROJECT_ROOT]/
+{project-root}/
 ├── src/
 │   ├── providers/
 │   │   ├── base.ts                  # Abstract LLMProvider interface

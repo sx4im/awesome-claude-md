@@ -16,12 +16,12 @@ src/
 ├── settings.ts               # Settings tab: extends PluginSettingTab
 ├── types.ts                  # Plugin settings interface, custom type definitions
 ├── views/
-│   ├── [VIEW_NAME]-view.ts   # Custom views: extend ItemView for sidebar/tab panes
-│   └── [MODAL_NAME]-modal.ts # Modals: extend Modal for dialogs
+│   ├── {view-name}-view.ts   # Custom views: extend ItemView for sidebar/tab panes
+│   └── {modal-name}-modal.ts # Modals: extend Modal for dialogs
 ├── commands/
-│   └── [COMMAND_NAME].ts     # Command definitions (addCommand registrations)
+│   └── {command-name}.ts     # Command definitions (addCommand registrations)
 ├── services/
-│   └── [DOMAIN].ts           # Business logic separated from Obsidian API
+│   └── {domain}.ts           # Business logic separated from Obsidian API
 ├── utils/
 │   ├── vault.ts              # Vault read/write helpers (TFile/TFolder operations)
 │   └── markdown.ts           # Markdown parsing and transformation utilities

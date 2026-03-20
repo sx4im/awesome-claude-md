@@ -16,7 +16,7 @@
 src/
 ├── main/
 │   └── kotlin/
-│       └── [PACKAGE]/
+│       └── {package}/
 │           ├── Application.kt          # embeddedServer or EngineMain, install plugins
 │           ├── plugins/
 │           │   ├── Serialization.kt     # ContentNegotiation + kotlinx.serialization
@@ -40,7 +40,7 @@ src/
 │               └── AppConfig.kt        # Typesafe config or env-based configuration
 ├── test/
 │   └── kotlin/
-│       └── [PACKAGE]/
+│       └── {package}/
 │           ├── routes/
 │           │   └── UserRoutesTest.kt    # testApplication { } based tests
 │           └── service/

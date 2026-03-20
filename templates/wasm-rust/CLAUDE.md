@@ -18,7 +18,7 @@ crate/
 │   ├── lib.rs                # #[wasm_bindgen] exports: public API surface
 │   ├── core/
 │   │   ├── mod.rs            # Core computation logic (pure Rust, no wasm-bindgen)
-│   │   └── [DOMAIN].rs       # Domain-specific algorithms and data structures
+│   │   └── {domain}.rs       # Domain-specific algorithms and data structures
 │   ├── bindings/
 │   │   ├── mod.rs            # JavaScript interop wrappers
 │   │   ├── imports.rs        # #[wasm_bindgen] extern blocks for JS functions
@@ -80,4 +80,4 @@ www/                          # JavaScript host application
 - Use `wasm-pack test --headless --chrome` for integration tests that exercise the wasm-bindgen boundary and web-sys calls.
 - Test JS-side integration by importing the wasm module in a test harness (Vitest or Jest) and calling exported functions.
 - Benchmark with `console.time()` / `console.timeEnd()` on the JS side. Compare wasm performance against a pure JS implementation to validate the wasm approach.
-- Check binary size after every change: `wasm-pack build --release && ls -la pkg/*.wasm`. Regressions above [TARGET_SIZE_KB] KB should be investigated.
+- Check binary size after every change: `wasm-pack build --release && ls -la pkg/*.wasm`. Regressions above the target size in KB should be investigated.

@@ -11,7 +11,7 @@
 ## Project Structure
 
 ```
-[PROJECT_ROOT]/
+{project-root}/
 ├── index.ts                          # Main entrypoint, composes stacks
 ├── components/
 │   ├── networking.ts                 # VPC, subnets, security groups

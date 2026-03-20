@@ -12,24 +12,24 @@
 
 ```
 src/
-├── [COMMAND_NAME].tsx        # Each command is a separate entry file
-├── [COMMAND_NAME_2].tsx      # Raycast discovers commands from package.json
+├── {command-name}.tsx        # Each command is a separate entry file
+├── {command-name-2}.tsx      # Raycast discovers commands from package.json
 ├── components/
-│   ├── [ENTITY]ListItem.tsx  # List.Item wrappers for domain entities
-│   └── [ENTITY]Detail.tsx    # Detail view components
+│   ├── {Entity}ListItem.tsx  # List.Item wrappers for domain entities
+│   └── {Entity}Detail.tsx    # Detail view components
 ├── hooks/
-│   ├── use[Entity].ts        # Data fetching hooks (useFetch, useCachedPromise)
+│   ├── use{Entity}.ts        # Data fetching hooks (useFetch, useCachedPromise)
 │   └── usePreferences.ts     # Typed preferences access
 ├── services/
 │   ├── api.ts                # External API client
-│   └── [DOMAIN].ts           # Business logic
+│   └── {domain}.ts           # Business logic
 ├── utils/
 │   ├── icons.ts              # Icon helpers and mappings
 │   └── format.ts             # Display formatting helpers
 ├── types/
-│   └── [DOMAIN].ts           # Domain type definitions
+│   └── {domain}.ts           # Domain type definitions
 └── assets/
-    └── [ICON].png            # Custom command icons (512x512, 1024x1024)
+    └── {icon}.png            # Custom command icons (512x512, 1024x1024)
 package.json                  # Commands, preferences, and extension metadata
 ```
 

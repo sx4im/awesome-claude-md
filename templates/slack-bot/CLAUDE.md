@@ -15,7 +15,7 @@ src/
 ├── app.ts                    # Bolt app initialization, middleware registration
 ├── listeners/
 │   ├── actions/              # Block Kit interactive handlers (button clicks, menus)
-│   ├── commands/             # Slash command handlers (/[COMMAND_NAME])
+│   ├── commands/             # Slash command handlers (/{command-name})
 │   ├── events/               # Event handlers (message, app_mention, member_joined)
 │   ├── shortcuts/            # Global and message shortcuts
 │   └── views/                # Modal submission and view_closed handlers
@@ -25,7 +25,7 @@ src/
 │   └── messages/             # Message attachment and Block Kit builders
 ├── services/
 │   ├── slack.ts              # Slack Web API wrapper (chat.postMessage, users.info)
-│   └── [DOMAIN].ts           # Business logic, separated from Slack plumbing
+│   └── {domain}.ts           # Business logic, separated from Slack plumbing
 ├── middleware/
 │   ├── auth.ts               # Custom middleware (team validation, feature flags)
 │   └── logging.ts            # Request logging middleware

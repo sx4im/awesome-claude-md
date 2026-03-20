@@ -3,9 +3,9 @@
 ## Tech Stack
 
 - Python 3.11+
-- [VECTOR_DB] (Pinecone / Chroma / Qdrant / Weaviate / pgvector)
-- [EMBEDDING_MODEL] (OpenAI text-embedding-3-small / Cohere embed-v3 / local sentence-transformers)
-- [LLM_PROVIDER] (OpenAI / Anthropic / local via vLLM or Ollama)
+- {vector-db} (Pinecone / Chroma / Qdrant / Weaviate / pgvector)
+- {embedding-model} (OpenAI text-embedding-3-small / Cohere embed-v3 / local sentence-transformers)
+- {llm-provider} (OpenAI / Anthropic / local via vLLM or Ollama)
 - LangChain or LlamaIndex for orchestration (or custom pipeline)
 - FastAPI for serving the RAG API
 - Pydantic v2 for schemas and configuration
@@ -93,7 +93,7 @@ src/
 ## Testing
 
 - Test chunking strategies with known documents: assert chunk count, average size, and that no chunk exceeds max size. Test overlap by checking that boundary content appears in adjacent chunks.
-- Test retrieval with a gold-standard dataset: 50+ queries with known relevant document IDs. Measure recall@5, recall@10, and MRR. Fail CI if recall drops below [THRESHOLD].
+- Test retrieval with a gold-standard dataset: 50+ queries with known relevant document IDs. Measure recall@5, recall@10, and MRR. Fail CI if recall drops below the configured threshold.
 - Test generation with RAGAS: faithfulness > 0.8, answer relevance > 0.7 on the evaluation dataset. Track metrics over time.
 - Test metadata filtering: assert that access-controlled documents are not returned for unauthorized queries.
 - Integration test the full pipeline end-to-end: ingest a small document set, query, assert that the response cites the correct source.

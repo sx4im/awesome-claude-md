@@ -2,20 +2,20 @@
 
 ## Tech Stack
 
-- Unreal Engine 5.x ([UE_VERSION])
+- Unreal Engine 5.x (specify version)
 - C++ (C++17, UE coding standard)
 - Blueprints for designer-facing logic and prototyping
 - Unreal Build System (UBT) and Unreal Header Tool (UHT)
-- [MODULE_NAME] primary game module
+- {module-name} primary game module
 
 ## Project Structure
 
 ```
-Source/[MODULE_NAME]/
-├── [MODULE_NAME].Build.cs        # Module build rules, dependencies
-├── [MODULE_NAME]GameMode.h/cpp   # Game mode: rules, spawning, match state
+Source/{ModuleName}/
+├── {ModuleName}.Build.cs        # Module build rules, dependencies
+├── {ModuleName}GameMode.h/cpp   # Game mode: rules, spawning, match state
 ├── Characters/
-│   ├── [PROJECT]Character.h/cpp  # Player character: movement, input, camera
+│   ├── {Project}Character.h/cpp  # Player character: movement, input, camera
 │   └── BaseEnemy.h/cpp           # Enemy base class
 ├── Components/
 │   ├── HealthComponent.h/cpp     # Reusable actor component: health, damage
@@ -25,17 +25,17 @@ Source/[MODULE_NAME]/
 │   ├── Projectile.h/cpp          # Projectile actor
 │   └── Pickup.h/cpp              # Pickup base class
 ├── GameFramework/
-│   ├── [PROJECT]GameInstance.h/cpp    # Persistent state across maps
-│   ├── [PROJECT]GameState.h/cpp      # Replicated match state
-│   └── [PROJECT]PlayerState.h/cpp    # Per-player replicated state
+│   ├── {Project}GameInstance.h/cpp    # Persistent state across maps
+│   ├── {Project}GameState.h/cpp      # Replicated match state
+│   └── {Project}PlayerState.h/cpp    # Per-player replicated state
 ├── UI/
-│   ├── [PROJECT]HUD.h/cpp        # HUD manager
+│   ├── {Project}HUD.h/cpp        # HUD manager
 │   └── Widgets/                  # UMG widget C++ bases
 ├── Data/
 │   ├── ItemDataAsset.h/cpp       # UDataAsset / UPrimaryDataAsset definitions
 │   └── GameTypes.h               # Shared enums, structs, gameplay tags
 └── Subsystems/
-    └── [SYSTEM]Subsystem.h/cpp   # UGameInstanceSubsystem / UWorldSubsystem
+    └── {System}Subsystem.h/cpp   # UGameInstanceSubsystem / UWorldSubsystem
 Content/
 ├── Blueprints/                   # Blueprint assets extending C++ classes
 ├── Maps/                         # Level .umap files
@@ -91,4 +91,4 @@ Content/
 - Test gameplay logic by spawning actors in a test world: `UWorld* TestWorld = FAutomationEditorCommonUtils::CreateNewMap()`.
 - Use `IMPLEMENT_SIMPLE_AUTOMATION_TEST` for simple tests, `IMPLEMENT_CUSTOM_COMPLEX_AUTOMATION_TEST` for parameterized tests.
 - Test components in isolation by creating a minimal actor, attaching the component, and calling methods directly.
-- Run tests via the Session Frontend (`Window → Developer Tools → Session Frontend → Automation`) or command line with `-ExecCmds="Automation RunTests [FILTER]"`.
+- Run tests via the Session Frontend (`Window → Developer Tools → Session Frontend → Automation`) or command line with `-ExecCmds="Automation RunTests {filter}"`.
