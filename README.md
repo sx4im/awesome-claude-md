@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">awesome-claude-md</h1>
+  <h1 align="center">Awesome-Claude-md</h1>
   <p align="center">
     <strong>100 opinionated CLAUDE.md templates for every stack.</strong><br>
     Stop writing CLAUDE.md files from scratch. Grab one, edit the placeholders, ship better code.
