@@ -44,4 +44,5 @@ styles/
 - Test in browsers supporting oklch().
 - Test gradients vs HSL comparison.
 - Test fallback rendering.
+- Test with HDR displays.
 

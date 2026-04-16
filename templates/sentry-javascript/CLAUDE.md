@@ -46,4 +46,5 @@ src/
 - Test errors appear in Sentry dashboard.
 - Test source maps resolve correctly.
 - Test performance spans are useful.
-
+- Test source map upload.
+- Test source map upload.

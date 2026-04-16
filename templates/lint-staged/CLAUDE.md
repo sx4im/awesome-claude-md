@@ -44,4 +44,5 @@ src/
 - Test with staged file that has lint error.
 - Test auto-fix applies correctly.
 - Test commit blocked when unfixable errors exist.
+- Test with multiple staged files.
 

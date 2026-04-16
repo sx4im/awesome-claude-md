@@ -45,4 +45,5 @@
 - Test generated code compiles/runs.
 - Test security of generated code.
 - Test edge cases Copilot might miss.
+- Test with security scan.
 

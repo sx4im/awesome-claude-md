@@ -44,4 +44,5 @@ src/
 - Test with intentional lint error (should block commit).
 - Test parallel execution order.
 - Test on Windows/macOS/Linux if team is mixed.
+- Test hook execution time.
 

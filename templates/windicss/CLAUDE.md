@@ -46,4 +46,5 @@ src/
 - Test generated CSS bundle size.
 - Test attributify compiles correctly.
 - Test DevTools show generated classes.
+- Test attributify mode.
 

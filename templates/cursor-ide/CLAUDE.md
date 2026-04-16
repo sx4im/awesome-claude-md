@@ -46,4 +46,5 @@
 - Test generated code in isolation.
 - Test that all referenced files were updated.
 - Test edge cases AI might miss.
+- Test with large files.
 

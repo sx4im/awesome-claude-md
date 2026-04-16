@@ -46,4 +46,5 @@ src/
 - Test `biome check` passes.
 - Test formatting is consistent.
 - Test migration from ESLint works.
+- Test CI integration passes.
 

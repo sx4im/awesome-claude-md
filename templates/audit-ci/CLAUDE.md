@@ -46,4 +46,5 @@ package.json
 - Test audit-ci catches known vulnerabilities.
 - Test allowlist permits expected packages.
 - Test CI fails on new critical vulnerabilities.
+- Test remediation workflow.
 

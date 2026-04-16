@@ -46,4 +46,5 @@ src/
 - Test parser output matches ESTree spec.
 - Test linter rules catch issues.
 - Test performance vs existing tools.
+- Test AST output format.
 

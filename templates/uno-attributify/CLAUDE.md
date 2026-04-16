@@ -46,4 +46,5 @@ src/
 - Test all attributify patterns compile.
 - Test responsive attributify works.
 - Test TypeScript recognizes attributes.
-
+- Test with Vue templates.
+- Test with Vue templates.

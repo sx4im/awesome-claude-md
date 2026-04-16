@@ -44,4 +44,5 @@ conventional-changelog.config.js // or in package.json
 - Test changelog generates with correct sections.
 - Test links work correctly.
 - Test with different presets.
+- Test changelog links work.
 

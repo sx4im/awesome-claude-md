@@ -44,4 +44,5 @@ package.json
 - Test PRs pass CI before merging.
 - Test grouped updates work correctly.
 - Test scheduling respects time windows.
-
+- Test with private packages.
+- Test with private packages.

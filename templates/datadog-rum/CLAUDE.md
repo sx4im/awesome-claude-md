@@ -46,4 +46,5 @@ src/
 - Test sessions appear in Datadog.
 - Test custom actions are tracked.
 - Test replays show correct information.
+- Test performance metrics.
 

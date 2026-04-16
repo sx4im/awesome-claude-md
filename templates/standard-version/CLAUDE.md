@@ -46,4 +46,5 @@ CHANGELOG.md                    // Generated
 - Test dry-run output shows expected version.
 - Test changelog generates correctly.
 - Test lifecycle scripts run in order.
-
+- Test first release flag.
+- Test first release flag.

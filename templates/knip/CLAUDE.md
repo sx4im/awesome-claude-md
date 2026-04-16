@@ -44,4 +44,5 @@ src/
 - Test with known unused code to verify detection.
 - Test fix removes correct code.
 - Test in CI blocks unused code.
+- Test with monorepo setup.
 

@@ -45,4 +45,5 @@ src/
 - Test circular dependency detection works.
 - Test architecture rules are enforced.
 - Test graphs generate correctly.
+- Test CI integration.
 

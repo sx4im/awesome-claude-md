@@ -45,4 +45,5 @@ src/
 - Test with `echo "bad commit" | npx commitlint` (should fail).
 - Test with valid conventional commit (should pass).
 - Test in pre-commit hook.
+- Test with invalid commits (should fail).
 
