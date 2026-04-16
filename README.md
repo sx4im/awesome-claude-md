@@ -1,14 +1,14 @@
 <p align="center">
   <h1 align="center">Awesome-Claude-md</h1>
   <p align="center">
-    <strong>300 opinionated CLAUDE.md templates for every stack.</strong><br>
+    <strong>400 opinionated CLAUDE.md templates for every stack.</strong><br>
     Stop writing CLAUDE.md files from scratch. Grab one, edit the placeholders, ship better code.
   </p>
   <p align="center">
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>&nbsp;
     <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>&nbsp;
     <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude-Code-blueviolet.svg" alt="Claude Code"></a>&nbsp;
-    <img src="https://img.shields.io/badge/templates-300-orange.svg" alt="300 Templates">
+    <img src="https://img.shields.io/badge/templates-400-orange.svg" alt="400 Templates">
   </p>
 </p>
 
