@@ -39,10 +39,16 @@ styles/
 6. **Never use raw OKLCH in legacy codebases.** Gradual migration.
 7. **Never forget about HDR displays.** OKLCH supports wide gamut.
 
+## File Naming
+
+- Theme files: `theme.css` or `tokens.css` for OKLCH color definitions
+- Fallbacks: `fallback.css` for browsers without OKLCH support
+
 ## Testing
 
-- Test in browsers supporting oklch().
-- Test gradients vs HSL comparison.
-- Test fallback rendering.
-- Test with HDR displays.
+- Test OKLCH colors render correctly in browsers supporting the `oklch()` function.
+- Test gradients appear smooth compared to equivalent HSL gradients.
+- Test fallback colors display correctly in older browsers.
+- Test wide-gamut colors on HDR displays.
+- Test `color-mix()` produces expected intermediate values.
 

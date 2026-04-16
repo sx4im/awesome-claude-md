@@ -38,10 +38,15 @@ src/
 6. **Never mix with husky/lefthook.** Use one git hooks manager.
 7. **Never forget `$1` for commit-msg hook.** Passes commit message file.
 
+## File Naming
+
+- Config: `simple-git-hooks` field in `package.json` — no separate config file needed
+- Hooks: installed to `.git/hooks/` directory automatically on `postinstall`
+
 ## Testing
 
-- Test hooks run on appropriate git actions.
-- Test that failing commands block git operation.
-- Test reinstall after `rm -rf .git/hooks`.
-- Test with multiple hooks.
-- Test with multiple hooks.
+- Test hooks run on the appropriate git actions (commit, push, merge).
+- Test that failing commands block the git operation with a non-zero exit code.
+- Test hooks reinstall correctly after `rm -rf .git/hooks` and `npx simple-git-hooks`.
+- Test with multiple hooks configured (pre-commit and commit-msg simultaneously).
+- Test that `git commit --no-verify` bypasses hooks when needed.

@@ -40,10 +40,15 @@ packages/
 6. **Never forget uplink timeout settings.** Prevent hanging.
 7. **Never use default config in production.** Customize auth, access, storage.
 
+## File Naming
+
+- Config: `config.yaml` at Verdaccio root — YAML format required
+- Storage: `storage/` directory for cached and published packages
+
 ## Testing
 
-- Test publishing and installing packages.
-- Test auth with different providers.
-- Test uplink fallback when npmjs down.
-- Test with scoped packages.
-- Test with scoped packages.
+- Test publishing and installing private scoped packages end-to-end.
+- Test authentication with htpasswd and configured auth plugins.
+- Test uplink fallback when the upstream npmjs registry is unreachable.
+- Test access control rules restrict unauthorized publishing.
+- Test `max_body_size` rejects packages exceeding the configured limit.

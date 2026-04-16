@@ -39,11 +39,16 @@ conventional-changelog.config.js // or in package.json
 6. **Never generate changelog without version bump.** Tag first.
 7. **Never forget to commit CHANGELOG.md.** Should be in version control.
 
+## File Naming
+
+- Config: `conventional-changelog.config.js` or `.changelogrc` at project root
+- Output: `CHANGELOG.md` in project root, committed to version control
+
 ## Testing
 
-- Test changelog generates with correct sections.
-- Test links work correctly.
-- Test with different presets.
-- Test changelog links work.
-- Test changelog links work.
+- Test changelog generates with correct sections for features, fixes, and breaking changes.
+- Test links to commits and issues resolve correctly.
+- Test with different presets (angular, atom, ember, eslint).
+- Test `releaseCount: 0` regenerates the full changelog from all commits.
+- Test custom `writerOpts` templates render expected output.
 

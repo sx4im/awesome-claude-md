@@ -39,10 +39,15 @@ package.json
 6. **Never ignore security updates.** `extends: ["github>whitesource/merge-confidence:beta"]`.
 7. **Never skip the onboarding PR.** Review Renovate's initial configuration.
 
+## File Naming
+
+- Config: `renovate.json`, `.github/renovate.json`, or `renovate.json5` at project root
+- Presets: shared configs via `extends` from npm packages or GitHub repos
+
 ## Testing
 
-- Test PRs pass CI before merging.
-- Test grouped updates work correctly.
-- Test scheduling respects time windows.
-- Test with private packages.
-- Test with private packages.
+- Test that PRs pass CI before auto-merge triggers.
+- Test grouped updates bundle related packages into a single PR.
+- Test scheduling respects configured time windows and timezone.
+- Test private package updates resolve through configured registries.
+- Test major version updates are never auto-merged without review.

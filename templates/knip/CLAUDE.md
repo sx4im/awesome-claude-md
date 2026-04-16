@@ -39,11 +39,16 @@ src/
 6. **Never ignore monorepo configuration.** `workspaces` in config.
 7. **Never use without understanding false positives.** Some exports used dynamically.
 
+## File Naming
+
+- Config: `knip.config.ts`, `knip.json`, or `knip.config.js` at project root
+- Workspace configs: one `knip.config.ts` per workspace root in monorepos
+
 ## Testing
 
-- Test with known unused code to verify detection.
-- Test fix removes correct code.
-- Test in CI blocks unused code.
-- Test with monorepo setup.
-- Test with monorepo setup.
+- Test with known unused code to verify detection accuracy.
+- Test `--fix` removes correct code without breaking imports.
+- Test CI pipeline fails when unused exports are introduced.
+- Test monorepo workspace cross-references resolve correctly.
+- Test dynamic imports are handled or explicitly ignored.
 

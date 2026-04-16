@@ -39,10 +39,16 @@ src/
 6. **Never use lint-staged without git hooks.** Integrate with Husky.
 7. **Never ignore exit codes.** Non-zero exit blocks commit.
 
+## File Naming
+
+- Config: `.lintstagedrc.js`, `lint-staged.config.js`, or `lint-staged` field in `package.json`
+- Hooks: `.husky/pre-commit` contains `npx lint-staged`
+
 ## Testing
 
-- Test with staged file that has lint error.
-- Test auto-fix applies correctly.
-- Test commit blocked when unfixable errors exist.
-- Test with multiple staged files.
+- Test with a staged file that has a lint error and verify commit is blocked.
+- Test auto-fix applies correctly and stages the fixed file.
+- Test commit is blocked when unfixable errors exist in staged files.
+- Test with multiple staged files across different glob patterns.
+- Test that unstaged files are not modified by lint-staged commands.
 
