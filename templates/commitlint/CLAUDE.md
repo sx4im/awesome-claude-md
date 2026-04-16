@@ -46,4 +46,5 @@ src/
 - Test with valid conventional commit (should pass).
 - Test in pre-commit hook.
 - Test with invalid commits (should fail).
+- Test with invalid commits (should fail).
 

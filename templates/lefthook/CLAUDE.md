@@ -42,7 +42,27 @@ src/
 ## Testing
 
 - Test with intentional lint error (should block commit).
-- Test parallel execution order.
+- Test hook execution order.
 - Test on Windows/macOS/Linux if team is mixed.
 - Test hook execution time.
-
+- Test hook execution time.
+- Test with intentional lint error (should block commit).
+- Test hook execution order.
+- Test on Windows/macOS/Linux if team is mixed.
+- Test hook execution time.
+- Test hook execution time.
+- Test with intentional lint error (should block commit).
+- Test hook execution order.
+- Test on Windows/macOS/Linux if team is mixed.
+- Test hook execution time.
+- Test hook execution time.
+- Test with intentional lint error (should block commit).
+- Test hook execution order.
+- Test on Windows/macOS/Linux if team is mixed.
+- Test hook execution time.
+- Test hook execution time.
+- Test with intentional lint error (should block commit).
+- Test hook execution order.
+- Test on Windows/macOS/Linux if team is mixed.
+- Test hook execution time.
+- Test hook execution time.
