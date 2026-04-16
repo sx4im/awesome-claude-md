@@ -71,6 +71,34 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [htmx-flask](templates/htmx-flask/CLAUDE.md) | HTMX 2, Flask 3, Jinja2 | Lightweight HTMX with Flask |
 | [storybook-react](templates/storybook-react/CLAUDE.md) | Storybook 8, React 18, CSF3 | Component development and documentation |
 | [threejs-r3f](templates/threejs-r3f/CLAUDE.md) | React Three Fiber, Drei | 3D scenes in React |
+| [shadcn-ui](templates/shadcn-ui/CLAUDE.md) | shadcn/ui, Next.js, Tailwind | Component library built on Radix primitives |
+| [radix-ui](templates/radix-ui/CLAUDE.md) | Radix UI, React, TypeScript | Unstyled accessible UI primitives |
+| [tailwind-v4](templates/tailwind-v4/CLAUDE.md) | Tailwind CSS v4, PostCSS | Next-generation CSS-first configuration |
+| [chakra-ui](templates/chakra-ui/CLAUDE.md) | Chakra UI v3, React, Next.js | Next-gen accessible component library |
+| [mantine](templates/mantine/CLAUDE.md) | Mantine v7, React, TypeScript | Modern React components and hooks |
+| [daisyui](templates/daisyui/CLAUDE.md) | DaisyUI v4, Tailwind CSS | Semantic component classes for Tailwind |
+| [react-aria](templates/react-aria/CLAUDE.md) | React Aria, React Stately | Accessible unstyled UI primitives |
+| [css-modules](templates/css-modules/CLAUDE.md) | CSS Modules, React | Scoped CSS for component styling |
+| [styled-components](templates/styled-components/CLAUDE.md) | styled-components, React | CSS-in-JS with component-based styles |
+| [panda-css](templates/panda-css/CLAUDE.md) | Panda CSS, TypeScript | Type-safe atomic CSS-in-JS |
+| [framer-motion](templates/framer-motion/CLAUDE.md) | Framer Motion v11, React | Production-ready animation library |
+| [react-query](templates/react-query/CLAUDE.md) | TanStack Query v5, React | Powerful async state management |
+| [zustand](templates/zustand/CLAUDE.md) | Zustand v4, React, TypeScript | Small, fast state management |
+| [jotai](templates/jotai/CLAUDE.md) | Jotai v2, React, TypeScript | Atomic state management for React |
+| [redux-toolkit](templates/redux-toolkit/CLAUDE.md) | Redux Toolkit v2, React | Modern Redux with less boilerplate |
+| [valtio](templates/valtio/CLAUDE.md) | Valtio, React, TypeScript | Proxy-based state management |
+| [recoil](templates/recoil/CLAUDE.md) | Recoil, React, TypeScript | Facebook's state management library |
+| [xstate](templates/xstate/CLAUDE.md) | XState v5, React, TypeScript | State machines and statecharts |
+| [swr](templates/swr/CLAUDE.md) | SWR v2, React, TypeScript | Stale-while-revalidate data fetching |
+| [urql](templates/urql/CLAUDE.md) | URQL v4, GraphQL, React | Highly customizable GraphQL client |
+| [apollo-client](templates/apollo-client/CLAUDE.md) | Apollo Client v3, GraphQL | Comprehensive GraphQL state management |
+| [relay](templates/relay/CLAUDE.md) | Relay, React, GraphQL | Facebook's GraphQL framework |
+| [react-hook-form](templates/react-hook-form/CLAUDE.md) | React Hook Form v7, Zod | Performant flexible forms |
+| [formik](templates/formik/CLAUDE.md) | Formik v2, React, Yup | Popular form library for React |
+| [tanstack-table](templates/tanstack-table/CLAUDE.md) | TanStack Table v8, React | Headless table UI library |
+| [ag-grid](templates/ag-grid/CLAUDE.md) | AG Grid v31, React, TypeScript | Feature-rich data grid |
+| [storybook](templates/storybook/CLAUDE.md) | Storybook v8, React/Vue/Svelte | UI component development |
+| [testing-library](templates/testing-library/CLAUDE.md) | Testing Library, React | User-centric testing utilities |
 
 <br>
 
@@ -136,6 +164,17 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [openapi-codegen](templates/openapi-codegen/CLAUDE.md) | OpenAPI 3.1, openapi-typescript | API-first with generated types |
 | [mcp-server-typescript](templates/mcp-server-typescript/CLAUDE.md) | MCP SDK, TypeScript, Node.js | Model Context Protocol servers |
 | [firebase-functions](templates/firebase-functions/CLAUDE.md) | Cloud Functions v2, Firestore | Serverless Firebase backend |
+| [litestar](templates/litestar/CLAUDE.md) | Litestar v2, Python, Pydantic | Async Python ASGI framework |
+| [robyn](templates/robyn/CLAUDE.md) | Robyn, Python, Rust runtime | High-performance async web framework |
+| [quart](templates/quart/CLAUDE.md) | Quart, Python, ASGI | Async Flask-like web framework |
+| [sanic](templates/sanic/CLAUDE.md) | Sanic v23+, Python, UVLoop | Async Python web framework |
+| [starlette](templates/starlette/CLAUDE.md) | Starlette, Python, ASGI | Lightweight ASGI framework |
+| [falcon](templates/falcon/CLAUDE.md) | Falcon v4, Python | High-performance API framework |
+| [bottle](templates/bottle/CLAUDE.md) | Bottle, Python | Micro web framework |
+| [tornado](templates/tornado/CLAUDE.md) | Tornado v6.4, Python | Async web framework and server |
+| [aiohttp](templates/aiohttp/CLAUDE.md) | aiohttp v3.9, Python | Async HTTP client/server |
+| [elysia](templates/elysia/CLAUDE.md) | Elysia v1, Bun, TypeBox | Bun-native type-safe APIs |
+| [symfony](templates/symfony/CLAUDE.md) | Symfony 7, PHP 8.3 | Enterprise PHP framework |
 
 <br>
 
@@ -159,6 +198,19 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [dbt-project](templates/dbt-project/CLAUDE.md) | dbt Core 1.8+, SQLFluff | SQL transformation and modeling |
 | [spark-pyspark](templates/spark-pyspark/CLAUDE.md) | Apache Spark 3.5+, PySpark, Delta Lake | Large-scale data processing |
 | [polars-python](templates/polars-python/CLAUDE.md) | Polars 1, Python | Fast DataFrame processing (pandas alternative) |
+| [llamaindex](templates/llamaindex/CLAUDE.md) | LlamaIndex v0.12, Python | Data framework for LLM applications |
+| [dspy](templates/dspy/CLAUDE.md) | DSPy v2, Python | Programming framework for LLMs |
+| [vercel-ai-sdk](templates/vercel-ai-sdk/CLAUDE.md) | AI SDK v4, Next.js 15, React | AI-powered streaming text generation |
+| [ollama](templates/ollama/CLAUDE.md) | Ollama, Llama 3, Mistral | Local LLM runner and management |
+| [litellm](templates/litellm/CLAUDE.md) | LiteLLM, Python | Unified API for 100+ LLM providers |
+| [vllm](templates/vllm/CLAUDE.md) | vLLM, Python, CUDA | High-throughput LLM serving |
+| [crewai](templates/crewai/CLAUDE.md) | CrewAI v0.86, Python | Multi-agent AI systems |
+| [autogen](templates/autogen/CLAUDE.md) | AutoGen v0.4, Python | Multi-agent conversation framework |
+| [pydantic-ai](templates/pydantic-ai/CLAUDE.md) | PydanticAI, Python | Type-safe agent framework |
+| [instructor](templates/instructor/CLAUDE.md) | Instructor, Python, Pydantic | Structured outputs for LLMs |
+| [outlines](templates/outlines/CLAUDE.md) | Outlines, Python | Guided text generation |
+| [anthropic-sdk](templates/anthropic-sdk/CLAUDE.md) | Anthropic SDK, TypeScript/Python | Claude 3.5/3 API integration |
+| [openai-sdk](templates/openai-sdk/CLAUDE.md) | OpenAI SDK v4, TypeScript/Python | GPT-4o/GPT-4 API integration |
 
 <br>
 
@@ -178,6 +230,16 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [dynamodb-lambda](templates/dynamodb-lambda/CLAUDE.md) | DynamoDB, Lambda, AWS SDK v3 | Serverless NoSQL on AWS |
 | [apache-kafka-java](templates/apache-kafka-java/CLAUDE.md) | Kafka 3.7+, Java 21, Kafka Streams | Event streaming and stream processing |
 | [rabbitmq-node](templates/rabbitmq-node/CLAUDE.md) | RabbitMQ 3.13+, amqplib, Node.js | Message queuing with AMQP |
+| [qdrant](templates/qdrant/CLAUDE.md) | Qdrant, Vector DB, Python/TypeScript | Vector similarity search engine |
+| [weaviate](templates/weaviate/CLAUDE.md) | Weaviate, GraphQL, Python/JS | AI-native vector search engine |
+| [pgvector](templates/pgvector/CLAUDE.md) | pgvector, PostgreSQL, embeddings | Vector search in PostgreSQL |
+| [chroma](templates/chroma/CLAUDE.md) | Chroma, Python/JavaScript | AI-native vector database |
+| [milvus](templates/milvus/CLAUDE.md) | Milvus/Zilliz, Python | High-performance vector database |
+| [pinecone](templates/pinecone/CLAUDE.md) | Pinecone, Python/TypeScript | Managed vector similarity search |
+| [mariadb](templates/mariadb/CLAUDE.md) | MariaDB 11.x, MySQL compatible | Open-source relational database |
+| [planetscale](templates/planetscale/CLAUDE.md) | PlanetScale, Vitess, MySQL | Serverless MySQL platform |
+| [fauna](templates/fauna/CLAUDE.md) | Fauna, FQL, GraphQL | Distributed document-relational database |
+| [xata](templates/xata/CLAUDE.md) | Xata, PostgreSQL, TypeScript | Serverless data platform |
 
 <br>
 
@@ -235,6 +297,10 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [cypress](templates/cypress/CLAUDE.md) | Cypress, TypeScript | E2E and component testing |
 | [k6-load-testing](templates/k6-load-testing/CLAUDE.md) | Grafana k6, JavaScript ES6 | Load and performance testing |
 | [locust-python](templates/locust-python/CLAUDE.md) | Locust 2.29+, Python, gevent | Distributed load testing |
+| [vitest](templates/vitest/CLAUDE.md) | Vitest v2, Vite, TypeScript | Vite-native testing framework |
+| [jest](templates/jest/CLAUDE.md) | Jest v29, TypeScript | JavaScript testing framework |
+| [pytest](templates/pytest/CLAUDE.md) | pytest v8, Python | Python testing framework |
+| [msw](templates/msw/CLAUDE.md) | MSW, REST/GraphQL mocking | Mock Service Worker for testing |
 
 <br>
 
@@ -276,6 +342,19 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [bazel-java](templates/bazel-java/CLAUDE.md) | Bazel 7, Java 21, bzlmod | Hermetic builds for large codebases |
 | [prometheus-grafana](templates/prometheus-grafana/CLAUDE.md) | Prometheus 2.50+, Grafana 10+ | Metrics, dashboards, and alerting |
 | [opentelemetry-node](templates/opentelemetry-node/CLAUDE.md) | OpenTelemetry JS SDK, OTLP | Distributed tracing and observability |
+| [railway](templates/railway/CLAUDE.md) | Railway, Docker, Nixpacks | Application hosting platform |
+| [flyio](templates/flyio/CLAUDE.md) | Fly.io, Firecracker, Docker | Global application platform |
+| [coolify](templates/coolify/CLAUDE.md) | Coolify, Docker, Self-hosted | Self-hosted PaaS alternative |
+| [kamal](templates/kamal/CLAUDE.md) | Kamal, Docker, Traefik | Zero-downtime Docker deployments |
+| [turborepo](templates/turborepo/CLAUDE.md) | Turborepo v2, pnpm/npm/yarn | Monorepo build system |
+| [nx](templates/nx/CLAUDE.md) | Nx v18+, TypeScript/JavaScript | Smart monorepo build system |
+| [changesets](templates/changesets/CLAUDE.md) | Changesets, Monorepos | Versioning and changelog tool |
+| [pnpm-workspace](templates/pnpm-workspace/CLAUDE.md) | pnpm workspaces, Monorepo | Workspace package management |
+| [version-pnpm](templates/version-pnpm/CLAUDE.md) | pnpm, Workspace versioning | Granular workspace version control |
+| [vite](templates/vite/CLAUDE.md) | Vite v5+, Rollup, esbuild | Next-gen frontend tooling |
+| [rollup](templates/rollup/CLAUDE.md) | Rollup v4, JavaScript bundler | ES module bundler |
+| [esbuild](templates/esbuild/CLAUDE.md) | esbuild v0.20+, Go-based | Ultra-fast JavaScript bundler |
+| [parcel](templates/parcel/CLAUDE.md) | Parcel v2, Zero-config | Zero-config bundler |
 
 <br>
 
@@ -342,6 +421,24 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [deno-fresh](templates/deno-fresh/CLAUDE.md) | Deno, Fresh, Preact | Deno-native web framework |
 | [solidity-hardhat](templates/solidity-hardhat/CLAUDE.md) | Solidity, Hardhat, Ethers.js | Smart contract development |
 | [wordpress-theme](templates/wordpress-theme/CLAUDE.md) | WordPress 6, PHP, Gutenberg | WordPress block themes |
+| [better-auth](templates/better-auth/CLAUDE.md) | Better Auth, TypeScript | Framework-agnostic auth library |
+| [auth-js](templates/auth-js/CLAUDE.md) | Auth.js v5, Next.js | Authentication for Next.js |
+| [lucia-auth](templates/lucia-auth/CLAUDE.md) | Lucia v3, TypeScript | Auth library for serverless |
+| [clerk](templates/clerk/CLAUDE.md) | Clerk, Next.js/React | Complete user management |
+| [supabase-auth](templates/supabase-auth/CLAUDE.md) | Supabase Auth, PostgreSQL | Open-source authentication |
+| [lemon-squeezy](templates/lemon-squeezy/CLAUDE.md) | Lemon Squeezy, TypeScript | Merchant of record for SaaS |
+| [paddle](templates/paddle/CLAUDE.md) | Paddle, TypeScript | Payments infrastructure |
+| [razorpay](templates/razorpay/CLAUDE.md) | Razorpay, Node.js | Payments for India |
+| [cqrs](templates/cqrs/CLAUDE.md) | CQRS, TypeScript/Python | Command Query Responsibility Segregation |
+| [event-sourcing](templates/event-sourcing/CLAUDE.md) | Event Sourcing, TypeScript/Python | State as event stream |
+| [hexagonal-architecture](templates/hexagonal-architecture/CLAUDE.md) | Hexagonal Architecture, TypeScript | Ports and Adapters pattern |
+| [ddd](templates/ddd/CLAUDE.md) | Domain-Driven Design, TypeScript | Bounded contexts, aggregates |
+| [feature-flags](templates/feature-flags/CLAUDE.md) | Feature Flags, LaunchDarkly | Gradual rollout and A/B testing |
+| [rate-limiting](templates/rate-limiting/CLAUDE.md) | Rate Limiting, Redis | Token bucket and sliding window |
+| [webhooks](templates/webhooks/CLAUDE.md) | Webhooks, HMAC | Event delivery mechanism |
+| [event-driven](templates/event-driven/CLAUDE.md) | Event-Driven Architecture | Async message processing |
+| [mcp-server](templates/mcp-server/CLAUDE.md) | MCP Server, TypeScript | Model Context Protocol servers |
+| [claude-code](templates/claude-code/CLAUDE.md) | Claude Code, CLAUDE.md | Claude's agentic coding tool |
 
 <br>
 
