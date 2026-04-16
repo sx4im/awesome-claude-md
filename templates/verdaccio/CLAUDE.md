@@ -46,4 +46,4 @@ packages/
 - Test auth with different providers.
 - Test uplink fallback when npmjs down.
 - Test with scoped packages.
-- Test with scoped packages.
+- Test authentication tokens.

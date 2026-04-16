@@ -47,4 +47,4 @@ CHANGELOG.md                    // Generated
 - Test changelog generates correctly.
 - Test lifecycle scripts run in order.
 - Test first release flag.
-- Test first release flag.
+- Test skip options work.

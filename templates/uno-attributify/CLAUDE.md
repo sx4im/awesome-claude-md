@@ -47,4 +47,4 @@ src/
 - Test responsive attributify works.
 - Test TypeScript recognizes attributes.
 - Test with Vue templates.
-- Test with Vue templates.
+- Test with React components.

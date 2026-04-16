@@ -46,5 +46,5 @@ src/
 - Test architecture rules are enforced.
 - Test graphs generate correctly.
 - Test CI integration.
-- Test CI integration.
+- Test with monorepo setup.
 

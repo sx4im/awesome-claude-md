@@ -45,5 +45,5 @@ conventional-changelog.config.js // or in package.json
 - Test links work correctly.
 - Test with different presets.
 - Test changelog links work.
-- Test changelog links work.
+- Test changelog formatting.
 

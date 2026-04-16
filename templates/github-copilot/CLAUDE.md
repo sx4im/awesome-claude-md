@@ -46,5 +46,5 @@
 - Test security of generated code.
 - Test edge cases Copilot might miss.
 - Test with security scan.
-- Test with security scan.
+- Test with different prompts.
 

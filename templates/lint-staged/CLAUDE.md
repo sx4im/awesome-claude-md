@@ -45,4 +45,5 @@ src/
 - Test auto-fix applies correctly.
 - Test commit blocked when unfixable errors exist.
 - Test with multiple staged files.
+- Test glob pattern matching.
 

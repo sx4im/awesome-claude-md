@@ -45,5 +45,5 @@ src/
 - Test fix removes correct code.
 - Test in CI blocks unused code.
 - Test with monorepo setup.
-- Test with monorepo setup.
+- Test dynamic imports detection.
 

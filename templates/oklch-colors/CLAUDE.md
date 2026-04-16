@@ -45,4 +45,5 @@ styles/
 - Test gradients vs HSL comparison.
 - Test fallback rendering.
 - Test with HDR displays.
+- Test with color mixing.
 

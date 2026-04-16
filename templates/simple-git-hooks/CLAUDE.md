@@ -44,4 +44,4 @@ src/
 - Test that failing commands block git operation.
 - Test reinstall after `rm -rf .git/hooks`.
 - Test with multiple hooks.
-- Test with multiple hooks.
+- Test hook execution order.

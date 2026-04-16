@@ -45,4 +45,4 @@ package.json
 - Test grouped updates work correctly.
 - Test scheduling respects time windows.
 - Test with private packages.
-- Test with private packages.
+- Test with GitLab integration.
