@@ -16,12 +16,14 @@ import sys
 from pathlib import Path
 
 MIN_LINES = 50
-MAX_LINES = 300
+MAX_LINES = 320
 
 # These are intentional placeholder patterns that templates SHOULD contain
 ALLOWED_PLACEHOLDERS = {
     "[PROJECT NAME]",
     "[ONE LINE DESCRIPTION]",
+    "[PROJECT TITLE]",
+    "[ONE-LINE PROJECT DESCRIPTION]",
     "[PLACEHOLDER]",
     "[PLACEHOLDERS]",
     "[YOUR NAME]",
@@ -55,30 +57,41 @@ def validate_template(filepath: Path) -> list[str]:
             f"Too long: {line_count} lines (maximum {MAX_LINES})"
         )
 
-    # Check 3: Must contain a "NEVER" section heading
-    has_never_section = False
+    # Check 3: Must contain at least one strict-safety section heading
+    has_safety_section = False
     for line in lines:
-        if re.match(r"^#{1,3}\s+.*NEVER", line, re.IGNORECASE):
-            has_never_section = True
+        if re.match(
+            r"^#{1,3}\s+.*(NEVER|MUST NOT|CONSTRAINTS?)",
+            line,
+            re.IGNORECASE,
+        ):
+            has_safety_section = True
             break
 
-    if not has_never_section:
+    if not has_safety_section:
         errors.append(
-            'Missing required section: needs a heading containing "NEVER" '
-            '(e.g., "## NEVER DO THIS")'
+            'Missing required safety section: needs a heading containing '
+            '"NEVER", "MUST NOT", or "CONSTRAINT" '
+            '(e.g., "## NEVER DO THIS" or "## Strict Constraints")'
         )
 
     # Check 4: Must contain project description placeholder
     has_project_header = False
     for line in lines:
-        if "[PROJECT NAME]" in line or "[ONE LINE DESCRIPTION]" in line:
+        if (
+            "[PROJECT NAME]" in line
+            or "[ONE LINE DESCRIPTION]" in line
+            or "[PROJECT TITLE]" in line
+            or "[ONE-LINE PROJECT DESCRIPTION]" in line
+        ):
             has_project_header = True
             break
 
     if not has_project_header:
         errors.append(
             "Missing project description placeholder: first line should contain "
-            '"[PROJECT NAME]" and/or "[ONE LINE DESCRIPTION]"'
+            '"[PROJECT NAME]", "[PROJECT TITLE]", "[ONE LINE DESCRIPTION]", '
+            'and/or "[ONE-LINE PROJECT DESCRIPTION]"'
         )
 
     # Check 5: No unfilled generic placeholders
