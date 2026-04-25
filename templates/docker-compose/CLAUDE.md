@@ -2,178 +2,67 @@
 
 > [ONE-LINE PROJECT DESCRIPTION]
 
-## Copy-Paste Setup (Required)
-
-1. Copy this file into your project root as `CLAUDE.md`.
-2. Replace only:
-   - `[PROJECT TITLE]`
-   - `[ONE-LINE PROJECT DESCRIPTION]`
-3. Keep all policy/workflow sections unchanged.
-4. Open Claude Code in this repository and start tasks normally.
-5. If your org has compliance/security rules, add them under a new `## Org Overrides` section without deleting existing rules.
-
-This template is optimized for founders and production engineering teams: strict, execution-focused, and safe by default.
-
-## Universal Claude Code Hardening Rules (Required)
-
-### Operating Mode
-You are a principal-level implementation and security engineer for this stack. Prioritize production reliability, reversibility, and speed with control.
-
-### Priority Order
-1. Security, privacy, and data integrity
-2. System/developer instructions
-3. User request
-4. Repository conventions
-5. Personal preference
-
-### Non-Negotiable Constraints
-- Never invent files, APIs, logs, metrics, or test outcomes.
-- Never output secrets, credentials, tokens, private keys, or internal endpoints.
-- Never weaken auth, validation, or authorization for convenience.
-- Never perform unrelated refactors in delivery-critical changes.
-- Never claim production readiness without validation evidence.
-
-### Execution Workflow (Always)
-1. Context: identify stack, runtime, and operational constraints.
-2. Inspect: read affected files and trace current behavior.
-3. Plan: define smallest safe diff and rollback path.
-4. Implement: code with explicit error handling and typed boundaries.
-5. Validate: run available tests/lint/typecheck/build checks.
-6. Report: summarize changes, validation evidence, and residual risk.
-
-### Decision Rules
-- If two options are viable, choose the one with lower operational risk and easier rollback.
-- Ask the user only when ambiguity blocks correct implementation.
-- If ambiguity is non-blocking, proceed with explicit assumptions and document them.
-
-### Production Quality Gates
-A change is not complete until all are true:
-- Functional correctness is demonstrated or explicitly marked unverified.
-- Failure paths and edge cases are handled.
-- Security-impacting paths are reviewed.
-- Scope is minimal and review-friendly.
-
-### Claude Code Integration
-- Read related files before edits; preserve cross-file invariants.
-- Keep edits small, coherent, and reviewable.
-- For multi-file updates, keep API/contracts aligned and update affected tests/docs.
-- For debugging, reproduce issue, isolate root cause, patch, then verify with regression coverage.
-
-### Final Self-Verification
-Before final response confirm:
-- Requirements are fully addressed.
-- No sensitive leakage introduced.
-- Validation claims match executed checks.
-- Remaining risks and next actions are explicit.
-
-## Production Delivery Playbook (Category: DevOps & Infra)
-
-### Release Discipline
-- Infrastructure changes must be reviewable, reproducible, and auditable.
-- Never bypass policy checks for convenience in CI/CD.
-- Protect secret handling and artifact integrity at every stage.
-
-### Merge/Release Gates
-- Plan/apply (or equivalent) reviewed with no unknown drift.
-- Pipeline security checks pass (SAST/dep/vuln scans as configured).
-- Disaster recovery and rollback notes updated for impactful changes.
-
-### Incident Handling Standard
-- On incident or regression: reproduce, scope blast radius, apply minimal rollback-safe patch.
-- Add regression validation before closure.
-- Record root cause, guardrails added, and follow-up hardening tasks.
-
 ## Tech Stack
 
-- Docker + Docker Compose v2
-- Multi-service architecture (API, database, cache, worker, proxy)
-- Environment-specific overrides
-- Health checks on all services
-- Bind mounts for development, volumes for production
+- **Docker Compose**: Container orchestration (v2.24+)
+- **Docker Engine**: Container runtime
+- **YAML**: Service definition language
+- **Networks**: Container communication
+- **Volumes**: Persistent storage
+- **Healthchecks**: Service readiness probes
 
 ## Project Structure
 
 ```
-.
-├── docker/
-│   ├── api/
-│   │   ├── Dockerfile       # Multi-stage build for API
-│   │   └── .dockerignore
-│   ├── worker/
-│   │   └── Dockerfile       # Worker process Dockerfile
-│   └── nginx/
-│       └── nginx.conf       # Reverse proxy configuration
-├── docker-compose.yml       # Base compose (shared config)
-├── docker-compose.dev.yml   # Dev overrides (volumes, debug ports, hot reload)
-├── docker-compose.prod.yml  # Prod overrides (resource limits, restart policies)
-├── .env.example             # Template for environment variables
+docker-compose/
+├── docker-compose.yml          # Main compose file
+├── docker-compose.override.yml # Local overrides
+├── docker-compose.prod.yml     # Production config
+├── .env                        # Environment variables
+├── .env.example                # Example env vars
+├── Dockerfile                  # App container
 └── scripts/
-    ├── seed.sh              # Database seeding script
-    └── backup.sh            # Database backup script
+    ├── init-db.sh              # Initialization
+    └── wait-for-it.sh          # Dependency waiting
 ```
 
 ## Architecture Rules
 
-- **Base + override compose files.** `docker-compose.yml` defines services, networks, and dependencies shared across environments. `docker-compose.dev.yml` adds hot reload, debug ports, and bind mounts. `docker-compose.prod.yml` adds resource limits, restart policies, and production images. Run with: `docker compose -f docker-compose.yml -f docker-compose.dev.yml up`.
-- **One process per container.** The API runs in one container, the database in another, the worker in another. Never run multiple processes in a single container with supervisord or a shell script.
-- **Named volumes for persistent data.** Database data goes in a named volume (`postgres_data:`), not a bind mount. Named volumes persist across `docker compose down` and have better performance on macOS/Windows.
-- **Health checks on every service.** Every service defines a `healthcheck` in compose. `depends_on` uses `condition: service_healthy`. not just `service_started`. Without health checks, the API starts before the database is ready.
-- **Networks isolate communication.** Define a `backend` network for API ↔ database ↔ cache. A `frontend` network for proxy ↔ API. The database should not be reachable from the proxy.
+- **Override pattern.** Base `docker-compose.yml` + `docker-compose.override.yml` for local. Separate prod config.
+- **Service dependencies.** Use `depends_on` with `condition: service_healthy`. Wait for readiness, not just start.
+- **Volume management.** Named volumes for persistence. Bind mounts for development hot-reload.
+- **Environment files.** `.env` for local secrets. Never commit. `.env.example` with dummy values.
+- **Health checks.** Define for all services. `healthcheck` with proper intervals and retries.
 
 ## Coding Conventions
 
-- **Multi-stage Dockerfiles.** Stage 1: install dependencies. Stage 2: build. Stage 3: production image with only the built artifact and runtime deps. The final image should not contain `node_modules/devDependencies`, build tools, or source code.
-- **`.dockerignore` is mandatory.** Every Dockerfile directory has a `.dockerignore` that excludes `node_modules`, `.git`, `*.md`, test files, and local env files. Without it, `docker build` copies gigabytes of unnecessary files.
-- **Environment variables via `.env` files.** `docker-compose.yml` uses `env_file: .env`. Never hardcode database passwords or API keys in compose files. Distribute `.env.example` with placeholder values.
-- **Pin image versions.** `FROM node:20.11-alpine`. not `FROM node:latest`. `image: postgres:16.2`. not `image: postgres`. Unpinned versions cause "works on my machine" bugs when upstream images update.
-- **Use non-root users.** Every Dockerfile creates a non-root user and switches to it: `RUN adduser -D appuser` then `USER appuser`. Running as root inside containers is a security vulnerability.
-
-## Service Naming
-
-```yaml
-services:
-  api:          # Application server
-  db:           # PostgreSQL, MySQL, etc.
-  cache:        # Redis
-  worker:       # Background job processor
-  proxy:        # Nginx reverse proxy
-  mailpit:      # Dev-only email catcher
-```
-
-Use short, descriptive names. All lowercase. The service name is the hostname on the Docker network: `api` connects to `db:5432`.
+- **Service definition.** `service_name: image: ... ports: ... environment: ... volumes: ...`.
+- **Network aliases.** Use service name as DNS. `db` resolves to database container on same network.
+- **Build context.** `build: context: . dockerfile: Dockerfile`. Separate build and runtime.
+- **Secrets.** Use `secrets` for sensitive data. Mounted as files, not env vars. More secure.
+- **Profiles.** Use `profiles: ["dev"]` for optional services. `docker compose --profile dev up`.
 
 ## NEVER DO THIS
 
-1. **Never use `latest` tags for base images.** `node:latest` today is not `node:latest` tomorrow. Pin exact versions: `node:20.11-alpine`. This prevents builds from breaking when upstream publishes a new major version.
-2. **Never store secrets in `docker-compose.yml`.** Use `.env` files (gitignored) or Docker secrets for production. Compose files are committed to git. secrets in them are secrets in your repo history forever.
-3. **Never use `depends_on` without `condition: service_healthy`.** `depends_on: db` only waits for the container to start. not for PostgreSQL to be ready to accept connections. Your API will crash with "connection refused" on startup.
-4. **Never run containers as root in production.** Create a non-root user in the Dockerfile and use `USER appuser`. Root in a container is root on the host if the container escapes.
-5. **Never use bind mounts for database data.** Bind mounts have performance issues on macOS/Windows and don't persist cleanly. Use named volumes: `volumes: postgres_data:`.
-6. **Never put everything in one Dockerfile.** Use multi-stage builds. A single-stage Dockerfile includes compilers, dev dependencies, and source code in the final image. bloating it from 100MB to 2GB.
-7. **Never skip `.dockerignore`.** Without it, `COPY . .` copies `node_modules` (hundreds of MB), `.git` (entire history), and test files into the build context. Builds become slow and images become enormous.
-
-## Development Workflow
-
-```bash
-# Start all services in dev mode
-docker compose -f docker-compose.yml -f docker-compose.dev.yml up
-
-# Rebuild after Dockerfile changes
-docker compose build --no-cache api
-
-# View logs for a specific service
-docker compose logs -f api
-
-# Run a one-off command in the API container
-docker compose exec api npm run migrate
-
-# Tear down everything including volumes
-docker compose down -v
-```
+1. **Never commit .env with secrets.** Add to `.gitignore`. Use `.env.example` as template.
+2. **Never use latest tags.** Pin to specific versions. Reproducible builds require version pinning.
+3. **Never run production on Compose.** Use Kubernetes or Swarm for production. Compose is for dev/test.
+4. **Never ignore resource limits.** Set `deploy.resources` for memory/CPU. Prevents local machine slowdown.
+5. **Never use container_name carelessly.** Fixed names prevent scaling. Let Compose generate names.
+6. **Never forget about volumes pruning.** `docker compose down -v` removes volumes. Data loss warning.
+7. **Never skip health checks.** Services start before ready causes connection failures. Health checks prevent this.
 
 ## Testing
 
-- Use Docker Compose to spin up test dependencies (database, cache) for integration tests.
-- CI runs `docker compose build` to verify all Dockerfiles build successfully.
-- Test health checks by starting services and asserting `docker compose ps` shows "healthy" for all services.
-- Load test the production compose configuration to verify resource limits are adequate.
+- **Compose build.** `docker compose build` succeeds. No Dockerfile errors.
+- **Service startup.** All services reach healthy state. `docker compose ps` shows healthy.
+- **Connectivity testing.** Services can communicate. Database reachable from app container.
+- **Volume persistence.** Data persists across restarts. Stop, start, data still there.
+- **Override testing.** `docker-compose.override.yml` applies correctly. Local dev config works.
+
+## Claude Code Integration
+
+- Use `@docker-compose*.yml` for orchestration patterns
+- Reference `@scripts/` for initialization and waiting scripts
+- Apply container development from architecture rules
+- Validate against Docker Compose best practices in NEVER DO THIS

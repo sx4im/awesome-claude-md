@@ -1,14 +1,14 @@
 <p align="center">
   <h1 align="center">Awesome-Claude-md</h1>
   <p align="center">
-    <strong>400 opinionated CLAUDE.md templates for every stack.</strong><br>
+    <strong>502 opinionated CLAUDE.md templates for every stack.</strong><br>
     Stop writing CLAUDE.md files from scratch. Grab one, edit the placeholders, ship better code.
   </p>
   <p align="center">
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>&nbsp;
     <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>&nbsp;
     <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude-Code-blueviolet.svg" alt="Claude Code"></a>&nbsp;
-    <img src="https://img.shields.io/badge/templates-400-orange.svg" alt="400 Templates">
+    <img src="https://img.shields.io/badge/templates-502-orange.svg" alt="502 Templates">
   </p>
 </p>
 
@@ -211,6 +211,43 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [outlines](templates/outlines/CLAUDE.md) | Outlines, Python | Guided text generation |
 | [anthropic-sdk](templates/anthropic-sdk/CLAUDE.md) | Anthropic SDK, TypeScript/Python | Claude 3.5/3 API integration |
 | [openai-sdk](templates/openai-sdk/CLAUDE.md) | OpenAI SDK v4, TypeScript/Python | GPT-4o/GPT-4 API integration |
+| [ai-prompt-engineering](templates/ai-prompt-engineering/CLAUDE.md) | Prompt Engineering, Pydantic, Python | Structured prompts, few-shot, chain-of-thought |
+| [anthropic-bedrock](templates/anthropic-bedrock/CLAUDE.md) | AWS Bedrock, Claude, Python | Managed Claude deployment on AWS |
+| [arize-phoenix](templates/arize-phoenix/CLAUDE.md) | Phoenix, OpenInference, Python | ML observability and debugging |
+| [autogpt](templates/autogpt/CLAUDE.md) | AutoGPT, Python, LLM Agents | Autonomous AI agents for complex tasks |
+| [chroma-vector-db](templates/chroma-vector-db/CLAUDE.md) | ChromaDB, Embeddings, Python | AI-native vector database |
+| [cohere-embeddings](templates/cohere-embeddings/CLAUDE.md) | Cohere API, Embeddings, Python/JS | Production-grade text embeddings |
+| [dask-parallel](templates/dask-parallel/CLAUDE.md) | Dask, Python, Distributed | Parallel computing for scaling Python |
+| [deeplearning4j](templates/deeplearning4j/CLAUDE.md) | DL4J, Java/Scala, ND4J | Deep learning on JVM |
+| [feast-feature-store](templates/feast-feature-store/CLAUDE.md) | Feast, Python, Redis | Feature store for ML serving |
+| [great-expectations](templates/great-expectations/CLAUDE.md) | Great Expectations, Python | Data validation and documentation |
+| [h2o-ml](templates/h2o-ml/CLAUDE.md) | H2O, Java, AutoML | Open-source ML platform with AutoML |
+| [haystack-rag](templates/haystack-rag/CLAUDE.md) | Haystack, Python, NLP | RAG framework for semantic search |
+| [hugging-face-transformers](templates/hugging-face-transformers/CLAUDE.md) | Transformers, Python, NLP | Pre-trained models for text/vision/audio |
+| [kubeflow-ml](templates/kubeflow-ml/CLAUDE.md) | Kubeflow, Kubernetes, Python | ML workflows on Kubernetes |
+| [langchain-js](templates/langchain-js/CLAUDE.md) | LangChain, JavaScript/TypeScript | LLM chains and agents in JS |
+| [llama-cpp](templates/llama-cpp/CLAUDE.md) | llama.cpp, C++, Local LLMs | High-performance local LLM inference |
+| [mlops-cicd](templates/mlops-cicd/CLAUDE.md) | MLOps, CI/CD, Python | ML model deployment pipelines |
+| [modal-compute](templates/modal-compute/CLAUDE.md) | Modal, Python, Serverless | Serverless GPU/CPU workloads |
+| [neptune-ml](templates/neptune-ml/CLAUDE.md) | Neptune, Python, ML | Experiment tracking and model registry |
+| [nltk-nlp](templates/nltk-nlp/CLAUDE.md) | NLTK, Python, NLP | Classical NLP and text processing |
+| [openai-gpt4](templates/openai-gpt4/CLAUDE.md) | OpenAI, GPT-4, TypeScript | Production GPT-4 integration |
+| [optuna-hyperparameter](templates/optuna-hyperparameter/CLAUDE.md) | Optuna, Python, ML | Hyperparameter optimization |
+| [pandas-analysis](templates/pandas-analysis/CLAUDE.md) | Pandas, Python, Data | Data manipulation and analysis |
+| [polars-dataframe](templates/polars-dataframe/CLAUDE.md) | Polars, Python, DataFrames | Lightning-fast DataFrames in Rust |
+| [prefect-workflows](templates/prefect-workflows/CLAUDE.md) | Prefect, Python, Orchestration | Modern workflow orchestration |
+| [ray-distributed](templates/ray-distributed/CLAUDE.md) | Ray, Python, Distributed | Distributed computing framework |
+| [runpod-serverless](templates/runpod-serverless/CLAUDE.md) | RunPod, GPU, Serverless | Serverless GPU cloud platform |
+| [scikit-learn](templates/scikit-learn/CLAUDE.md) | scikit-learn, Python, ML | Classical ML algorithms |
+| [spaCy-ner](templates/spaCy-ner/CLAUDE.md) | spaCy, Python, NLP | Industrial-strength NLP processing |
+| [stable-diffusion](templates/stable-diffusion/CLAUDE.md) | Stable Diffusion, Python | Open-source image generation |
+| [tensorflow-js](templates/tensorflow-js/CLAUDE.md) | TensorFlow.js, JavaScript | ML in browsers and Node.js |
+| [tfx-pipeline](templates/tfx-pipeline/CLAUDE.md) | TFX, TensorFlow, Python | Production ML pipelines |
+| [wandb-tracking](templates/wandb-tracking/CLAUDE.md) | Weights & Biases, Python | ML experiment tracking |
+| [xgboost-ml](templates/xgboost-ml/CLAUDE.md) | XGBoost, Python, ML | Gradient boosting framework |
+| [airbyte-etl](templates/airbyte-etl/CLAUDE.md) | Airbyte, ETL, Python | Data integration with 300+ connectors |
+| [apache-beam](templates/apache-beam/CLAUDE.md) | Apache Beam, Java/Python | Unified batch/stream processing |
+| [apache-spark](templates/apache-spark/CLAUDE.md) | Apache Spark, Scala/Python | Distributed big data processing |
 
 <br>
 
@@ -317,6 +354,11 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [netlify-functions](templates/netlify-functions/CLAUDE.md) | Netlify Functions v2, TypeScript | Serverless on Netlify |
 | [deno-deploy](templates/deno-deploy/CLAUDE.md) | Deno Deploy, Deno KV | Edge serverless on Deno |
 | [supabase-edge](templates/supabase-edge/CLAUDE.md) | Supabase Edge Functions, Deno | Serverless on Supabase |
+| [aws-amplify](templates/aws-amplify/CLAUDE.md) | AWS Amplify, Fullstack | AWS fullstack web/mobile apps |
+| [aws-glue](templates/aws-glue/CLAUDE.md) | AWS Glue, ETL, Serverless | Serverless data integration |
+| [aws-sam](templates/aws-sam/CLAUDE.md) | AWS SAM, Lambda, API Gateway | Serverless app framework |
+| [azure-devops](templates/azure-devops/CLAUDE.md) | Azure DevOps, CI/CD | Microsoft's CI/CD platform |
+| [google-bigquery](templates/google-bigquery/CLAUDE.md) | BigQuery, Analytics | Serverless data warehouse |
 
 <br>
 
@@ -355,6 +397,48 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [rollup](templates/rollup/CLAUDE.md) | Rollup v4, JavaScript bundler | ES module bundler |
 | [esbuild](templates/esbuild/CLAUDE.md) | esbuild v0.20+, Go-based | Ultra-fast JavaScript bundler |
 | [parcel](templates/parcel/CLAUDE.md) | Parcel v2, Zero-config | Zero-config bundler |
+| [argo-workflows](templates/argo-workflows/CLAUDE.md) | Argo Workflows, Kubernetes | Kubernetes-native workflow engine |
+| [brigade-ci](templates/brigade-ci/CLAUDE.md) | Brigade, Kubernetes, JS/TS | Event-driven scripting for K8s CI/CD |
+| [gitea-actions](templates/gitea-actions/CLAUDE.md) | Gitea, Actions, Self-hosted | GitHub-compatible CI/CD for Gitea |
+| [tekton-pipelines](templates/tekton-pipelines/CLAUDE.md) | Tekton, Kubernetes, Cloud-native | Cloud-native CI/CD on Kubernetes |
+| [woodpecker-ci](templates/woodpecker-ci/CLAUDE.md) | Woodpecker, Docker, CI/CD | Simple CI with Docker pipelines |
+| [backstage-portal](templates/backstage-portal/CLAUDE.md) | Backstage, Developer Portal | Building developer portals |
+| [cdk8s-kubernetes](templates/cdk8s-kubernetes/CLAUDE.md) | CDK8s, Kubernetes | Define K8s apps with code |
+| [cloud-init](templates/cloud-init/CLAUDE.md) | Cloud-Init, VM Provisioning | Cross-platform VM initialization |
+| [consul-service-mesh](templates/consul-service-mesh/CLAUDE.md) | Consul, Service Mesh | Service discovery and mTLS |
+| [istio-service-mesh](templates/istio-service-mesh/CLAUDE.md) | Istio, Service Mesh | Traffic management and observability |
+| [karpenter-autoscaler](templates/karpenter-autoscaler/CLAUDE.md) | Karpenter, Kubernetes | Flexible node autoscaling |
+| [linkerd-mesh](templates/linkerd-mesh/CLAUDE.md) | Linkerd, Service Mesh | Ultra-light security-first mesh |
+| [nomad-orchestration](templates/nomad-orchestration/CLAUDE.md) | Nomad, Orchestration | Simple workload orchestrator |
+| [openfaas-serverless](templates/openfaas-serverless/CLAUDE.md) | OpenFaaS, Serverless | Serverless functions on K8s |
+| [openstack-cloud](templates/openstack-cloud/CLAUDE.md) | OpenStack, Private Cloud | Open-source cloud platform |
+| [opnsense-firewall](templates/opnsense-firewall/CLAUDE.md) | OPNsense, Firewall | Open-source firewall platform |
+| [proxmox-ve](templates/proxmox-ve/CLAUDE.md) | Proxmox, Virtualization | Server virtualization management |
+| [pulumi-aws](templates/pulumi-aws/CLAUDE.md) | Pulumi, AWS, TypeScript/Python | IaC for AWS with real languages |
+| [semaphore-ci](templates/semaphore-ci/CLAUDE.md) | Semaphore, CI/CD | Fast CI/CD with Docker |
+| [traefik-gateway](templates/traefik-gateway/CLAUDE.md) | Traefik, API Gateway | Modern reverse proxy and load balancer |
+| [vagrant-dev](templates/vagrant-dev/CLAUDE.md) | Vagrant, Development | Portable VM dev environments |
+| [velero-backup](templates/velero-backup/CLAUDE.md) | Velero, Kubernetes | K8s resources and PV backup |
+
+<br>
+
+### > Security
+
+| Template | Stack | When to use |
+|:---------|:------|:------------|
+| [appsec-threat-model](templates/appsec-threat-model/CLAUDE.md) | Threat Modeling, AppSec | Security risk identification |
+| [burp-suite](templates/burp-suite/CLAUDE.md) | Burp Suite, Web Security | Web application security testing |
+| [checkmarx-sast](templates/checkmarx-sast/CLAUDE.md) | Checkmarx, SAST | Static application security testing |
+| [falco-runtime-security](templates/falco-runtime-security/CLAUDE.md) | Falco, Kubernetes | Container runtime security |
+| [grype-container-scan](templates/grype-container-scan/CLAUDE.md) | Grype, Container Scanning | Vulnerability scanning for images |
+| [hashicorp-vault](templates/hashicorp-vault/CLAUDE.md) | Vault, Secrets Management | Secrets and credentials management |
+| [jfrog-artifactory](templates/jfrog-artifactory/CLAUDE.md) | JFrog, Artifact Management | Artifact and package management |
+| [npm-audit](templates/npm-audit/CLAUDE.md) | npm audit, Security | Node.js dependency vulnerability scanning |
+| [owasp-zap](templates/owasp-zap/CLAUDE.md) | OWASP ZAP, Security Scanner | Open-source web security scanner |
+| [sigstore-cosign](templates/sigstore-cosign/CLAUDE.md) | Sigstore, Cosign, Signing | Container signing and verification |
+| [snyk-security](templates/snyk-security/CLAUDE.md) | Snyk, Security Platform | Developer-first security scanning |
+| [trivy-scanner](templates/trivy-scanner/CLAUDE.md) | Trivy, Security Scanner | Comprehensive vulnerability scanner |
+| [wireshark-analysis](templates/wireshark-analysis/CLAUDE.md) | Wireshark, Network Analysis | Network protocol analysis |
 
 <br>
 
@@ -388,6 +472,27 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [raylib-c](templates/raylib-c/CLAUDE.md) | raylib 5, C17, CMake | Lightweight C game development |
 | [love2d-lua](templates/love2d-lua/CLAUDE.md) | LOVE 11.5+, Lua 5.1 | Lua 2D game framework |
 | [defold-lua](templates/defold-lua/CLAUDE.md) | Defold 1.9+, Lua 5.1 | Cross-platform Lua game engine |
+| [bevy-engine](templates/bevy-engine/CLAUDE.md) | Bevy, Rust, ECS | Data-driven game engine in Rust |
+| [godot-4](templates/godot-4/CLAUDE.md) | Godot 4, GDScript/C# | Open-source 2D/3D game engine |
+| [unity-urp](templates/unity-urp/CLAUDE.md) | Unity URP, C# | Universal Render Pipeline |
+| [unreal-engine-5](templates/unreal-engine-5/CLAUDE.md) | Unreal Engine 5, C++ | UE5 with Nanite and Lumen |
+| [cocos-creator](templates/cocos-creator/CLAUDE.md) | Cocos Creator, TypeScript | Cross-platform 2D/3D game engine |
+
+<br>
+
+### > Mobile
+
+| Template | Stack | When to use |
+|:---------|:------|:------------|
+| [capacitor-ionic](templates/capacitor-ionic/CLAUDE.md) | Capacitor, Ionic, TypeScript | Cross-platform hybrid apps |
+| [carplay-app](templates/carplay-app/CLAUDE.md) | CarPlay, iOS, Swift | Apple CarPlay apps |
+| [codemagic-ci](templates/codemagic-ci/CLAUDE.md) | Codemagic, Mobile CI/CD | Mobile CI/CD automation |
+| [fastlane-mobile](templates/fastlane-mobile/CLAUDE.md) | Fastlane, Mobile Automation | Screenshots and deployment |
+| [kotlin-coroutines](templates/kotlin-coroutines/CLAUDE.md) | Kotlin Coroutines, Async | Async programming for Android |
+| [react-native-cli](templates/react-native-cli/CLAUDE.md) | React Native, CLI | Native mobile with React |
+| [rust-embedded](templates/rust-embedded/CLAUDE.md) | Rust, Embedded Systems | Bare-metal embedded development |
+| [swift-concurrency](templates/swift-concurrency/CLAUDE.md) | Swift Concurrency, iOS | Modern async Swift for iOS |
+| [watchos-app](templates/watchos-app/CLAUDE.md) | watchOS, Swift | Apple Watch apps |
 
 <br>
 
@@ -405,6 +510,30 @@ Or browse the [full catalog](CATALOG.md) with line counts and key libraries for 
 | [r-shiny](templates/r-shiny/CLAUDE.md) | R 4.3+, Shiny, golem | Interactive data dashboards |
 | [v-lang](templates/v-lang/CLAUDE.md) | V 0.4, vweb | Simple compiled language for web |
 | [zig-project](templates/zig-project/CLAUDE.md) | Zig 0.13, build.zig | Systems programming with Zig |
+
+<br>
+
+### > Blockchain & Web3
+
+| Template | Stack | When to use |
+|:---------|:------|:------------|
+| [blockchain-solidity](templates/blockchain-solidity/CLAUDE.md) | Solidity, Smart Contracts | Ethereum smart contract development |
+| [hardhat-foundry](templates/hardhat-foundry/CLAUDE.md) | Hardhat, Foundry, Testing | Ethereum dev with fast testing |
+| [subgraph-thegraph](templates/subgraph-thegraph/CLAUDE.md) | The Graph, Subgraph | Blockchain data indexing |
+| [web3-react](templates/web3-react/CLAUDE.md) | Web3, React, Ethereum | DApp development with React |
+
+<br>
+
+### > Documentation
+
+| Template | Stack | When to use |
+|:---------|:------|:------------|
+| [astro-starlight](templates/astro-starlight/CLAUDE.md) | Astro, Starlight | Beautiful documentation sites |
+| [docusaurus-v3](templates/docusaurus-v3/CLAUDE.md) | Docusaurus v3 | Modern documentation with versioning |
+| [mkdocs-material](templates/mkdocs-material/CLAUDE.md) | MkDocs, Material | Material Design documentation |
+| [nextra-docs](templates/nextra-docs/CLAUDE.md) | Nextra, Next.js | Next.js-powered documentation |
+| [readthedocs](templates/readthedocs/CLAUDE.md) | Read the Docs, Sphinx | Documentation hosting with builds |
+| [swagger-openapi](templates/swagger-openapi/CLAUDE.md) | Swagger, OpenAPI | API documentation and UI |
 
 <br>
 
